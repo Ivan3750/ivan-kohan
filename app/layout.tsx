@@ -141,10 +141,11 @@ export default function RootLayout({
             <div>
               <h3 className="text-sm font-medium text-white">Navigation</h3>
               <ul className="mt-3 space-y-2 text-sm text-neutral-400">
+                <li><Link href="/" className="hover:text-[#edcb4c]">Home</Link></li>
                 <li><Link href="/about" className="hover:text-[#edcb4c]">About</Link></li>
                 <li><Link href="/projects" className="hover:text-[#edcb4c]">Projects</Link></li>
-                <li><Link href="/blog" className="hover:text-[#edcb4c]">Blog</Link></li>
-                <li><Link href="/skills" className="hover:text-[#edcb4c]">Skills</Link></li>
+{/*                 <li><Link href="/blog" className="hover:text-[#edcb4c]">Blog</Link></li>
+ */}                <li><Link href="/skills" className="hover:text-[#edcb4c]">Skills</Link></li>
                 <li><Link href="/contact" className="hover:text-[#edcb4c]">Contact</Link></li>
               </ul>
             </div>

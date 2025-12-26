@@ -2,15 +2,37 @@ import { Mail, Github, Linkedin, Code2, Layout, Briefcase, Instagram } from "luc
 import bg from "../public/bg.jpg";
 import Image from "next/image";
 import Link from "next/link";
+import Head from "next/head";
 
 export default function Home() {
   return (
+    <>
+     <Head>
+        <title>Ivan Kohan | Web Developer</title>
+        <meta name="description" content="Ivan Kohan - Web developer focused on clean UI, scalable architecture and meaningful user experiences." />
+        <meta name="keywords" content="Web Developer, React, Next.js, Portfolio, UI, UX, Projects" />
+        <meta name="author" content="Ivan Kohan" />
+        <meta name="robots" content="index, follow" />
+
+        <meta property="og:title" content="Ivan Kohan | Web Developer" />
+        <meta property="og:description" content="Web developer focused on clean UI, scalable architecture and meaningful user experiences." />
+        <meta property="og:image" content="/bg.jpg" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://ivankohan.com" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Ivan Kohan | Web Developer" />
+        <meta name="twitter:description" content="Web developer focused on clean UI, scalable architecture and meaningful user experiences." />
+        <meta name="twitter:image" content="/bg.jpg" />
+
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
     <main className="relative z-10">
       <section className="relative z-10 max-w-6xl mx-auto px-4 py-24 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <div className="rounded-[28px] bg-white/[0.05] backdrop-blur-xl border border-white/10 p-8">
           <h1 className="text-3xl md:text-4xl font-semibold text-white leading-tight">
-            Building modern digital experiences
-          </h1>
+Ivan Kohan          </h1>
 
           <p className="mt-4 text-neutral-300 leading-relaxed">
             Web developer focused on clean UI, scalable architecture and
@@ -115,6 +137,7 @@ export default function Home() {
         </div>
       </section>
     </main>
+    </>
   );
 }
 

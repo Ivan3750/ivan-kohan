@@ -1,31 +1,61 @@
 import { ExternalLink, Github } from "lucide-react";
-
+import pizzeria from "@/app/assets/cases/PizzleM.png"
+import hireon from "@/app/assets/cases/HireonM.png"
+import workout from "@/app/assets/cases/WorkOutM.png"
+import vzlom from "@/app/assets/cases/Vzlom.png"
+import Ukraine from "@/app/assets/cases/UkraineW.png"
+import horse from "@/app/assets/cases/ClubHorseM.png"
 const projects = [
   {
-    title: "WebHjerte",
+    title: "Pizzle",
     description:
-      "Web development agency website with modern UI, animations and responsive layout.",
-    image: "/projects/webhjerte.jpg",
-    live: "https://webhjerte.dk",
+      "Website for a pizzeria chain with online ordering and menu management features.",
+    image: pizzeria.src,
+    live: null,
     github: null,
   },
   {
-    title: "Portfolio",
+    title: "HireOn",
     description:
-      "Personal portfolio built with Next.js, Tailwind CSS and glassmorphism design.",
-    image: "/projects/portfolio.jpg",
-    live: "https://ivan3750.github.io/AboutMe/",
-    github: "https://github.com/Ivan3750",
+      "Job search platform with admin dashboard for managing listings and applications.",
+    image: hireon.src,
+    live: null,
+    github: null,
   },
   {
-    title: "Dashboard UI",
+    title: "WorkOut",
     description:
-      "Admin dashboard concept with charts, cards and dark theme.",
-    image: "/projects/dashboard.jpg",
+      "Fitness tracking dashboard with analytics and progress monitoring for workouts.",
+    image: workout.src,
     live: null,
-    github: "https://github.com/Ivan3750",
+    github: null,
+  },
+  {
+    title: "Vzlom",
+    description:
+      "Website for selling safes, featuring admin dashboard and product management tools.",
+    image: vzlom.src,
+    live: null,
+    github: null,
+  },
+  {
+    title: "Club Horse",
+    description:
+      "Informational site for a horse club, showcasing events, horses, and membership info.",
+    image: horse.src,
+    live: null,
+    github: null,
+  },
+  {
+    title: "Ukraine War",
+    description:
+      "Awareness website highlighting the war in Ukraine with informative dashboard elements.",
+    image: Ukraine.src,
+    live: null,
+    github: null,
   },
 ];
+
 
 export default function Projects() {
   return (
@@ -101,6 +131,17 @@ export default function Projects() {
             </div>
           ))}
         </div>
+         <div
+              className="
+              mt-8
+              p-4
+                group rounded-[28px] overflow-hidden
+                bg-white/[0.05] backdrop-blur-xl
+                border border-white/10
+                hover:border-[#edcb4c]/40 transition
+              "
+            >          And so more...
+</div>
       </section>
     </main>
   );
