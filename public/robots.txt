@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://ivankohan.com
+
+# Sitemaps
+Sitemap: https://ivankohan.com/sitemap.xml

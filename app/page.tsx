@@ -1,4 +1,4 @@
-import { Mail, Github, Linkedin, Code2, Layout, Briefcase } from "lucide-react";
+import { Mail, Github, Linkedin, Code2, Layout, Briefcase, Instagram } from "lucide-react";
 import bg from "../public/bg.jpg";
 import Image from "next/image";
 import Link from "next/link";
@@ -41,14 +41,13 @@ export default function Home() {
             </Link>
           </div>
 
-          {/* Social */}
           <div className="mt-6 flex gap-4 text-neutral-400">
             <a href="#" className="hover:text-white"><Github size={18} /></a>
+            <a href="#" className="hover:text-white"><Instagram size={18} /></a>
             <a href="#" className="hover:text-white"><Linkedin size={18} /></a>
           </div>
         </div>
 
-        {/* Image */}
         <div className="relative flex justify-center">
           <div className="w-full max-w-md rounded-[28px] overflow-hidden border border-white/10 bg-white/[0.03] backdrop-blur-xl">
             <Image src={bg} alt="Hero" className="object-cover opacity-90" />
@@ -57,7 +56,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ================= WHAT I DO ================= */}
       <section className="relative z-10 max-w-6xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
         <Feature
           icon={<Code2 size={18} />}
@@ -76,7 +74,6 @@ export default function Home() {
         />
       </section>
 
-      {/* ================= FEATURED PROJECTS ================= */}
       <section className="relative z-10 max-w-6xl mx-auto px-4 py-20">
         <h2 className="text-2xl font-medium text-white mb-8">
           Featured projects
@@ -98,7 +95,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ================= CTA ================= */}
       <section className="relative z-10 max-w-4xl mx-auto px-4 py-24">
         <div className="rounded-[28px] bg-white/[0.05] backdrop-blur-xl border border-white/10 p-10 text-center">
           <h2 className="text-2xl font-medium text-white">
@@ -109,7 +105,7 @@ export default function Home() {
           </p>
 
           <a
-            href="mailto:test@gmail.com"
+            href="mailto:kohan3750@gmail.com"
             className="mt-6 inline-flex items-center gap-2 px-8 py-3 rounded-xl text-sm font-medium
             text-black bg-gradient-to-r from-[#edcb4c] to-[#f5dc7a]
             hover:brightness-105"
@@ -122,7 +118,6 @@ export default function Home() {
   );
 }
 
-/* ================= Components ================= */
 
 function Feature({
   icon,

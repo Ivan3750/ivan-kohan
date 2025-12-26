@@ -10,7 +10,7 @@ const posts = [
     slug: "modern-web-interfaces",
   },
   {
-    title: "Next.js App Router – what you should know",
+    title: "Next.js App Router - what you should know",
     excerpt:
       "Key concepts, layouts, server components and how to structure real projects.",
     date: "Feb 27, 2024",
@@ -32,9 +32,7 @@ export default function Blog() {
     <main className="relative z-10">
       
 
-      {/* Content */}
       <section className="relative z-10 max-w-6xl mx-auto px-4 py-24">
-        {/* Title */}
         <div className="max-w-2xl mb-16">
           <h1 className="text-3xl md:text-4xl font-semibold text-white">
             Blog
@@ -44,7 +42,6 @@ export default function Blog() {
           </p>
         </div>
 
-        {/* Posts */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {posts.map((post) => (
             <a
@@ -57,7 +54,6 @@ export default function Blog() {
                 hover:border-[#edcb4c]/40 transition
               "
             >
-              {/* Image */}
               <div className="relative h-44 overflow-hidden">
                 <img
                   src={post.image}
@@ -67,7 +63,6 @@ export default function Blog() {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0C1014]/80 to-transparent" />
               </div>
 
-              {/* Content */}
               <div className="p-6">
                 <p className="text-xs text-neutral-400">{post.date}</p>
 

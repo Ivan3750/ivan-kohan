@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
-import { Github, Linkedin, Mail } from "lucide-react";
-
+import { Github, Instagram, Linkedin, Mail } from "lucide-react";
+import Image from "next/image";
+import avatar from "../public/avatar.png";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -108,18 +109,20 @@ export default function RootLayout({
         <header>
           <div className="max-w-6xl mx-auto px-4 py-6 flex items-center justify-between">
             <Link href="/" className="flex items-center gap-2">
-              <img src="/logo.png" alt="Logo" className="h-8 w-auto" />
-            </Link>
+ <div className="w-15 h-15 rounded-full overflow-hidden border border-white/15 bg-[#0C1014] z-10">
+              <Image src={avatar} alt="Avatar" className="object-cover w-15 h-15" />
+            </div>            </Link>
 
             <nav className="hidden md:flex gap-6 rounded-[28px] bg-white/[0.05] backdrop-blur-xl border border-white/10 px-6 py-3">
+              <NavLink href="/">Home</NavLink>
               <NavLink href="/about">About</NavLink>
               <NavLink href="/projects">Projects</NavLink>
-              <NavLink href="/blog">Blog</NavLink>
-              <NavLink href="/skills">Skills</NavLink>
+{/*               <NavLink href="/blog">Blog</NavLink>
+ */}              <NavLink href="/skills">Skills</NavLink>
               <NavLink href="/contact">Contact</NavLink>
             </nav>
 
-            <div className="text-xs text-neutral-400">EN</div>
+            <div className="text-xs text-neutral-400"></div>
           </div>
         </header>
 
@@ -151,6 +154,9 @@ export default function RootLayout({
               <div className="mt-3 flex gap-4 text-neutral-400">
                 <a href="mailto:kohan3750@gmail.com" className="hover:text-[#edcb4c]">
                   <Mail size={16} />
+                </a>
+                <a href="https://www.instagram.com/ivan.kohan.ua/" className="hover:text-[#edcb4c]">
+                  <Instagram size={16} />
                 </a>
                 <a href="https://github.com/Ivan3750" target="_blank" className="hover:text-[#edcb4c]">
                   <Github size={16} />

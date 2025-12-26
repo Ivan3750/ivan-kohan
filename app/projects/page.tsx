@@ -30,12 +30,9 @@ const projects = [
 export default function Projects() {
   return (
     <main className="relative z-10">
-      {/* Background */}
     
 
-      {/* Content */}
       <section className="relative z-10 max-w-6xl mx-auto px-4 py-24">
-        {/* Title */}
         <div className="max-w-2xl mb-16">
           <h1 className="text-3xl md:text-4xl font-semibold text-white">
             Projects
@@ -46,7 +43,6 @@ export default function Projects() {
           </p>
         </div>
 
-        {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project) => (
             <div
@@ -58,7 +54,6 @@ export default function Projects() {
                 hover:border-[#edcb4c]/40 transition
               "
             >
-              {/* Image */}
               <div className="relative h-44 overflow-hidden">
                 <img
                   src={project.image}
@@ -68,7 +63,6 @@ export default function Projects() {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0C1014]/80 to-transparent" />
               </div>
 
-              {/* Content */}
               <div className="p-6">
                 <h3 className="text-lg font-medium text-white">
                   {project.title}
@@ -77,7 +71,6 @@ export default function Projects() {
                   {project.description}
                 </p>
 
-                {/* Links */}
                 <div className="mt-4 flex gap-4 text-sm">
                   {project.live && (
                     <a

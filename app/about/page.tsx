@@ -11,10 +11,8 @@ export default function About() {
     <main className="relative z-10">
       
 
-      {/* Content */}
       <section className="relative z-10 max-w-6xl mx-auto px-4 py-24 space-y-20">
         
-        {/* Intro */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="space-y-4">
             <h1 className="text-3xl md:text-4xl font-semibold text-white">
@@ -39,7 +37,6 @@ export default function About() {
           </div>
         </div>
 
-        {/* Mission */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <InfoCard
             icon={<Target size={18} />}
@@ -58,41 +55,38 @@ export default function About() {
           />
         </div>
 
-        {/* Experience */}
         <div className="space-y-6">
           <h2 className="text-2xl font-medium text-white">Experience</h2>
 
           <TimelineItem
-            title="Web Developer – Freelance"
-            date="2022 – Present"
+            title="Web Developer - Freelance"
+            date="2022 - Present"
             text="Working on websites, dashboards and UI-heavy projects for clients."
           />
 
           <TimelineItem
             title="WebHjerte"
-            date="2023 – Present"
+            date="2023 - Present"
             text="Building and maintaining projects for a small web development agency."
           />
         </div>
 
-        {/* Education */}
         <div className="space-y-6">
           <h2 className="text-2xl font-medium text-white">Education</h2>
 
           <TimelineItem
             title="Self-taught Developer"
-            date="2021 – Present"
+            date="2021 - Present"
             text="Learning through real projects, documentation and practice."
           />
 
           <TimelineItem
             title="Online Courses & Mentorship"
-            date="2022 – 2024"
+            date="2022 - 2024"
             text="Next.js, React, UI design, accessibility and performance."
           />
         </div>
 
-        {/* Interests */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <InfoCard
             icon={<Briefcase size={18} />}

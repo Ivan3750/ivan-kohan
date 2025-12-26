@@ -1,13 +1,11 @@
-import { Mail, Github, Linkedin, Send } from "lucide-react";
+import { Mail, Github, Linkedin, Send, Instagram } from "lucide-react";
 
 export default function Contact() {
   return (
     <main className="relative z-10">
       
 
-      {/* Content */}
       <section className="relative z-10 max-w-5xl mx-auto px-4 py-24">
-        {/* Title */}
         <div className="max-w-2xl mb-16">
           <h1 className="text-3xl md:text-4xl font-semibold text-white">
             Contact
@@ -20,7 +18,6 @@ export default function Contact() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           
-          {/* Info */}
           <div
             className="
               rounded-[28px] bg-white/[0.05] backdrop-blur-xl
@@ -45,6 +42,15 @@ export default function Contact() {
                 "
               >
                 <Mail size={16} /> kohan3750@gmail.com
+              </a>
+              <a
+                href="https://www.instagram.com/ivan.kohan.ua/"
+                className="
+                  flex items-center gap-2 text-neutral-300
+                  hover:text-[#edcb4c]
+                "
+              >
+                <Instagram size={16} /> Instagram
               </a>
 
               <a
@@ -71,7 +77,6 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Form */}
           <form
             className="
               rounded-[28px] bg-white/[0.05] backdrop-blur-xl

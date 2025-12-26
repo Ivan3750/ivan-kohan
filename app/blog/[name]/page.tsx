@@ -6,10 +6,8 @@ export default function NextJsAppRouterPost() {
     <main className="relative z-10">
       
 
-      {/* Content */}
       <article className="relative z-10 max-w-3xl mx-auto px-4 py-24">
         
-        {/* Back */}
         <Link
           href="/blog"
           className="inline-flex items-center gap-2 text-sm text-neutral-400 hover:text-[#edcb4c]"
@@ -17,11 +15,10 @@ export default function NextJsAppRouterPost() {
           <ArrowLeft size={14} /> Back to blog
         </Link>
 
-        {/* Header */}
         <header className="mt-8 mb-12">
           <p className="text-xs text-neutral-500">March 27, 2024</p>
           <h1 className="mt-2 text-3xl md:text-4xl font-semibold text-white leading-tight">
-            Next.js App Router – what you should know
+            Next.js App Router - what you should know
           </h1>
           <p className="mt-4 text-neutral-400 leading-relaxed">
             A practical overview of the App Router, how it works and how to
@@ -29,10 +26,8 @@ export default function NextJsAppRouterPost() {
           </p>
         </header>
 
-        {/* Content blocks */}
         <div className="space-y-12">
           
-          {/* Block */}
           <section className="rounded-[28px] bg-white/[0.05] backdrop-blur-xl border border-white/10 p-8">
             <h2 className="text-xl font-medium text-white">
               What is the App Router?
@@ -48,7 +43,6 @@ export default function NextJsAppRouterPost() {
             </p>
           </section>
 
-          {/* Block */}
           <section className="rounded-[28px] bg-white/[0.05] backdrop-blur-xl border border-white/10 p-8">
             <h2 className="text-xl font-medium text-white">
               Folder-based structure
