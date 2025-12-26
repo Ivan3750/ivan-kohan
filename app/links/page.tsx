@@ -130,7 +130,7 @@ export default function Home() {
             <LinkCard
               icon={<Folder size={16} />}
               title={t.portfolio}
-              link="https://ivan3750.github.io/AboutMe/"
+              link="https://ivankohan.com/projects"
             />
             <LinkCard
               icon={<HeartHandshake size={16} />}
