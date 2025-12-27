@@ -10,6 +10,7 @@ export async function POST() {
       { status: 500 }
     );
   }
+  /* Checks */
 
   const message = `👀 Новий відвідувач на сайті\n🕒 ${new Date().toLocaleString()}`;
 
