@@ -4,6 +4,7 @@ import "./globals.css";
 import Link from "next/link";
 import { Github, Instagram, Linkedin, Mail } from "lucide-react";
 import Image from "next/image";
+import VisitNotifier from "./components/VisitNotifier";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -102,6 +103,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#0C1014] text-white`}
       >
+        <VisitNotifier />
         <div className="fixed inset-0 -z-10 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-[#0C1014] via-[#0E1318] to-black" />
 
