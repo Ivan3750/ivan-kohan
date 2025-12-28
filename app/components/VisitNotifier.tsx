@@ -11,6 +11,17 @@ export default function VisitNotifier() {
 
     fetch("/api/notify", {
       method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        userAgent: navigator.userAgent,
+        isMobile: /Mobi|Android/i.test(navigator.userAgent),
+        language: navigator.language,
+        screen: {
+          width: window.innerWidth,
+          height: window.innerHeight,
+        },
+        cookieEnabled: navigator.cookieEnabled,
+      }),
     });
   }, []);
 
