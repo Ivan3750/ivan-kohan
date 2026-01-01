@@ -8,7 +8,6 @@ export function middleware(req: NextRequest) {
     req.headers.get("x-real-ip") ??
     "unknown";
 
-  // фільтр статики
   if (
     req.nextUrl.pathname.startsWith("/_next") ||
     req.nextUrl.pathname.includes(".")
@@ -16,7 +15,6 @@ export function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
-  // тільки Instagram
   if (/instagram|facebookexternalhit/i.test(ua)) {
     fetch(
       `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`,

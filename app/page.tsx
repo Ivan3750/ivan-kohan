@@ -7,26 +7,96 @@ import Head from "next/head";
 export default function Home() {
   return (
     <>
-     <Head>
-        <title>Ivan Kohan | Web Developer</title>
-        <meta name="description" content="Ivan Kohan - Web developer focused on clean UI, scalable architecture and meaningful user experiences." />
-        <meta name="keywords" content="Web Developer, React, Next.js, Portfolio, UI, UX, Projects" />
-        <meta name="author" content="Ivan Kohan" />
-        <meta name="robots" content="index, follow" />
+    <Head>
+  <title>Ivan Kohan | Web Developer from Ukraine 🇺🇦</title>
 
-        <meta property="og:title" content="Ivan Kohan | Web Developer" />
-        <meta property="og:description" content="Web developer focused on clean UI, scalable architecture and meaningful user experiences." />
-        <meta property="og:image" content="/bg.jpg" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://ivankohan.com" />
+  <meta
+    name="description"
+    content="Ivan Kohan is a web developer from Ukraine 🇺🇦 specializing in React and Next.js. I build clean, fast and scalable web applications with a strong focus on UI, UX and long-term value."
+  />
 
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Ivan Kohan | Web Developer" />
-        <meta name="twitter:description" content="Web developer focused on clean UI, scalable architecture and meaningful user experiences." />
-        <meta name="twitter:image" content="/bg.jpg" />
+  <meta
+    name="keywords"
+    content="
+      Ivan Kohan,
+      Web Developer Ukraine,
+      Ukrainian Web Developer,
+      React Developer,
+      Next.js Developer,
+      Frontend Developer,
+      UI UX Developer,
+      JavaScript Developer,
+      Portfolio,
+      Software Engineer,
+      Software Developer,
+      Full-Stack Developer
+    "
+  />
 
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+  <meta name="author" content="Ivan Kohan" />
+  <meta name="language" content="en" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow" />
+
+  <link rel="canonical" href="https://ivankohan.com" />
+
+  <meta property="og:title" content="Ivan Kohan | Web Developer from Ukraine 🇺🇦" />
+  <meta
+    property="og:description"
+    content="Web developer from Ukraine 🇺🇦 building modern, clean and scalable web products. React, Next.js, UI & UX."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ivankohan.com" />
+  <meta property="og:image" content="https://ivankohan.com/bg.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:site_name" content="Ivan Kohan Portfolio" />
+  <meta property="og:locale" content="en_US" />
+
+  <meta property="og:see_also" content="https://github.com/Ivan3750" />
+  <meta property="og:see_also" content="https://www.instagram.com/ivan.kohan.ua/" />
+  <meta property="og:see_also" content="https://linkedin.com" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Ivan Kohan | Web Developer from Ukraine 🇺🇦" />
+  <meta
+    name="twitter:description"
+    content="Ukrainian web developer 🇺🇦 focused on clean UI, performance and scalable architecture. React & Next.js."
+  />
+  <meta name="twitter:image" content="https://ivankohan.com/bg.jpg" />
+
+  <meta property="profile:first_name" content="Ivan" />
+  <meta property="profile:last_name" content="Kohan" />
+  <meta property="profile:username" content="Ivan3750" />
+
+  <meta name="contact" content="kohan3750@gmail.com" />
+
+  <meta name="theme-color" content="#0C1014" />
+
+  <link rel="icon" href="/favicon.ico" />
+
+  <script
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{
+      __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        name: "Ivan Kohan",
+        url: "https://ivankohan.com",
+        image: "https://ivankohan.com/bg.jpg",
+        jobTitle: "Web Developer",
+        email: "mailto:kohan3750@gmail.com",
+        nationality: "Ukrainian",
+        sameAs: [
+          "https://github.com/Ivan3750",
+          "https://www.instagram.com/ivan.kohan.ua/",
+          "https://linkedin.com"
+        ]
+      }),
+    }}
+  />
+</Head>
+
 
     <main className="relative z-10">
       <section className="relative z-10 max-w-6xl mx-auto px-4 py-24 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
