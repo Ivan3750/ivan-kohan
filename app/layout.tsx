@@ -34,6 +34,8 @@ export const metadata: Metadata = {
     "Ivan Kohan",
     "Web Developer",
     "Frontend Developer",
+    "Backend Developer",
+    "Fullstack Developer",
     "Next.js Developer",
     "React Developer",
     "UI Developer",
