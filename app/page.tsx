@@ -3,6 +3,7 @@ import bg from "../public/bg.jpg";
 import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
+import {LinkedIn_URL, Instagram_URL, GitHub_URL, Email_URL} from "./contact";
 
 export default function Home() {
   return (
@@ -53,9 +54,9 @@ export default function Home() {
   <meta property="og:site_name" content="Ivan Kohan Portfolio" />
   <meta property="og:locale" content="en_US" />
 
-  <meta property="og:see_also" content="https://github.com/Ivan3750" />
-  <meta property="og:see_also" content="https://www.instagram.com/ivan.kohan.ua/" />
-  <meta property="og:see_also" content="https://linkedin.com" />
+  <meta property="og:see_also" content={GitHub_URL} />
+  <meta property="og:see_also" content={Instagram_URL} />
+  <meta property="og:see_also" content={LinkedIn_URL} />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Ivan Kohan | Web Developer from Ukraine 🇺🇦" />
@@ -85,12 +86,12 @@ export default function Home() {
         url: "https://ivankohan.com",
         image: "https://ivankohan.com/bg.jpg",
         jobTitle: "Web Developer",
-        email: "mailto:kohan3750@gmail.com",
+        email: Email_URL,
         nationality: "Ukrainian",
         sameAs: [
-          "https://github.com/Ivan3750",
-          "https://www.instagram.com/ivan.kohan.ua/",
-          "https://linkedin.com"
+          GitHub_URL,
+          Instagram_URL,
+          LinkedIn_URL
         ]
       }),
     }}
@@ -134,9 +135,9 @@ Ivan Kohan          </h1>
           </div>
 
           <div className="mt-6 flex gap-4 text-neutral-400">
-            <a href="#" className="hover:text-white"><Github size={18} /></a>
-            <a href="#" className="hover:text-white"><Instagram size={18} /></a>
-            <a href="#" className="hover:text-white"><Linkedin size={18} /></a>
+            <a href={GitHub_URL} className="hover:text-white"><Github size={18} /></a>
+            <a href={Instagram_URL} className="hover:text-white"><Instagram size={18} /></a>
+            <a href={LinkedIn_URL} className="hover:text-white"><Linkedin size={18} /></a>
           </div>
         </div>
 

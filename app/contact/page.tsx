@@ -1,5 +1,5 @@
 import { Mail, Github, Linkedin, Send, Instagram } from "lucide-react";
-
+import {LinkedIn_URL, Instagram_URL, GitHub_URL, Email_URL} from "../contact";
 export default function Contact() {
   return (
     <main className="relative z-10">
@@ -35,7 +35,7 @@ export default function Contact() {
 
             <div className="mt-6 space-y-4 text-sm">
               <a
-                href="mailto:kohan3750@gmail.com"
+                href={Email_URL}
                 className="
                   flex items-center gap-2 text-neutral-300
                   hover:text-[#edcb4c]
@@ -44,7 +44,7 @@ export default function Contact() {
                 <Mail size={16} /> kohan3750@gmail.com
               </a>
               <a
-                href="https://www.instagram.com/ivan.kohan.ua/"
+                href={Instagram_URL}
                 className="
                   flex items-center gap-2 text-neutral-300
                   hover:text-[#edcb4c]
@@ -54,7 +54,7 @@ export default function Contact() {
               </a>
 
               <a
-                href="https://github.com/Ivan3750"
+                href={GitHub_URL}
                 target="_blank"
                 className="
                   flex items-center gap-2 text-neutral-300
@@ -65,7 +65,7 @@ export default function Contact() {
               </a>
 
               <a
-                href="https://linkedin.com"
+                href={LinkedIn_URL}
                 target="_blank"
                 className="
                   flex items-center gap-2 text-neutral-300
