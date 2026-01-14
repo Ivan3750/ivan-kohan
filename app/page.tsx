@@ -1,217 +1,183 @@
-import { Mail, Github, Linkedin, Code2, Layout, Briefcase, Instagram } from "lucide-react";
+import {
+  Mail,
+  Github,
+  Linkedin,
+  Code2,
+  Layout,
+  Briefcase,
+  Instagram,
+  ArrowRight,
+  Sparkles,
+  Cpu,
+} from "lucide-react";
 import bg from "../public/bg.jpg";
 import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
-import {LinkedIn_URL, Instagram_URL, GitHub_URL, Email_URL} from "./contact";
+import {
+  LinkedIn_URL,
+  Instagram_URL,
+  GitHub_URL,
+  Email_URL,
+} from "./contact";
 
 export default function Home() {
   return (
     <>
-    <Head>
-  <title>Ivan Kohan | Web Developer from Ukraine 🇺🇦</title>
+      <Head>
+        <title>Ivan Kohan | Web Developer from Ukraine 🇺🇦</title>
+        <meta
+          name="description"
+          content="Ivan Kohan is a web developer from Ukraine 🇺🇦 specializing in React and Next.js."
+        />
+        <link rel="canonical" href="https://ivankohan.com" />
+        <meta name="theme-color" content="#0C1014" />
+      </Head>
 
-  <meta
-    name="description"
-    content="Ivan Kohan is a web developer from Ukraine 🇺🇦 specializing in React and Next.js. I build clean, fast and scalable web applications with a strong focus on UI, UX and long-term value."
-  />
+      <main className="relative overflow-hidden">
+        {/* HERO */}
+        <section className="max-w-6xl mx-auto px-4 py-28 grid md:grid-cols-2 gap-16 items-center">
+          <div>
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs text-neutral-300">
+              🇺🇦 Ukrainian
+            </span>
 
-  <meta
-    name="keywords"
-    content="
-      Ivan Kohan,
-      Web Developer Ukraine,
-      Ukrainian Web Developer,
-      React Developer,
-      Next.js Developer,
-      Frontend Developer,
-      UI UX Developer,
-      JavaScript Developer,
-      Portfolio,
-      Software Engineer,
-      Software Developer,
-      Full-Stack Developer
-    "
-  />
+            <h1 className="mt-6 text-4xl md:text-5xl font-semibold leading-tight text-white">
+              Building modern <br />
+              <span className="bg-gradient-to-r from-[#edcb4c] to-[#f5dc7a] bg-clip-text text-transparent">
+                web experiences
+              </span>
+            </h1>
 
-  <meta name="author" content="Ivan Kohan" />
-  <meta name="language" content="en" />
-  <meta name="robots" content="index, follow" />
-  <meta name="googlebot" content="index, follow" />
+            <p className="mt-6 text-neutral-400 max-w-lg leading-relaxed">
+              Web developer focused on clean UI, performance and scalable
+              architecture using React & Next.js.
+            </p>
 
-  <link rel="canonical" href="https://ivankohan.com" />
+            <div className="mt-8 flex flex-wrap gap-4">
+              <a
+                href={`mailto:${Email_URL}`}
+                className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#edcb4c] to-[#f5dc7a] px-7 py-3 text-sm font-medium text-black transition hover:brightness-105"
+              >
+                <Mail size={16} />
+                Contact me
+              </a>
 
-  <meta property="og:title" content="Ivan Kohan | Web Developer from Ukraine 🇺🇦" />
-  <meta
-    property="og:description"
-    content="Web developer from Ukraine 🇺🇦 building modern, clean and scalable web products. React, Next.js, UI & UX."
-  />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://ivankohan.com" />
-  <meta property="og:image" content="https://ivankohan.com/bg.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:site_name" content="Ivan Kohan Portfolio" />
-  <meta property="og:locale" content="en_US" />
+              <Link
+                href="/projects"
+                className="inline-flex items-center gap-2 rounded-xl border border-white/15 px-7 py-3 text-sm text-neutral-300 transition hover:border-[#edcb4c]/40 hover:text-white"
+              >
+                View projects <ArrowRight size={16} />
+              </Link>
+            </div>
 
-  <meta property="og:see_also" content={GitHub_URL} />
-  <meta property="og:see_also" content={Instagram_URL} />
-  <meta property="og:see_also" content={LinkedIn_URL} />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Ivan Kohan | Web Developer from Ukraine 🇺🇦" />
-  <meta
-    name="twitter:description"
-    content="Ukrainian web developer 🇺🇦 focused on clean UI, performance and scalable architecture. React & Next.js."
-  />
-  <meta name="twitter:image" content="https://ivankohan.com/bg.jpg" />
-
-  <meta property="profile:first_name" content="Ivan" />
-  <meta property="profile:last_name" content="Kohan" />
-  <meta property="profile:username" content="Ivan3750" />
-
-  <meta name="contact" content="kohan3750@gmail.com" />
-
-  <meta name="theme-color" content="#0C1014" />
-
-  <link rel="icon" href="/favicon.ico" />
-
-  <script
-    type="application/ld+json"
-    dangerouslySetInnerHTML={{
-      __html: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "Person",
-        name: "Ivan Kohan",
-        url: "https://ivankohan.com",
-        image: "https://ivankohan.com/bg.jpg",
-        jobTitle: "Web Developer",
-        email: Email_URL,
-        nationality: "Ukrainian",
-        sameAs: [
-          GitHub_URL,
-          Instagram_URL,
-          LinkedIn_URL
-        ]
-      }),
-    }}
-  />
-</Head>
-
-
-    <main className="relative z-10">
-      <section className="relative z-10 max-w-6xl mx-auto px-4 py-24 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        <div className="rounded-[28px] bg-white/[0.05] backdrop-blur-xl border border-white/10 p-8">
-          <h1 className="text-3xl md:text-4xl font-semibold text-white leading-tight">
-Ivan Kohan          </h1>
-
-          <p className="mt-4 text-neutral-300 leading-relaxed">
-            Web developer focused on clean UI, scalable architecture and
-            meaningful user experiences.
-          </p>
-
-          <p className="mt-3 text-neutral-400 leading-relaxed">
-            I build products that look good, feel fast and scale well.
-          </p>
-
-          <div className="mt-6 flex flex-wrap gap-3">
-            <a
-              href="mailto:test@gmail.com"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-medium
-              text-black bg-gradient-to-r from-[#edcb4c] to-[#f5dc7a]
-              hover:brightness-105 hover:scale-[1.02] active:scale-[0.97]"
-            >
-              <Mail size={16} /> Contact me
-            </a>
-
-            <Link
-              href="/projects"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-medium
-              border border-white/15 text-neutral-300
-              hover:border-[#edcb4c]/40 hover:text-white"
-            >
-              View projects
-            </Link>
+            <div className="mt-8 flex gap-5 text-neutral-400">
+              <Social href={GitHub_URL}><Github size={18} /></Social>
+              <Social href={Instagram_URL}><Instagram size={18} /></Social>
+              <Social href={LinkedIn_URL}><Linkedin size={18} /></Social>
+            </div>
           </div>
 
-          <div className="mt-6 flex gap-4 text-neutral-400">
-            <a href={GitHub_URL} className="hover:text-white"><Github size={18} /></a>
-            <a href={Instagram_URL} className="hover:text-white"><Instagram size={18} /></a>
-            <a href={LinkedIn_URL} className="hover:text-white"><Linkedin size={18} /></a>
+          {/* Image */}
+          <div className="relative">
+            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5">
+              <Image
+                src={bg}
+                alt="Ivan Kohan"
+                className="object-cover"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0C1014]/80 via-transparent to-transparent" />
+            </div>
           </div>
-        </div>
+        </section>
 
-        <div className="relative flex justify-center">
-          <div className="w-full max-w-md rounded-[28px] overflow-hidden border border-white/10 bg-white/[0.03] backdrop-blur-xl">
-            <Image src={bg} alt="Hero" className="object-cover opacity-90" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0C1014]/80 to-transparent" />
-          </div>
-        </div>
-      </section>
-
-      <section className="relative z-10 max-w-6xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
-        <Feature
-          icon={<Code2 size={18} />}
-          title="Web Development"
-          text="Modern websites and web apps with React, Next.js and clean architecture."
-        />
-        <Feature
-          icon={<Layout size={18} />}
-          title="UI / UX"
-          text="Minimal, accessible and user-focused interfaces."
-        />
-        <Feature
-          icon={<Briefcase size={18} />}
-          title="Real Projects"
-          text="Experience with real clients, products and long-term maintenance."
-        />
-      </section>
-
-      <section className="relative z-10 max-w-6xl mx-auto px-4 py-20">
-        <h2 className="text-2xl font-medium text-white mb-8">
-          Featured projects
-        </h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <ProjectCard title="WebHjerte" />
-          <ProjectCard title="Portfolio" />
-          <ProjectCard title="Dashboard UI" />
-        </div>
-
-        <div className="mt-8">
-          <Link
-            href="/projects"
-            className="text-sm text-neutral-400 hover:text-[#edcb4c]"
-          >
-            View all projects →
-          </Link>
-        </div>
-      </section>
-
-      <section className="relative z-10 max-w-4xl mx-auto px-4 py-24">
-        <div className="rounded-[28px] bg-white/[0.05] backdrop-blur-xl border border-white/10 p-10 text-center">
-          <h2 className="text-2xl font-medium text-white">
-            Let’s work together
+        {/* SERVICES */}
+        <section className="max-w-6xl mx-auto px-4 py-28">
+          <h2 className="text-2xl md:text-3xl font-medium text-white">
+            What I can help with
           </h2>
-          <p className="mt-3 text-neutral-400">
-            Have an idea or project? Let’s talk.
+          <p className="mt-3 text-neutral-400 max-w-xl">
+            End-to-end development with a strong focus on quality and business value.
           </p>
 
-          <a
-            href="mailto:kohan3750@gmail.com"
-            className="mt-6 inline-flex items-center gap-2 px-8 py-3 rounded-xl text-sm font-medium
-            text-black bg-gradient-to-r from-[#edcb4c] to-[#f5dc7a]
-            hover:brightness-105"
-          >
-            <Mail size={16} /> Get in touch
-          </a>
-        </div>
-      </section>
-    </main>
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <Feature
+              icon={<Layout size={18} />}
+              title="UI & UX Development"
+              text="Pixel-perfect interfaces with attention to usability and accessibility."
+            />
+            <Feature
+              icon={<Code2 size={18} />}
+              title="Frontend Architecture"
+              text="Scalable React & Next.js setups built for long-term growth."
+            />
+            <Feature
+              icon={<Cpu size={18} />}
+              title="Performance Optimization"
+              text="Fast loading, SEO-friendly apps with excellent Core Web Vitals."
+            />
+          </div>
+        </section>
+
+        {/* EXPERIENCE / STACK */}
+        <section className="max-w-6xl mx-auto px-4 py-28">
+          <div className="grid gap-16 md:grid-cols-2 items-center">
+            <div>
+              <h2 className="text-2xl md:text-3xl font-medium text-white">
+                Experience & stack
+              </h2>
+              <p className="mt-4 text-neutral-400 leading-relaxed">
+                I work mainly with modern JavaScript frameworks and tools,
+                focusing on maintainable code and clean architecture.
+              </p>
+
+              <ul className="mt-6 space-y-3 text-neutral-300">
+                <li className="flex items-center gap-3">
+                  <Sparkles size={16} className="text-[#edcb4c]" /> React, Next.js, TypeScript
+                </li>
+                <li className="flex items-center gap-3">
+                  <Sparkles size={16} className="text-[#edcb4c]" /> Tailwind CSS, CSS Modules
+                </li>
+                <li className="flex items-center gap-3">
+                  <Sparkles size={16} className="text-[#edcb4c]" /> REST APIs, basic backend integration
+                </li>
+              </ul>
+            </div>
+
+            <div className="grid gap-6 sm:grid-cols-2">
+              <ProjectCard title="SaaS Dashboard" />
+              <ProjectCard title="Marketing Website" />
+              <ProjectCard title="E-commerce UI" />
+              <ProjectCard title="Startup Landing" />
+            </div>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="max-w-6xl mx-auto px-4 py-28 text-center">
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-12">
+            <h2 className="text-2xl text-white font-medium">
+              Let’s build something great
+            </h2>
+            <p className="mt-4 text-neutral-400">
+              Have an idea or project? Let’s talk.
+            </p>
+
+            <a
+              href={`mailto:${Email_URL}`}
+              className="mt-8 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#edcb4c] to-[#f5dc7a] px-8 py-3 text-sm font-medium text-black hover:brightness-105"
+            >
+              <Mail size={16} /> Get in touch
+            </a>
+          </div>
+        </section>
+      </main>
     </>
   );
 }
 
+/* ---------- Components ---------- */
 
 function Feature({
   icon,
@@ -223,9 +189,9 @@ function Feature({
   text: string;
 }) {
   return (
-    <div className="rounded-[28px] bg-white/[0.05] backdrop-blur-xl border border-white/10 p-6">
-      <div className="flex items-center gap-2 text-white">
-        <div className="p-2 rounded-lg bg-white/[0.05] border border-white/10">
+    <div className="group rounded-3xl border border-white/10 bg-white/5 p-6 transition hover:border-[#edcb4c]/40">
+      <div className="flex items-center gap-3 text-white">
+        <div className="rounded-lg border border-white/10 bg-white/5 p-2 group-hover:text-[#edcb4c]">
           {icon}
         </div>
         <h3 className="font-medium">{title}</h3>
@@ -237,11 +203,32 @@ function Feature({
 
 function ProjectCard({ title }: { title: string }) {
   return (
-    <div className="rounded-[28px] bg-white/[0.05] backdrop-blur-xl border border-white/10 p-6">
+    <div className="group rounded-3xl border border-white/10 bg-white/5 p-6 transition hover:border-[#edcb4c]/40">
       <h3 className="text-white font-medium">{title}</h3>
       <p className="mt-2 text-sm text-neutral-400">
-        Short description of the project and what problem it solves.
+        Short description of the project and its value.
       </p>
+      <span className="mt-4 inline-block text-sm text-[#edcb4c] opacity-0 transition group-hover:opacity-100">
+        View project →
+      </span>
     </div>
+  );
+}
+
+function Social({
+  href,
+  children,
+}: {
+  href: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      className="transition hover:text-white"
+    >
+      {children}
+    </a>
   );
 }
