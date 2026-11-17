@@ -26,6 +26,7 @@ export default function Footer({ dict, lang }: { dict: Dict; lang: Locale }) {
 
   const nav = [
     ["", "#story", dict.nav.story],
+    ["", "#me", dict.nav.me],
     ["", "#studio", dict.nav.studio],
     ["contact", "", dict.nav.contact],
   ] as const;

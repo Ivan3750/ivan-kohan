@@ -13,6 +13,7 @@ import { EASE } from "./motion";
 
 const items = [
   { key: "story", slug: "", hash: "#story" },
+  { key: "me", slug: "", hash: "#me" },
   { key: "studio", slug: "", hash: "#studio" },
   { key: "contact", slug: "contact", hash: "" },
 ] as const;

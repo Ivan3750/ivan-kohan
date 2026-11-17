@@ -34,6 +34,14 @@ export default function Story({ dict }: { dict: Dict["story"] }) {
         </h2>
         <Reveal>
           <p className="mt-6 max-w-xl text-lg text-graphite">{dict.intro}</p>
+          <dl className="mt-10 grid gap-x-8 gap-y-6 border-y border-ink/15 py-7 sm:grid-cols-2 lg:grid-cols-5">
+            {dict.facts.map((f) => (
+              <div key={f.k}>
+                <dt className="label text-graphite">{f.k}</dt>
+                <dd className="font-display mt-1.5 text-lg font-medium leading-snug">{f.v}</dd>
+              </div>
+            ))}
+          </dl>
         </Reveal>
 
         <div ref={ref} className="mt-16 grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:gap-16">

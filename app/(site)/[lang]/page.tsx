@@ -5,6 +5,8 @@ import { isLocale } from "@/app/lib/site";
 import { pageMetadata } from "@/app/lib/seo";
 import Hero from "@/app/components/site/Hero";
 import Story from "@/app/components/site/Story";
+import Voices from "@/app/components/site/Voices";
+import AboutMe from "@/app/components/site/AboutMe";
 import Studio from "@/app/components/site/Studio";
 import ContactBand from "@/app/components/site/ContactBand";
 import { Ld, profilePageLd } from "@/app/components/site/JsonLd";
@@ -36,6 +38,8 @@ export default async function Home({ params }: Props) {
       <main id="main">
         <Hero dict={dict} />
         <Story dict={dict.story} />
+        <Voices dict={dict.voices} />
+        <AboutMe dict={dict.me} />
         <Studio dict={dict.studio} external={dict.a11y.external} />
         <ContactBand lang={lang} band={dict.home.band} emailLabel={dict.contact.emailLabel} />
       </main>

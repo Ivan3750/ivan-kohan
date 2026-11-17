@@ -39,6 +39,7 @@ export const links = {
   github: "https://github.com/Ivan3750",
   telegram: "https://t.me/ivan3750",
   webhjerte: "https://webhjerte.dk",
+  studioEmail: "hej@webhjerte.dk",
 } as const;
 
 export const pageSlugs = ["contact"] as const;
