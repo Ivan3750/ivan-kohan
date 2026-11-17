@@ -44,6 +44,15 @@ export default function Footer({ dict, lang }: { dict: Dict; lang: Locale }) {
             <span className="font-display text-xl font-bold">Ivan Kohan</span>
           </div>
           <p className="mt-5 max-w-sm leading-relaxed text-mist">{f.tagline}</p>
+          <a
+            href="https://u24.gov.ua/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 inline-flex items-center gap-2 rounded-full border border-[#ffd500]/40 px-4 py-2 text-sm text-[#ffd500] transition hover:bg-[#ffd500] hover:text-ink"
+          >
+            {f.support}
+            <span className="sr-only">({dict.a11y.external})</span>
+          </a>
         </div>
 
         <nav aria-label={f.navTitle}>

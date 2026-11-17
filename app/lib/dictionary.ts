@@ -254,6 +254,7 @@ const en = {
     navTitle: "Navigate",
     socialTitle: "Social",
     rights: "All rights reserved.",
+    support: "Support Ukraine — UNITED24",
   },
 };
 
@@ -513,6 +514,7 @@ const da: Dict = {
     navTitle: "Navigation",
     socialTitle: "Sociale medier",
     rights: "Alle rettigheder forbeholdes.",
+    support: "Støt Ukraine — UNITED24",
   },
 };
 
@@ -770,6 +772,7 @@ const uk: Dict = {
     navTitle: "Навігація",
     socialTitle: "Соцмережі",
     rights: "Усі права захищено.",
+    support: "Підтримати Україну — UNITED24",
   },
 };
 
@@ -1020,6 +1023,7 @@ const bs: Dict = {
     navTitle: "Navigacija",
     socialTitle: "Društvene mreže",
     rights: "Sva prava zadržana.",
+    support: "Podrži Ukrajinu — UNITED24",
   },
 };
 
