@@ -5,8 +5,8 @@ import { AnimatePresence, motion, useMotionValue, useScroll, useSpring, useTrans
 import { ArrowDown } from "lucide-react";
 import type { Dict } from "@/app/lib/dictionary";
 
-// "Hello" in the languages I speak: English, Ukrainian, Russian, Danish, Bosnian.
-const greetings = ["Hello", "Привіт", "Привет", "Hej", "Zdravo"];
+// "Hello" in English, Ukrainian, Danish and Bosnian.
+const greetings = ["Hello", "Привіт", "Hej", "Zdravo"];
 
 function Greeting() {
   const [i, setI] = useState(0);

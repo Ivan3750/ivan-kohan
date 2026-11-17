@@ -65,6 +65,7 @@ export default function Voices({ dict }: { dict: Dict["voices"] }) {
               );
             })}
           </ul>
+          <p className="mt-8 text-mist">{dict.also}</p>
         </Reveal>
       </div>
     </section>

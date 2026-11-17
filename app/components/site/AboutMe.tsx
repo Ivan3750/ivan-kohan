@@ -4,25 +4,14 @@ import type { Dict } from "@/app/lib/dictionary";
 import { Reveal, SplitWords } from "./motion";
 import { SectionLabel } from "./SectionLabel";
 
-// 12-column mosaic: 2 + 3 + 3 cards, 8 in total.
-const spans = [
-  "lg:col-span-7",
-  "lg:col-span-5",
-  "lg:col-span-4",
-  "lg:col-span-4",
-  "lg:col-span-4",
-  "lg:col-span-4",
-  "lg:col-span-4",
-  "lg:col-span-4",
-];
+// 12-column mosaic: three rows of two cards.
+const spans = ["lg:col-span-7", "lg:col-span-5", "lg:col-span-5", "lg:col-span-7", "lg:col-span-6", "lg:col-span-6"];
 const skins = [
   "bg-ink text-paper",
   "bg-accent text-ink",
   "border-2 border-ink text-ink",
   "bg-ink text-paper",
-  "border-2 border-ink text-ink",
   "bg-accent text-ink",
-  "bg-ink text-paper",
   "border-2 border-ink text-ink",
 ];
 

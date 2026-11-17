@@ -7,6 +7,7 @@ import Hero from "@/app/components/site/Hero";
 import Story from "@/app/components/site/Story";
 import Voices from "@/app/components/site/Voices";
 import AboutMe from "@/app/components/site/AboutMe";
+import Extras from "@/app/components/site/Extras";
 import Studio from "@/app/components/site/Studio";
 import ContactBand from "@/app/components/site/ContactBand";
 import { Ld, profilePageLd } from "@/app/components/site/JsonLd";
@@ -40,6 +41,7 @@ export default async function Home({ params }: Props) {
         <Story dict={dict.story} />
         <Voices dict={dict.voices} />
         <AboutMe dict={dict.me} />
+        <Extras dict={dict.extras} />
         <Studio dict={dict.studio} external={dict.a11y.external} />
         <ContactBand lang={lang} band={dict.home.band} emailLabel={dict.contact.emailLabel} />
       </main>
