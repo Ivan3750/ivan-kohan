@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getDictionary } from "@/app/lib/dictionary";
-import { isLocale, publicLocales, hiddenLocales, localeMeta, localeUrl, SITE_URL } from "@/app/lib/site";
+import { isLocale, hiddenLocales, navHref, pagePath } from "@/app/lib/site";
+import { pageMetadata, formatDate } from "@/app/lib/seo";
+import { postsSorted } from "@/app/lib/posts";
 import Hero from "@/app/components/site/Hero";
 import Marquee from "@/app/components/site/Marquee";
 import About from "@/app/components/site/About";
 import Services from "@/app/components/site/Services";
 import WebHjerteSection from "@/app/components/site/WebHjerteSection";
-import Skills from "@/app/components/site/Skills";
-import Projects from "@/app/components/site/Projects";
-import Faq from "@/app/components/site/Faq";
-import Contact from "@/app/components/site/Contact";
-import Footer from "@/app/components/site/Footer";
-import JsonLd from "@/app/components/site/JsonLd";
+import ContactBand from "@/app/components/site/ContactBand";
+import { BlogTeaser } from "@/app/components/site/BlogCards";
+import { toCardItems } from "@/app/lib/blogCards";
+import { Ld, profilePageLd } from "@/app/components/site/JsonLd";
 
 type Props = { params: Promise<{ lang: string }> };
 
@@ -20,55 +20,47 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params;
   if (!isLocale(lang)) return {};
   const d = getDictionary(lang);
-
-  const languages: Record<string, string> = Object.fromEntries(
-    publicLocales.map((l) => [localeMeta[l].hreflang, localeUrl(l)]),
-  );
-  languages["x-default"] = SITE_URL;
-
-  return {
-    title: { absolute: d.meta.title },
+  const m = pageMetadata({
+    lang,
+    title: d.meta.title,
     description: d.meta.description,
     keywords: d.meta.keywords,
-    alternates: { canonical: localeUrl(lang), languages: hiddenLocales.includes(lang) ? undefined : languages },
-    ...(hiddenLocales.includes(lang) ? { robots: { index: false, follow: true } } : {}),
-    openGraph: {
-      type: "website",
-      siteName: "Ivan Kohan",
-      title: d.meta.title,
-      description: d.meta.ogDescription,
-      url: localeUrl(lang),
-      locale: localeMeta[lang].og,
-      alternateLocale: publicLocales.filter((l) => l !== lang).map((l) => localeMeta[l].og),
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: d.meta.title,
-      description: d.meta.ogDescription,
-    },
-  };
+    absoluteTitle: true,
+  });
+  return { ...m, openGraph: { ...m.openGraph, description: d.meta.ogDescription } };
 }
 
 export default async function Home({ params }: Props) {
   const { lang } = await params;
   if (!isLocale(lang)) notFound();
   const dict = getDictionary(lang);
+  const showBlog = !hiddenLocales.includes(lang);
+  const blogLang = lang === "bs" ? "en" : lang;
+  const latest = postsSorted().slice(0, 3);
 
   return (
     <>
-      <JsonLd lang={lang} dict={dict} />
+      <Ld graph={[profilePageLd(lang, dict, "", dict.meta.title, dict.meta.description)]} />
       <main id="main">
-        <Hero dict={dict} />
+        <Hero dict={dict} contactHref={navHref(lang, "contact")} />
         <Marquee items={dict.marquee} />
-        <About dict={dict.about} />
+        <About dict={dict.about} compact more={{ href: pagePath(lang, "about"), label: dict.home.aboutMore }} />
         <Services dict={dict.services} />
-        <Skills dict={dict.skills} />
+        {showBlog && (
+          <BlogTeaser
+            items={toCardItems(latest, blogLang, (iso) => formatDate(iso, lang))}
+            lang={lang}
+            readTime={dict.blog.readTime}
+            label={dict.nav.blog}
+            title={dict.home.blogTitle}
+            intro={dict.home.blogIntro}
+            all={dict.home.blogAll}
+          />
+        )}
         <WebHjerteSection dict={dict.webhjerte} external={dict.a11y.external} />
-        <Projects dict={dict.projects} external={dict.a11y.external} />
-        <Faq dict={dict.faq} />
-        <Contact dict={dict.contact} lang={lang} external={dict.a11y.external} />
+        <ContactBand lang={lang} band={dict.home.band} emailLabel={dict.contact.emailLabel} />
       </main>
-      <Footer dict={dict} lang={lang} />
     </>
   );
 }
+

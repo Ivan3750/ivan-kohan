@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform, type MotionValue } from "framer-motion";
 import type { Dict } from "@/app/lib/dictionary";
+import { focusEmoji } from "@/app/lib/emoji";
 import { SplitWords, Reveal } from "./motion";
 import { SectionLabel } from "./About";
 
@@ -21,7 +22,7 @@ export default function Services({ dict }: { dict: Dict["services"] }) {
   return (
     <section id="services" className="relative bg-ink text-paper">
       <div className="mx-auto max-w-7xl px-5 pt-28 sm:px-8 sm:pt-40">
-        <SectionLabel n="02" text={dict.label} light />
+        <SectionLabel text={dict.label} light />
         <h2 className="font-display mt-8 max-w-5xl text-[clamp(2rem,5.4vw,4.6rem)] font-bold leading-[1.05]">
           <SplitWords text={dict.title} />
         </h2>
@@ -39,6 +40,7 @@ export default function Services({ dict }: { dict: Dict["services"] }) {
             progress={scrollYProgress}
             skin={skins[i % skins.length]}
             title={it.title}
+            emoji={focusEmoji[i]}
             text={it.text}
             tags={it.tags}
           />
@@ -54,6 +56,7 @@ function StackCard({
   progress,
   skin,
   title,
+  emoji,
   text,
   tags,
 }: {
@@ -62,6 +65,7 @@ function StackCard({
   progress: MotionValue<number>;
   skin: string;
   title: string;
+  emoji: string;
   text: string;
   tags: string[];
 }) {
@@ -83,7 +87,10 @@ function StackCard({
 
         <div className="relative">
           <p className="label opacity-70">0{i + 1} / 0{n}</p>
-          <h3 className="font-display mt-4 max-w-2xl text-[clamp(2rem,5vw,4.2rem)] font-bold leading-[1.02]">{title}</h3>
+          <h3 className="font-display mt-4 max-w-2xl text-[clamp(2rem,5vw,4.2rem)] font-bold leading-[1.02]">
+            <span aria-hidden className="mr-3 inline-block text-[0.85em]">{emoji}</span>
+            {title}
+          </h3>
         </div>
 
         <div className="relative mt-10 grid gap-8 sm:grid-cols-[1.2fr_1fr] sm:items-end">

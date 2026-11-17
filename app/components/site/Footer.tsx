@@ -2,27 +2,35 @@
 
 import { useRef } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowUp } from "lucide-react";
 import type { Dict } from "@/app/lib/dictionary";
-import { publicLocales, localeMeta, localePath, type Locale } from "@/app/lib/site";
+import { publicLocales, localeMeta, pagePath, navHref, isLocale, type Locale } from "@/app/lib/site";
 import { socialLinks } from "./Icons";
+
+function restPath(pathname: string) {
+  const parts = pathname.split("/").filter(Boolean);
+  if (parts.length && isLocale(parts[0])) parts.shift();
+  return parts.join("/");
+}
 
 export default function Footer({ dict, lang }: { dict: Dict; lang: Locale }) {
   const ref = useRef<HTMLElement>(null);
+  const pathname = usePathname() ?? "/";
+  const rest = restPath(pathname);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end end"] });
   const y = useTransform(scrollYProgress, [0, 1], ["35%", "0%"]);
   const f = dict.footer;
   const year = new Date().getFullYear();
 
   const nav = [
-    ["about", dict.nav.about],
-    ["services", dict.nav.services],
-    ["skills", dict.nav.skills],
-    ["webhjerte", dict.nav.webhjerte],
-    ["work", dict.nav.work],
-    ["faq", "FAQ"],
-    ["contact", dict.nav.contact],
+    ["", dict.nav.home, "🏠"],
+    ["about", dict.nav.about, "🙋"],
+    ["now", dict.nav.now, "⏳"],
+    ["projects", dict.nav.work, "🧩"],
+    ["blog", dict.nav.blog, "✍️"],
+    ["contact", dict.nav.contact, "💌"],
   ] as const;
 
   return (
@@ -41,11 +49,12 @@ export default function Footer({ dict, lang }: { dict: Dict; lang: Locale }) {
         <nav aria-label={f.navTitle}>
           <h2 className="label text-mist">{f.navTitle}</h2>
           <ul className="mt-5 space-y-3">
-            {nav.map(([id, label]) => (
-              <li key={id}>
-                <a href={`#${id}`} className="transition hover:text-accent">
+            {nav.map(([slug, label, emoji]) => (
+              <li key={slug || "home"}>
+                <Link href={slug ? navHref(lang, slug) : pagePath(lang)} className="transition hover:text-accent">
+                  <span aria-hidden className="mr-2">{emoji}</span>
                   {label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -68,7 +77,7 @@ export default function Footer({ dict, lang }: { dict: Dict; lang: Locale }) {
       <motion.div
         aria-hidden
         style={{ y }}
-        className="font-display pointer-events-none select-none whitespace-nowrap text-center text-[clamp(3.5rem,16vw,22rem)] font-bold leading-[0.8] tracking-tighter italic text-white/[0.06]"
+        className="font-display pointer-events-none select-none whitespace-nowrap text-center text-[clamp(3.5rem,16vw,22rem)] font-bold italic leading-[0.8] tracking-tighter text-white/[0.06]"
       >
         IVAN KOHAN
       </motion.div>
@@ -82,11 +91,11 @@ export default function Footer({ dict, lang }: { dict: Dict; lang: Locale }) {
             {f.madeIn} <span role="img" aria-label="love" className="text-accent">♥</span> {f.madeInIn}
           </p>
           <div className="flex items-center gap-4">
-            <nav aria-label={dict.a11y.language} className="flex gap-3">
+            <nav aria-label={dict.a11y.language} className="flex items-center gap-3">
               {publicLocales.map((l) => (
                 <Link
                   key={l}
-                  href={localePath(l)}
+                  href={pagePath(l, rest)}
                   hrefLang={localeMeta[l].hreflang}
                   lang={l}
                   aria-current={l === lang ? "true" : undefined}
@@ -96,7 +105,7 @@ export default function Footer({ dict, lang }: { dict: Dict; lang: Locale }) {
                 </Link>
               ))}
               <Link
-                href={localePath("bs")}
+                href={pagePath("bs")}
                 hrefLang="bs"
                 lang="bs"
                 aria-current={lang === "bs" ? "true" : undefined}
@@ -107,7 +116,7 @@ export default function Footer({ dict, lang }: { dict: Dict; lang: Locale }) {
               </Link>
             </nav>
             <a
-              href="#top"
+              href="#main"
               aria-label={dict.a11y.backToTop}
               className="grid h-10 w-10 place-items-center rounded-full border border-white/15 transition hover:border-accent hover:text-accent"
             >

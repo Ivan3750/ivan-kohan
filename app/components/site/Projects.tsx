@@ -21,7 +21,16 @@ const flagships: Flagship[] = [
   { key: "veka", url: "https://veka.center", display: "veka.center" },
 ];
 
-export default function Projects({ dict, external }: { dict: Dict["projects"]; external: string }) {
+export default function Projects({
+  dict,
+  external,
+  h1 = false,
+}: {
+  dict: Dict["projects"];
+  external: string;
+  h1?: boolean;
+}) {
+  const Title = h1 ? "h1" : "h2";
   const ref = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const [dist, setDist] = useState(0);
@@ -50,8 +59,8 @@ export default function Projects({ dict, external }: { dict: Dict["projects"]; e
       <div ref={ref} style={{ height: dist ? `calc(100svh + ${dist}px)` : "320svh" }}>
         <div className="sticky top-0 flex h-svh flex-col justify-center overflow-hidden">
           <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
-            <SectionLabel n="05" text={dict.label} light />
-            <h2 className="font-display mt-5 text-[clamp(2rem,5vw,4.2rem)] font-bold leading-[1.05]">{dict.title}</h2>
+            <SectionLabel text={dict.label} light />
+            <Title className="font-display mt-5 text-[clamp(2rem,5vw,4.2rem)] font-bold leading-[1.05]">{dict.title}</Title>
             <p className="mt-3 max-w-xl text-mist">{dict.intro}</p>
           </div>
 

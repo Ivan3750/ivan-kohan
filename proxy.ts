@@ -1,9 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
-import { defaultLocale } from "@/app/lib/site";
+import { defaultLocale, isLocale } from "@/app/lib/site";
+
+// Standalone pages that live outside the localized site.
+const TOOL_PATHS = ["links", "qr"];
 
 /**
  * 1. Locale routing: "/" serves the default language (EN) without a prefix,
- *    "/en" permanently redirects to "/" (one canonical URL), /da /uk /bs are native routes.
+ *    "/en" permanently redirects to "/" (one canonical URL), /da /uk /bs are native routes;
+ *    unprefixed pages (/about, /blog/…) are rewritten into the default-locale tree.
  * 2. Pings Telegram when the site is opened from Instagram / Facebook in-app browsers.
  */
 export function proxy(req: NextRequest) {
@@ -42,6 +46,13 @@ export function proxy(req: NextRequest) {
   if (pathname === "/") {
     const url = req.nextUrl.clone();
     url.pathname = `/${defaultLocale}`;
+    return NextResponse.rewrite(url);
+  }
+
+  // /about, /blog/... → served from the default locale tree
+  if (first && !isLocale(first) && !TOOL_PATHS.includes(first)) {
+    const url = req.nextUrl.clone();
+    url.pathname = `/${defaultLocale}${pathname}`;
     return NextResponse.rewrite(url);
   }
 

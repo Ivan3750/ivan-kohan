@@ -1,22 +1,17 @@
-import { links, localeUrl, SITE_URL, localeMeta, type Locale } from "@/app/lib/site";
+import { links, pageUrl, SITE_URL, localeMeta, type Locale } from "@/app/lib/site";
 import type { Dict } from "@/app/lib/dictionary";
 
-/** Server-rendered schema.org graph: Person, Organization, WebSite, ProfilePage, FAQPage, ItemList. */
-export default function JsonLd({ lang, dict }: { lang: Locale; dict: Dict }) {
-  const pageUrl = localeUrl(lang);
-  const personId = `${SITE_URL}/#person`;
-  const orgId = `${links.webhjerte}/#organization`;
+const personId = `${SITE_URL}/#person`;
+const orgId = `${links.webhjerte}/#organization`;
 
-  const sameAs = [
-    links.linkedin,
-    links.instagram,
-    links.instagramBusiness,
-    links.github,
-    links.webhjerte,
-    links.telegram,
-  ];
+export function Ld({ graph }: { graph: object[] }) {
+  const json = JSON.stringify({ "@context": "https://schema.org", "@graph": graph }).replace(/</g, "\\u003c");
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: json }} />;
+}
 
-  const graph = [
+/** Sitewide entities: Person, WebHjerte business, WebSite. */
+export function siteGraph(lang: Locale, dict: Dict): object[] {
+  return [
     {
       "@type": "Person",
       "@id": personId,
@@ -38,7 +33,7 @@ export default function JsonLd({ lang, dict }: { lang: Locale; dict: Dict }) {
         "Fitness and healthy habits",
         "Languages",
       ],
-      sameAs,
+      sameAs: [links.linkedin, links.instagram, links.instagramBusiness, links.github, links.webhjerte, links.telegram],
     },
     {
       "@type": "ProfessionalService",
@@ -47,11 +42,7 @@ export default function JsonLd({ lang, dict }: { lang: Locale; dict: Dict }) {
       url: links.webhjerte,
       founder: { "@id": personId },
       areaServed: [{ "@type": "Country", name: "Denmark" }],
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "Horsens",
-        addressCountry: "DK",
-      },
+      address: { "@type": "PostalAddress", addressLocality: "Horsens", addressCountry: "DK" },
       serviceType: [
         "Website development",
         "Search engine optimization",
@@ -68,52 +59,57 @@ export default function JsonLd({ lang, dict }: { lang: Locale; dict: Dict }) {
       inLanguage: localeMeta[lang].hreflang,
       publisher: { "@id": personId },
     },
-    {
-      "@type": "ProfilePage",
-      "@id": `${pageUrl}#profile`,
-      url: pageUrl,
-      name: dict.meta.title,
-      description: dict.meta.description,
-      inLanguage: localeMeta[lang].hreflang,
-      isPartOf: { "@id": `${SITE_URL}/#website` },
-      mainEntity: { "@id": personId },
-      breadcrumb: {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Ivan Kohan", item: pageUrl },
-        ],
-      },
-    },
-    {
-      "@type": "ItemList",
-      "@id": `${pageUrl}#work`,
-      name: dict.projects.title,
-      itemListElement: [
-        { name: "WebHjerte", url: links.webhjerte },
-        { name: "Lønbæks", url: "https://xn--lnbks-ura7j.dk" },
-        { name: "Veka Center", url: "https://veka.center" },
-      ].map((p, i) => ({
-        "@type": "ListItem",
-        position: i + 1,
-        item: { "@type": "WebSite", name: p.name, url: p.url, author: { "@id": personId } },
-      })),
-    },
-    {
-      "@type": "FAQPage",
-      "@id": `${pageUrl}#faq`,
-      inLanguage: localeMeta[lang].hreflang,
-      mainEntity: dict.faq.items.map((f) => ({
-        "@type": "Question",
-        name: f.q,
-        acceptedAnswer: { "@type": "Answer", text: f.a },
-      })),
-    },
   ];
-
-  const json = JSON.stringify({ "@context": "https://schema.org", "@graph": graph }).replace(
-    /</g,
-    "\\u003c",
-  );
-
-  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: json }} />;
 }
+
+export function profilePageLd(lang: Locale, dict: Dict, slug: string, name: string, description: string): object {
+  return {
+    "@type": "ProfilePage",
+    "@id": `${pageUrl(lang, slug)}#profile`,
+    url: pageUrl(lang, slug),
+    name,
+    description,
+    inLanguage: localeMeta[lang].hreflang,
+    isPartOf: { "@id": `${SITE_URL}/#website` },
+    mainEntity: { "@id": personId },
+  };
+}
+
+export function breadcrumbLd(items: { name: string; url: string }[]): object {
+  return {
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((it, i) => ({ "@type": "ListItem", position: i + 1, name: it.name, item: it.url })),
+  };
+}
+
+export function faqLd(lang: Locale, dict: Dict, slug: string): object {
+  return {
+    "@type": "FAQPage",
+    "@id": `${pageUrl(lang, slug)}#faq`,
+    inLanguage: localeMeta[lang].hreflang,
+    mainEntity: dict.faq.items.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
+}
+
+export function workListLd(lang: Locale, dict: Dict, slug: string): object {
+  return {
+    "@type": "ItemList",
+    "@id": `${pageUrl(lang, slug)}#work`,
+    name: dict.projects.title,
+    itemListElement: [
+      { name: "WebHjerte", url: links.webhjerte },
+      { name: "Lønbæks", url: "https://xn--lnbks-ura7j.dk" },
+      { name: "Veka Center", url: "https://veka.center" },
+    ].map((p, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: { "@type": "WebSite", name: p.name, url: p.url, author: { "@id": personId } },
+    })),
+  };
+}
+
+export { personId };

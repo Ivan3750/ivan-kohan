@@ -10,6 +10,7 @@ import ScrollProgress from "@/app/components/site/ScrollProgress";
 import Cursor from "@/app/components/site/Cursor";
 import Nav from "@/app/components/site/Nav";
 import VisitNotifier from "@/app/components/VisitNotifier";
+import { Ld, siteGraph } from "@/app/components/site/JsonLd";
 
 export const dynamicParams = false;
 
@@ -70,6 +71,7 @@ export default async function RootLayout({
           >
             {dict.a11y.skip}
           </a>
+          <Ld graph={siteGraph(lang, dict)} />
           <SmoothScroll />
           <ScrollProgress />
           <Cursor />

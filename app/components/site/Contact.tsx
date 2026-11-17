@@ -15,11 +15,14 @@ export default function Contact({
   dict,
   lang,
   external,
+  h1 = false,
 }: {
   dict: Dict["contact"];
   lang: string;
   external: string;
+  h1?: boolean;
 }) {
+  const Title = h1 ? "h1" : "h2";
   const f = dict.form;
   const [status, setStatus] = useState<Status>("idle");
   const ref = useRef<HTMLElement>(null);
@@ -68,17 +71,17 @@ export default function Contact({
         className="absolute left-1/2 top-0 -z-10 h-[70vmax] w-[70vmax] -translate-x-1/2 rounded-full"
       />
 
-      <div className="mx-auto max-w-7xl px-5 py-28 sm:px-8 sm:py-40">
-        <SectionLabel n="07" text={dict.label} light />
+      <div className={`mx-auto max-w-7xl px-5 pb-28 sm:px-8 sm:pb-40 ${h1 ? "pt-40 sm:pt-48" : "pt-28 sm:pt-40"}`}>
+        <SectionLabel text={dict.label} light />
 
-        <h2 className="font-display mt-8 text-[clamp(2.4rem,8vw,7.5rem)] font-bold leading-[0.98]">
+        <Title className="font-display mt-8 text-[clamp(2.4rem,8vw,7.5rem)] font-bold leading-[0.98]">
           <span className="block">
             <SplitWords text={dict.title.pre} />
           </span>
           <span className="block">
             <SplitWords text={dict.title.em} className="text-accent-em" delay={0.2} />
           </span>
-        </h2>
+        </Title>
 
         <Reveal>
           <p className="mt-8 max-w-2xl text-lg leading-relaxed text-mist sm:text-xl">{dict.lead}</p>

@@ -1,3 +1,5 @@
+import { marqueeEmoji } from "@/app/lib/emoji";
+
 export default function Marquee({ items }: { items: string[] }) {
   const row = [...items, ...items];
   return (
@@ -9,10 +11,10 @@ export default function Marquee({ items }: { items: string[] }) {
         {row.map((t, i) => (
           <span
             key={i}
-            className="font-display flex items-center gap-8 pr-8 text-2xl font-bold italic tracking-tight sm:text-4xl"
+            className="font-display flex items-center gap-4 pr-10 text-2xl font-bold italic tracking-tight sm:text-4xl"
           >
+            <span className="not-italic">{marqueeEmoji[i % items.length]}</span>
             {t}
-            <span className="h-3 w-3 shrink-0 rotate-45 bg-ink sm:h-4 sm:w-4" />
           </span>
         ))}
       </div>

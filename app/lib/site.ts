@@ -40,3 +40,24 @@ export const links = {
   telegram: "https://t.me/ivan3750",
   webhjerte: "https://webhjerte.dk",
 } as const;
+
+export const pageSlugs = ["about", "now", "projects", "contact", "blog"] as const;
+export type PageSlug = (typeof pageSlugs)[number];
+
+/** "" = home. Default locale has no prefix: /about, /da/about … */
+export function pagePath(locale: Locale, slug: string = "") {
+  const base = locale === defaultLocale ? "" : `/${locale}`;
+  const path = slug ? `${base}/${slug}` : base;
+  return path === "" ? "/" : path;
+}
+
+export function pageUrl(locale: Locale, slug: string = "") {
+  const path = pagePath(locale, slug);
+  return path === "/" ? SITE_URL : `${SITE_URL}${path}`;
+}
+
+/** Blog exists in public locales only; hidden locales link to the default-language blog. */
+export function navHref(locale: Locale, slug: string) {
+  if (slug === "blog" && hiddenLocales.includes(locale)) return pagePath(defaultLocale, "blog");
+  return pagePath(locale, slug);
+}

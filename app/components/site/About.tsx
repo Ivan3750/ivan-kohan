@@ -3,14 +3,25 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform, type MotionValue } from "framer-motion";
 import type { Dict } from "@/app/lib/dictionary";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import { factEmoji, journeyEmoji } from "@/app/lib/emoji";
 import { Reveal, SplitWords, Parallax } from "./motion";
 
-export default function About({ dict }: { dict: Dict["about"] }) {
+export default function About({
+  dict,
+  compact = false,
+  more,
+}: {
+  dict: Dict["about"];
+  compact?: boolean;
+  more?: { href: string; label: string };
+}) {
   return (
     <section id="about" className="relative overflow-hidden bg-paper text-ink">
       <div className="grid-lines-light pointer-events-none absolute inset-0" aria-hidden />
       <div className="relative mx-auto max-w-7xl px-5 py-28 sm:px-8 sm:py-40">
-        <SectionLabel n="01" text={dict.label} />
+        <SectionLabel text={dict.label} />
 
         <h2 className="font-display mt-8 max-w-5xl text-[clamp(2.2rem,5.6vw,5rem)] font-bold leading-[1.04]">
           <SplitWords text={dict.title} />
@@ -34,9 +45,12 @@ export default function About({ dict }: { dict: Dict["about"] }) {
             <Reveal delay={0.1}>
               <h3 className="label relative text-accent-deep">{dict.factsTitle}</h3>
               <dl className="relative mt-4 divide-y divide-ink/15 border-y border-ink/15 bg-paper/80 backdrop-blur-sm">
-                {dict.facts.map((f) => (
+                {dict.facts.map((f, i) => (
                   <div key={f.k} className="grid grid-cols-[8rem_1fr] gap-4 py-5 sm:grid-cols-[10rem_1fr]">
-                    <dt className="label text-graphite">{f.k}</dt>
+                    <dt className="label text-graphite">
+                      <span aria-hidden className="mr-2 text-base normal-case tracking-normal">{factEmoji[i]}</span>
+                      {f.k}
+                    </dt>
                     <dd className="font-display text-lg font-medium">{f.v}</dd>
                   </div>
                 ))}
@@ -45,7 +59,18 @@ export default function About({ dict }: { dict: Dict["about"] }) {
           </div>
         </div>
 
-        <Journey title={dict.journeyTitle} items={dict.journey} />
+        {!compact && <Journey title={dict.journeyTitle} items={dict.journey} />}
+        {compact && more && (
+          <Reveal className="mt-14">
+            <Link
+              href={more.href}
+              className="group inline-flex items-center gap-2 rounded-full bg-ink px-7 py-4 text-sm font-semibold text-paper transition hover:bg-accent hover:text-ink"
+            >
+              {more.label}
+              <ArrowUpRight size={17} className="transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </Link>
+          </Reveal>
+        )}
       </div>
     </section>
   );
@@ -75,7 +100,10 @@ function Journey({ title, items }: { title: string; items: Dict["about"]["journe
               >
                 <span className={`h-2 w-2 rounded-full sm:h-3 sm:w-3 ${i === items.length - 1 ? "dot-live bg-accent" : "bg-ink"}`} />
               </span>
-              <p className="label text-accent-deep">{it.tag}</p>
+              <p className="label text-accent-deep">
+                <span aria-hidden className="mr-2 text-base normal-case tracking-normal">{journeyEmoji[i]}</span>
+                {it.tag}
+              </p>
               <h4 className="font-display mt-2 text-2xl font-bold sm:text-4xl">{it.title}</h4>
               <p className="mt-2 max-w-xl text-lg text-graphite">{it.text}</p>
             </Reveal>
@@ -87,20 +115,18 @@ function Journey({ title, items }: { title: string; items: Dict["about"]["journe
 }
 
 export function SectionLabel({
-  n,
   text,
   light = false,
   onBlue = false,
 }: {
-  n: string;
+  n?: string;
   text: string;
   light?: boolean;
   onBlue?: boolean;
 }) {
   return (
     <p className={`label flex items-center gap-4 ${onBlue ? "text-ink" : light ? "text-mist" : "text-graphite"}`}>
-      <span className={onBlue ? "text-ink" : light ? "text-accent" : "text-accent-deep"}>{n}</span>
-      <span className={`h-px w-16 ${onBlue ? "bg-ink/40" : light ? "bg-white/20" : "bg-ink/20"}`} />
+      <span className={`h-px w-12 ${onBlue ? "bg-ink/40" : light ? "bg-accent/60" : "bg-ink/30"}`} />
       {text}
     </p>
   );

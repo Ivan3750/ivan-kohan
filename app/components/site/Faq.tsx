@@ -13,7 +13,7 @@ export default function Faq({ dict }: { dict: Dict["faq"] }) {
     <section id="faq" className="relative bg-paper text-ink">
       <div className="mx-auto grid max-w-7xl gap-14 px-5 py-28 sm:px-8 sm:py-40 lg:grid-cols-[0.8fr_1.2fr]">
         <div className="lg:sticky lg:top-28 lg:self-start">
-          <SectionLabel n="06" text={dict.label} />
+          <SectionLabel text={dict.label} />
           <h2 className="font-display mt-8 text-[clamp(2rem,5vw,4.2rem)] font-bold leading-[1.05]">
             <SplitWords text={dict.title} />
           </h2>

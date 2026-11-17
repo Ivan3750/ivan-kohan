@@ -2,9 +2,11 @@
 
 import { useRef } from "react";
 import { motion, useMotionValue, useScroll, useSpring, useTransform } from "framer-motion";
+import Link from "next/link";
 import { ArrowDown, ArrowUpRight, MapPin } from "lucide-react";
 import type { Dict } from "@/app/lib/dictionary";
 import { socialLinks } from "./Icons";
+import { heroChipEmoji } from "@/app/lib/emoji";
 import { Magnetic } from "./motion";
 
 const chipPos = [
@@ -15,7 +17,7 @@ const chipPos = [
   { x: "62%", y: "88%", d: 900, depth: -60 },
 ];
 
-export default function Hero({ dict }: { dict: Dict }) {
+export default function Hero({ dict, contactHref }: { dict: Dict; contactHref: string }) {
   const { hero, a11y } = { hero: dict.hero, a11y: dict.a11y };
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
@@ -115,12 +117,12 @@ export default function Hero({ dict }: { dict: Dict }) {
               </a>
             </Magnetic>
             <Magnetic>
-              <a
-                href="#contact"
+              <Link
+                href={contactHref}
                 className="inline-flex items-center gap-2 rounded-full border border-white/20 px-7 py-4 text-sm font-medium transition hover:border-accent hover:text-accent"
               >
-                {hero.cta2}
-              </a>
+                {hero.cta2} <span aria-hidden>👋</span>
+              </Link>
             </Magnetic>
           </div>
 
@@ -189,7 +191,7 @@ export default function Hero({ dict }: { dict: Dict }) {
           </motion.div>
 
           {hero.chips.map((t, i) => (
-            <ChipLayer key={t} text={t} pos={chipPos[i % chipPos.length]} progress={scrollYProgress} />
+            <ChipLayer key={t} text={t} emoji={heroChipEmoji[i]} pos={chipPos[i % chipPos.length]} progress={scrollYProgress} />
           ))}
         </motion.div>
       </div>
@@ -222,10 +224,12 @@ export default function Hero({ dict }: { dict: Dict }) {
 
 function ChipLayer({
   text,
+  emoji,
   pos,
   progress,
 }: {
   text: string;
+  emoji: string;
   pos: (typeof chipPos)[number];
   progress: ReturnType<typeof useScroll>["scrollYProgress"];
 }) {
@@ -236,7 +240,7 @@ function ChipLayer({
         className="float label inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-white/15 bg-ink/70 px-4 py-2 text-paper backdrop-blur-md"
         style={{ "--d": pos.d } as React.CSSProperties}
       >
-        <span className="h-2 w-2 rounded-full bg-accent" />
+        <span aria-hidden className="text-sm normal-case">{emoji}</span>
         {text}
       </span>
     </motion.div>

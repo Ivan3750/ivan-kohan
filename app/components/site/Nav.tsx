@@ -1,16 +1,30 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import type { Dict } from "@/app/lib/dictionary";
-import { publicLocales, localeMeta, localePath, type Locale } from "@/app/lib/site";
+import { publicLocales, localeMeta, localePath, pagePath, navHref, isLocale, type Locale } from "@/app/lib/site";
 import { lockScroll } from "@/app/lib/lenis-store";
 import { socialLinks } from "./Icons";
 import { EASE } from "./motion";
 
-const sections = ["about", "services", "skills", "work", "contact"] as const;
+const items = [
+  { key: "about", slug: "about" },
+  { key: "now", slug: "now" },
+  { key: "work", slug: "projects" },
+  { key: "blog", slug: "blog" },
+  { key: "contact", slug: "contact" },
+] as const;
+
+/** "/da/blog/x" -> "blog/x", "/about" -> "about", "/" -> "" */
+function restPath(pathname: string) {
+  const parts = pathname.split("/").filter(Boolean);
+  if (parts.length && isLocale(parts[0])) parts.shift();
+  return parts.join("/");
+}
 
 export default function Nav({
   lang,
@@ -24,7 +38,9 @@ export default function Nav({
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState<string>("");
+  const pathname = usePathname() ?? "/";
+  const rest = restPath(pathname);
+  const active = rest.split("/")[0];
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (y) => {
@@ -32,20 +48,6 @@ export default function Nav({
     setScrolled(y > 24);
     setHidden(y > 500 && y > prev && !open);
   });
-
-  useEffect(() => {
-    const els = sections
-      .map((id) => document.getElementById(id))
-      .filter((e): e is HTMLElement => !!e);
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => e.isIntersecting && setActive(e.target.id));
-      },
-      { rootMargin: "-45% 0px -50% 0px" },
-    );
-    els.forEach((el) => io.observe(el));
-    return () => io.disconnect();
-  }, []);
 
   useEffect(() => {
     lockScroll(open);
@@ -57,8 +59,6 @@ export default function Nav({
       lockScroll(false);
     };
   }, [open]);
-
-  const items = sections.map((id) => ({ id, label: nav[id] }));
 
   return (
     <>
@@ -87,34 +87,34 @@ export default function Nav({
 
           <nav aria-label={a11y.primaryNav} className="hidden items-center gap-1 lg:flex">
             {items.map((it) => (
-              <a
-                key={it.id}
-                href={`#${it.id}`}
+              <Link
+                key={it.key}
+                href={navHref(lang, it.slug)}
+                aria-current={active === it.slug ? "page" : undefined}
                 className={`relative rounded-full px-4 py-2 text-sm transition-colors ${
-                  active === it.id ? "text-ink" : "text-mist hover:text-paper"
+                  active === it.slug ? "text-ink" : "text-mist hover:text-paper"
                 }`}
               >
-                {active === it.id && (
+                {active === it.slug && (
                   <motion.span
                     layoutId="nav-pill"
                     className="absolute inset-0 rounded-full bg-accent"
                     transition={{ type: "spring", stiffness: 400, damping: 32 }}
                   />
                 )}
-                <span className="relative">{it.label}</span>
-              </a>
+                <span className="relative">{nav[it.key]}</span>
+              </Link>
             ))}
           </nav>
 
           <div className="flex items-center gap-2">
-            <LangSwitch lang={lang} label={a11y.language} />
-            <a
-              href="#contact"
+            <LangSwitch lang={lang} label={a11y.language} rest={rest} />
+            <Link
+              href={navHref(lang, "contact")}
               className="hidden items-center gap-1.5 rounded-full bg-paper px-4 py-2 text-sm font-semibold text-ink transition hover:bg-accent sm:inline-flex"
             >
-              {nav.cta}
-              <ArrowUpRight size={15} />
-            </a>
+              {nav.cta} <span aria-hidden>👋</span>
+            </Link>
             <button
               type="button"
               onClick={() => setOpen(true)}
@@ -154,18 +154,21 @@ export default function Nav({
 
             <nav aria-label={a11y.primaryNav} className="mt-10 flex flex-1 flex-col justify-center gap-1">
               {items.map((it, i) => (
-                <motion.a
-                  key={it.id}
-                  href={`#${it.id}`}
-                  onClick={() => setOpen(false)}
-                  className="font-display flex items-baseline gap-4 py-2 text-[clamp(2rem,9vw,3.4rem)] font-medium leading-tight"
+                <motion.div
+                  key={it.key}
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.25 + i * 0.06, duration: 0.7, ease: EASE }}
                 >
+                <Link
+                  href={navHref(lang, it.slug)}
+                  onClick={() => setOpen(false)}
+                  className="font-display flex items-baseline gap-4 py-2 text-[clamp(2rem,9vw,3.4rem)] font-medium leading-tight"
+                >
                   <span className="label text-accent">0{i + 1}</span>
-                  {it.label}
-                </motion.a>
+                  {nav[it.key]}
+                </Link>
+                </motion.div>
               ))}
             </nav>
 
@@ -190,13 +193,13 @@ export default function Nav({
   );
 }
 
-function LangSwitch({ lang, label }: { lang: Locale; label: string }) {
+function LangSwitch({ lang, label, rest }: { lang: Locale; label: string; rest: string }) {
   return (
     <nav aria-label={label} className="flex rounded-full border border-white/10 bg-white/[0.04] p-0.5">
       {publicLocales.map((l) => (
         <Link
           key={l}
-          href={localePath(l)}
+          href={pagePath(l, rest)}
           hrefLang={localeMeta[l].hreflang}
           lang={l}
           title={localeMeta[l].native}
