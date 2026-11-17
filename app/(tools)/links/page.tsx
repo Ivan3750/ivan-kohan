@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowUpRight, Github, Globe, Instagram, Linkedin, Mail, Send } from "lucide-react";
+import { ArrowUpRight, Github, Globe, HeartHandshake, Instagram, Linkedin, Mail, Send } from "lucide-react";
 import { links, SITE_URL } from "@/app/lib/site";
 
 const content = {
@@ -12,6 +12,7 @@ const content = {
     contact: "Get in touch",
     website: "My website",
     studio: "WebHjerte — web studio",
+    support: "Support Ukraine — UNITED24",
   },
   da: {
     name: "DA",
@@ -20,6 +21,7 @@ const content = {
     contact: "Kontakt mig",
     website: "Min hjemmeside",
     studio: "WebHjerte — webstudie",
+    support: "Støt Ukraine — UNITED24",
   },
   uk: {
     name: "UA",
@@ -28,6 +30,7 @@ const content = {
     contact: "Зв'язатися",
     website: "Мій сайт",
     studio: "WebHjerte — веб-студія",
+    support: "Підтримати Україну — UNITED24",
   },
   bs: {
     name: "BS",
@@ -36,6 +39,7 @@ const content = {
     contact: "Kontakt",
     website: "Moj sajt",
     studio: "WebHjerte — web studio",
+    support: "Podrži Ukrajinu — UNITED24",
   },
 } as const;
 
@@ -52,6 +56,7 @@ export default function LinksPage() {
     { Icon: Linkedin, title: "LinkedIn", sub: "ivan-kohan", href: links.linkedin },
     { Icon: Github, title: "GitHub", sub: "Ivan3750", href: links.github },
     { Icon: Send, title: "Telegram", sub: "@ivan3750", href: links.telegram },
+    { Icon: HeartHandshake, title: t.support, sub: "u24.gov.ua", href: "https://u24.gov.ua/" },
   ];
 
   return (
