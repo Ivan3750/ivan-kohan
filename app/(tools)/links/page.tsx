@@ -1,222 +1,124 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import bg from "@/public/bg.jpg";
-import avatar from "@/public/avatar.png";
-import {
-  Mail,
-  Briefcase,
-  Github,
-  Folder,
-  Instagram,
-  Send,
-  HeartHandshake
-} from "lucide-react";
-
+import { ArrowUpRight, Github, Globe, Instagram, Linkedin, Mail, Send } from "lucide-react";
+import { links, SITE_URL } from "@/app/lib/site";
 
 const content = {
   en: {
-    role: "Software Engineer / Creative Developer",
-    about:
-      "I build clean, modern interfaces focused on clarity, usability and performance.",
-    contact: "Contact",
-    portfolio: "Portfolio",
-    support: "Support Ukraine - UNITED24"
+    name: "EN",
+    role: "Web developer · Founder of WebHjerte",
+    about: "Building fast websites for small businesses from Denmark. Originally from Ukraine.",
+    contact: "Get in touch",
+    website: "My website",
+    studio: "WebHjerte — web studio",
   },
-  ua: {
-    role: "Software Engineer / Creative Developer",
-    about:
-      "Створюю сучасні інтерфейси з фокусом на зручність, продуктивність та деталі.",
-    contact: "Звʼязатися",
-    portfolio: "Портфоліо",
-    support: "Підтримати Україну - UNITED24"
+  da: {
+    name: "DA",
+    role: "Webudvikler · Grundlægger af WebHjerte",
+    about: "Jeg bygger hurtige hjemmesider til små virksomheder fra Danmark. Oprindeligt fra Ukraine.",
+    contact: "Kontakt mig",
+    website: "Min hjemmeside",
+    studio: "WebHjerte — webstudie",
   },
-  dk: {
-    role: "Software Engineer / Creative Developer",
-    about:
-      "Jeg bygger rene og moderne interfaces med fokus på brugervenlighed.",
+  uk: {
+    name: "UA",
+    role: "Веб-розробник · Засновник WebHjerte",
+    about: "Створюю швидкі сайти для малого бізнесу з Данії. Родом з України.",
+    contact: "Зв'язатися",
+    website: "Мій сайт",
+    studio: "WebHjerte — веб-студія",
+  },
+  bs: {
+    name: "BS",
+    role: "Web developer · Osnivač WebHjerte",
+    about: "Pravim brze sajtove za mala preduzeća iz Danske. Porijeklom iz Ukrajine.",
     contact: "Kontakt",
-    portfolio: "Portefølje",
-    support: "Støt Ukraine - UNITED24"
+    website: "Moj sajt",
+    studio: "WebHjerte — web studio",
   },
-  bih: {
-    role: "Software Engineer / Creative Developer",
-    about:
-      "Gradim moderne i čiste interfejse s fokusom na upotrebljivost.",
-    contact: "Kontakt",
-    portfolio: "Portfolio",
-    support: "Podrži Ukrajinu - UNITED24"
-  },
-  de: {
-    role: "Software Engineer / Creative Developer",
-    about:
-      "Ich entwickle moderne Interfaces mit Fokus auf Klarheit und Performance.",
-    contact: "Kontakt",
-    portfolio: "Portfolio",
-    support: "Ukraine unterstützen - UNITED24"
-  }
-};
+} as const;
 
+type Lang = keyof typeof content;
 
-export default function Home() {
-  const [lang, setLang] = useState<keyof typeof content>("en");
+export default function LinksPage() {
+  const [lang, setLang] = useState<Lang>("en");
   const t = content[lang];
 
+  const rows = [
+    { Icon: Globe, title: t.website, sub: "ivankohan.com", href: SITE_URL },
+    { Icon: Globe, title: t.studio, sub: "webhjerte.dk", href: links.webhjerte },
+    { Icon: Instagram, title: "Instagram", sub: "@webhjerte", href: links.instagramBusiness },
+    { Icon: Linkedin, title: "LinkedIn", sub: "ivan-kohan", href: links.linkedin },
+    { Icon: Github, title: "GitHub", sub: "Ivan3750", href: links.github },
+    { Icon: Send, title: "Telegram", sub: "@ivan3750", href: links.telegram },
+  ];
+
   return (
-    <main className="relative min-h-screen flex items-center justify-center px-4 py-10 bg-ink overflow-hidden">
-      <div className="absolute inset-0 bg-ink" />
-      <div className="absolute top-[-40%] left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-accent/20 blur-[140px]" />
+    <main className="grain relative isolate flex min-h-screen items-center justify-center overflow-hidden bg-ink px-4 py-12 text-paper">
+      <div
+        aria-hidden
+        className="absolute left-1/2 top-[-20%] -z-10 h-[40rem] w-[40rem] -translate-x-1/2 rounded-full"
+        style={{ background: "radial-gradient(closest-side, rgba(255,214,10,0.22), transparent 70%)" }}
+      />
 
-      <div className="relative z-10 w-full max-w-sm rounded-[28px] bg-white/[0.05] backdrop-blur-xl border border-white/10">
-
-        <div className="relative h-36 rounded-t-[28px] overflow-hidden">
-          <Image src={bg} alt="Cover" fill className="object-cover opacity-90" />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink/80 to-transparent" />
-
-          <div className="absolute top-4 right-4 flex gap-3 z-10">
-            <SocialIcon href="https://t.me/ivan3750" icon={<Send size={16} />} />
-            <SocialIcon
-              href="https://www.instagram.com/ivan.kohan.ua/"
-              icon={<Instagram size={16} />}
-            />
-          </div>
+      <div className="w-full max-w-md">
+        <div className="text-center">
+          <span className="font-display mx-auto grid h-20 w-20 place-items-center rounded-full bg-accent text-3xl font-bold italic text-ink">
+            IK
+          </span>
+          <h1 className="font-display mt-6 text-4xl font-bold">Ivan Kohan</h1>
+          <p className="label mt-3 text-accent">{t.role}</p>
+          <p className="mx-auto mt-5 max-w-xs leading-relaxed text-mist">{t.about}</p>
         </div>
 
-        <div className="px-6 pb-6 -mt-12">
-          <div className="flex justify-center">
-            <div className="w-20 h-20 rounded-full overflow-hidden border border-white/15 bg-ink z-10">
-              <Image src={avatar} alt="Avatar" className="object-cover w-20 h-20" />
-            </div>
-          </div>
+        <a
+          href={`mailto:${links.email}`}
+          className="mt-8 flex w-full items-center justify-center gap-2 rounded-full bg-accent py-4 text-sm font-semibold text-ink transition hover:bg-paper active:scale-[0.98]"
+        >
+          <Mail size={18} /> {t.contact}
+        </a>
 
-          <div className="mt-4 text-center">
-            <h1 className="font-display text-base font-bold text-white">Ivan Kohan</h1>
-            <p className="text-xs text-neutral-400 mt-1">{t.role}</p>
-          </div>
-
-          <p className="mt-4 text-sm text-neutral-300 text-center leading-relaxed">
-            {t.about}
-          </p>
-
-
-          <a
-            href="mailto:kohan3750@gmail.com"
-            className="
-              mt-6 flex items-center justify-center gap-2 w-full
-              rounded-xl py-3 text-sm font-semibold text-ink
-              bg-accent
-              hover:bg-paper hover:scale-[1.01]
-              active:scale-[0.98]
-            "
-          >
-            <Mail size={18} /> {t.contact}
-          </a>
-
-
-          <div className="mt-4 space-y-2">
-            <LinkCard
-              icon={<Briefcase size={16} />}
-              title="WebHjerte - web development agency"
-              link="https://webhjerte.dk"
-            />
-            <LinkCard
-              icon={<Github size={16} />}
-              title="GitHub - code and projects"
-              link="https://github.com/Ivan3750"
-            />
-            <LinkCard
-              icon={<Folder size={16} />}
-              title={t.portfolio}
-              link="https://ivankohan.com/#work"
-            />
-            <LinkCard
-              icon={<HeartHandshake size={16} />}
-              title={t.support}
-              link="https://u24.gov.ua/"
-              
-            />
-          </div>
-
-          <div className="mt-4 flex justify-center gap-2 text-xs">
-            {Object.keys(content).map(l => (
-              <button
-                key={l}
-                onClick={() => setLang(l as keyof typeof content)}
-                className={`
-                  px-2 py-1 rounded-md border
-                  ${
-                    lang === l
-                      ? "bg-accent text-ink border-transparent"
-                      : "border-white/15 text-neutral-400 hover:border-accent/60"
-                  }
-                `}
+        <ul className="mt-4 space-y-3">
+          {rows.map(({ Icon, title, sub, href }) => (
+            <li key={title}>
+              <a
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-4 transition hover:border-accent hover:bg-white/[0.08]"
               >
-                {l.toUpperCase()}
-              </button>
-            ))}
-          </div>
+                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-white/15 transition group-hover:border-accent group-hover:bg-accent group-hover:text-ink">
+                  <Icon size={18} />
+                </span>
+                <span className="flex-1">
+                  <span className="font-display block text-base font-medium">{title}</span>
+                  <span className="block text-sm text-mist">{sub}</span>
+                </span>
+                <ArrowUpRight size={18} className="text-mist transition group-hover:text-accent" />
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <div role="group" aria-label="Language" className="mt-8 flex justify-center gap-2">
+          {(Object.keys(content) as Lang[]).map((l) => (
+            <button
+              key={l}
+              type="button"
+              onClick={() => setLang(l)}
+              aria-pressed={lang === l}
+              className={`rounded-full border px-3.5 py-1.5 text-xs font-semibold tracking-wider transition ${
+                lang === l
+                  ? "border-accent bg-accent text-ink"
+                  : "border-white/15 text-mist hover:border-white/40 hover:text-paper"
+              }`}
+            >
+              {content[l].name}
+            </button>
+          ))}
         </div>
       </div>
     </main>
-  );
-}
-
-
-function LinkCard({
-  title,
-  icon,
-  subtle = false,
-  link
-}: {
-  link: string;
-  title: string;
-  icon: React.ReactNode;
-  subtle?: boolean;
-}) {
-  return (
-    <Link href={link} target="_blank"   className="block"
->
-      <div
-        className={`
-          group flex items-center gap-3 rounded-lg px-4 py-3 text-sm
-          border bg-white/[0.03] transition-all
-          hover:scale-[1.001]
-          ${
-            subtle
-              ? "border-[#0057B7]/30 text-neutral-300 "
-              : "border-white/15 text-white "
-          }
-        `}
-      >
-        <span className="text-accent transition">
-          {icon}
-        </span>
-        {title}
-      </div>
-    </Link>
-  );
-}
-
-function SocialIcon({
-  href,
-  icon
-}: {
-  href: string;
-  icon: React.ReactNode;
-}) {
-  return (
-    <Link
-      href={href}
-      target="_blank"
-      className="
-        w-9 h-9 rounded-full flex items-center justify-center
-        bg-black/40 border border-white/10 text-white
-      
-      "
-    >
-      {icon}
-    </Link>
   );
 }

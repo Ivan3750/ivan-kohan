@@ -10,13 +10,11 @@ export default function PageHeader({
   label,
   title,
   intro,
-  emoji,
   watermark,
 }: {
   label: string;
   title: string;
   intro: string;
-  emoji?: string;
   watermark?: string;
 }) {
   const ref = useRef<HTMLElement>(null);
@@ -55,11 +53,6 @@ export default function PageHeader({
             title.length > 34 ? "text-[clamp(2rem,5vw,4.6rem)]" : "text-[clamp(2.6rem,7.5vw,6.8rem)]"
           }`}
         >
-          {emoji && (
-            <span aria-hidden className="mr-4 inline-block">
-              {emoji}
-            </span>
-          )}
           <SplitWords text={title} />
         </h1>
         <Reveal delay={0.2}>

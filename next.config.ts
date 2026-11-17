@@ -5,7 +5,11 @@ const nextConfig: NextConfig = {
   images: { formats: ["image/avif", "image/webp"] },
   async redirects() {
     // old indexed URL that no longer exists → closest new page
-    return [{ source: "/skills", destination: "/about", permanent: true }];
+    return [
+      { source: "/skills", destination: "/about", permanent: true },
+      { source: "/blog/nextjs-seo-checklist", destination: "/blog/website-checklist-small-business", permanent: true },
+      { source: "/:lang(da|uk)/blog/nextjs-seo-checklist", destination: "/:lang/blog/website-checklist-small-business", permanent: true },
+    ];
   },
   async headers() {
     return [

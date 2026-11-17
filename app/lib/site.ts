@@ -61,3 +61,10 @@ export function navHref(locale: Locale, slug: string) {
   if (slug === "blog" && hiddenLocales.includes(locale)) return pagePath(defaultLocale, "blog");
   return pagePath(locale, slug);
 }
+
+/** Language-switch target: blog articles only exist in public locales, so fall back to that locale's home. */
+export function switchPath(target: Locale, rest: string) {
+  const hasBlogPost = rest.startsWith("blog/");
+  const blogMissing = (rest === "blog" || hasBlogPost) && hiddenLocales.includes(target);
+  return pagePath(target, blogMissing ? "" : rest);
+}

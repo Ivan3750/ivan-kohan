@@ -51,7 +51,7 @@ export default async function BlogIndex({ params }: Props) {
         ]}
       />
       <main id="main">
-        <PageHeader label={d.nav.blog} title={d.pages.blog.title} intro={d.pages.blog.intro} emoji="✍️" watermark="Blog" />
+        <PageHeader label={d.nav.blog} title={d.pages.blog.title} intro={d.pages.blog.intro} watermark="Blog" />
         <section className="relative bg-paper text-ink">
           <div className="mx-auto max-w-7xl px-5 py-24 sm:px-8 sm:py-32">
             <BlogGrid items={items} lang={lang} readTime={d.blog.readTime} />

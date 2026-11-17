@@ -2,15 +2,14 @@
 
 import { motion } from "framer-motion";
 import type { Dict } from "@/app/lib/dictionary";
-import { interestEmoji, languageEmoji, valueEmoji } from "@/app/lib/emoji";
 import { Reveal, SplitWords, EASE } from "./motion";
 import { SectionLabel } from "./About";
 
-/** "Life" section: languages, interests and values. */
+/** "Life" section: interests and languages. */
 export default function Skills({ dict }: { dict: Dict["skills"] }) {
   return (
     <section id="skills" className="relative bg-paper text-ink">
-      <div className="relative mx-auto max-w-7xl px-5 py-28 sm:px-8 sm:py-40">
+      <div className="relative mx-auto max-w-7xl px-5 py-28 sm:px-8 sm:py-36">
         <SectionLabel text={dict.label} />
         <h2 className="font-display mt-8 max-w-5xl text-[clamp(2.2rem,5.6vw,5rem)] font-bold leading-[1.04]">
           <SplitWords text={dict.title} />
@@ -19,7 +18,7 @@ export default function Skills({ dict }: { dict: Dict["skills"] }) {
           <p className="mt-6 max-w-xl text-lg text-graphite">{dict.intro}</p>
         </Reveal>
 
-        <div className="mt-20 grid gap-16 lg:grid-cols-[1.2fr_0.8fr]">
+        <div className="mt-16 grid gap-16 lg:grid-cols-[1.2fr_0.8fr]">
           <div>
             <h3 className="font-display border-b-2 border-ink pb-4 text-2xl font-bold">{dict.interestsTitle}</h3>
             <ul>
@@ -30,7 +29,7 @@ export default function Skills({ dict }: { dict: Dict["skills"] }) {
                     className="absolute inset-0 origin-left scale-x-0 bg-accent transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100"
                   />
                   <div className="relative flex items-baseline gap-5 px-1 py-5 transition-all duration-500 group-hover:px-4">
-                    <span aria-hidden className="text-2xl">{interestEmoji[i]}</span>
+                    <span className="label text-accent-deep group-hover:text-ink">0{i + 1}</span>
                     <span className="font-display text-xl font-medium sm:text-3xl">{it}</span>
                   </div>
                 </li>
@@ -44,10 +43,7 @@ export default function Skills({ dict }: { dict: Dict["skills"] }) {
               {dict.languages.map((l, i) => (
                 <li key={l.name}>
                   <div className="flex items-baseline justify-between">
-                    <span className="font-display text-xl font-medium">
-                      <span aria-hidden className="mr-2">{languageEmoji[i]}</span>
-                      {l.name}
-                    </span>
+                    <span className="font-display text-xl font-medium">{l.name}</span>
                     <span className="label text-graphite">{l.level}</span>
                   </div>
                   <div
@@ -64,18 +60,6 @@ export default function Skills({ dict }: { dict: Dict["skills"] }) {
                     />
                   </div>
                 </li>
-              ))}
-            </ul>
-
-            <h3 className="font-display mt-14 border-b-2 border-ink pb-4 text-2xl font-bold">{dict.valuesTitle}</h3>
-            <ul className="mt-6 flex flex-wrap gap-3">
-              {dict.values.map((v, i) => (
-                <Reveal as="li" key={v} delay={i * 0.07}>
-                  <span className="inline-block rounded-full border-2 border-ink px-5 py-3 font-display text-sm font-medium transition hover:-rotate-2 hover:border-accent hover:bg-accent">
-                    <span aria-hidden className="mr-2">{valueEmoji[i]}</span>
-                    {v}
-                  </span>
-                </Reveal>
               ))}
             </ul>
           </div>

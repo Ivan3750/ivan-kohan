@@ -1,12 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Check, ChevronDown, Menu, X } from "lucide-react";
 import type { Dict } from "@/app/lib/dictionary";
-import { publicLocales, localeMeta, localePath, pagePath, navHref, isLocale, type Locale } from "@/app/lib/site";
+import { locales, localeMeta, localePath, navHref, switchPath, isLocale, type Locale } from "@/app/lib/site";
 import { lockScroll } from "@/app/lib/lenis-store";
 import { socialLinks } from "./Icons";
 import { EASE } from "./motion";
@@ -113,7 +113,7 @@ export default function Nav({
               href={navHref(lang, "contact")}
               className="hidden items-center gap-1.5 rounded-full bg-paper px-4 py-2 text-sm font-semibold text-ink transition hover:bg-accent sm:inline-flex"
             >
-              {nav.cta} <span aria-hidden>👋</span>
+              {nav.cta}
             </Link>
             <button
               type="button"
@@ -194,23 +194,67 @@ export default function Nav({
 }
 
 function LangSwitch({ lang, label, rest }: { lang: Locale; label: string; rest: string }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const close = (e: PointerEvent) => {
+      if (!ref.current?.contains(e.target as Node)) setOpen(false);
+    };
+    const key = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    document.addEventListener("pointerdown", close);
+    document.addEventListener("keydown", key);
+    return () => {
+      document.removeEventListener("pointerdown", close);
+      document.removeEventListener("keydown", key);
+    };
+  }, [open]);
+
   return (
-    <nav aria-label={label} className="flex rounded-full border border-white/10 bg-white/[0.04] p-0.5">
-      {publicLocales.map((l) => (
-        <Link
-          key={l}
-          href={pagePath(l, rest)}
-          hrefLang={localeMeta[l].hreflang}
-          lang={l}
-          title={localeMeta[l].native}
-          aria-current={l === lang ? "true" : undefined}
-          className={`rounded-full px-2.5 py-1.5 text-[11px] font-semibold tracking-wider transition ${
-            l === lang ? "bg-paper text-ink" : "text-mist hover:text-paper"
-          }`}
-        >
-          {localeMeta[l].label}
-        </Link>
-      ))}
-    </nav>
+    <div ref={ref} className="relative">
+      <button
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        aria-label={label}
+        className="inline-flex items-center gap-1.5 rounded-full border border-white/12 bg-white/[0.04] px-3.5 py-2 text-xs font-semibold tracking-wider transition hover:border-white/30"
+      >
+        {localeMeta[lang].label}
+        <ChevronDown size={14} className={`transition ${open ? "rotate-180" : ""}`} />
+      </button>
+
+      <AnimatePresence>
+        {open && (
+          <motion.ul
+            role="listbox"
+            aria-label={label}
+            initial={{ opacity: 0, y: -8, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -8, scale: 0.97 }}
+            transition={{ duration: 0.18 }}
+            className="absolute right-0 top-full z-10 mt-2 w-48 overflow-hidden rounded-2xl border border-white/10 bg-ink-2 p-1.5 shadow-[0_20px_50px_-10px_rgba(0,0,0,0.7)]"
+          >
+            {locales.map((l) => (
+              <li key={l} role="option" aria-selected={l === lang}>
+                <Link
+                  href={switchPath(l, rest)}
+                  hrefLang={localeMeta[l].hreflang}
+                  lang={l}
+                  onClick={() => setOpen(false)}
+                  className={`flex items-center justify-between rounded-xl px-3.5 py-2.5 text-sm transition ${
+                    l === lang ? "bg-accent text-ink" : "text-paper hover:bg-white/[0.07]"
+                  }`}
+                >
+                  {localeMeta[l].native}
+                  {l === lang ? <Check size={15} /> : <span className="label text-mist">{localeMeta[l].label}</span>}
+                </Link>
+              </li>
+            ))}
+          </motion.ul>
+        )}
+      </AnimatePresence>
+    </div>
   );
 }

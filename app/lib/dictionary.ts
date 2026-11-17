@@ -37,9 +37,6 @@ const en = {
   },
   home: {
     aboutMore: "Read my full story",
-    blogTitle: "Latest writing",
-    blogIntro: "Short, practical notes on SEO, healthy habits and building things.",
-    blogAll: "All posts",
     workMore: "See my work",
     band: { title: "Got something in mind?", text: "A collaboration, a question or just a hello — I read every message.", cta: "Get in touch" },
   },
@@ -58,7 +55,6 @@ const en = {
       { label: "Learning", text: "Danish and English, a little every day." },
       { label: "Tinkering with", text: "Raspberry Pi 5, Linux and AI tools — automations and dashboards with Claude Code." },
       { label: "Training", text: "Strength training, healthy eating and tracking my habits." },
-      { label: "Curious about", text: "Technology and the future." },
     ],
   },
   blog: {
@@ -69,27 +65,19 @@ const en = {
   },
   hero: {
     status: "Open to new things",
-    title: { pre: "Life, code and", em: "everything in between." },
-    lead: "I'm Ivan Kohan — from Ukraine, living in Denmark. Student, entrepreneur and founder of WebHjerte. This is my corner of the internet: where I'm from, what I'm building and what keeps me going.",
-    cta1: "Read my story",
-    cta2: "Say hi",
+    title: { pre: "Hi, I'm Ivan.", em: "I build websites — and a business." },
+    lead: "Web developer and founder of WebHjerte, from Ukraine and based in Denmark. I help small businesses get a fast website that actually brings customers.",
+    cta1: "About me",
+    cta2: "Get in touch",
     location: "From Ukraine · living in Denmark",
     scroll: "Scroll",
-    chips: ["Entrepreneur", "Student", "Tech & AI", "Fitness", "Languages"],
+    chips: ["Web developer", "WebHjerte", "Student", "SEO"],
     facts: [
-      { big: "3", small: "languages" },
+      { big: "4", small: "languages" },
       { big: "2", small: "countries" },
       { big: "1", small: "studio" },
     ],
   },
-  marquee: [
-    "Entrepreneur",
-    "Student",
-    "Founder of WebHjerte",
-    "Tech & AI",
-    "Healthy habits",
-    "Always learning",
-  ],
   about: {
     label: "About",
     title: "Born in Ukraine, building a life in Denmark.",
@@ -105,7 +93,7 @@ const en = {
       { k: "Originally from", v: "Ukraine" },
       { k: "Studying", v: "VIA University College" },
       { k: "Business", v: "WebHjerte (registered in Denmark)" },
-      { k: "Languages", v: "Ukrainian · English · Danish" },
+      { k: "Languages", v: "Ukrainian · English · Danish · Bosnian" },
     ],
     journeyTitle: "The journey",
     journey: [
@@ -152,6 +140,7 @@ const en = {
       { name: "Ukrainian", level: "Native", value: 100 },
       { name: "English", level: "Improving", value: 74 },
       { name: "Danish", level: "Improving", value: 64 },
+      { name: "Bosnian", level: "Beginner", value: 22 },
     ],
     interestsTitle: "Interests",
     interests: [
@@ -159,18 +148,8 @@ const en = {
       "Healthy eating",
       "Habit tracking",
       "Technology & the future",
-      "Photography",
       "Music",
       "Minimal design",
-      "Productivity",
-    ],
-    valuesTitle: "What drives me",
-    values: [
-      "Open to new things",
-      "Always learning",
-      "Healthy habits",
-      "Curious about the future",
-      "Entrepreneurial mindset",
     ],
   },
   webhjerte: {
@@ -234,7 +213,7 @@ const en = {
       },
       {
         q: "Which languages does Ivan speak?",
-        a: "Ukrainian (native), plus English and Danish, which he is actively improving.",
+        a: "Ukrainian (native), English and Danish, which he is actively improving, and some basic Bosnian.",
       },
       {
         q: "What are Ivan's goals?",
@@ -274,8 +253,6 @@ const en = {
     tagline: "Entrepreneur, student and founder of WebHjerte. From Ukraine, living in Denmark.",
     navTitle: "Navigate",
     socialTitle: "Social",
-    madeIn: "Made with",
-    madeInIn: "in Denmark",
     rights: "All rights reserved.",
   },
 };
@@ -319,9 +296,6 @@ const da: Dict = {
   },
   home: {
     aboutMore: "Læs hele min historie",
-    blogTitle: "Seneste indlæg",
-    blogIntro: "Korte, praktiske noter om SEO, sunde vaner og at bygge ting.",
-    blogAll: "Alle indlæg",
     workMore: "Se mine projekter",
     band: { title: "Har du noget på hjerte?", text: "Et samarbejde, et spørgsmål eller bare et hej — jeg læser alle beskeder.", cta: "Kom i kontakt" },
   },
@@ -340,7 +314,6 @@ const da: Dict = {
       { label: "Lærer", text: "Dansk og engelsk, lidt hver dag." },
       { label: "Pusler med", text: "Raspberry Pi 5, Linux og AI-værktøjer — automatiseringer og dashboards med Claude Code." },
       { label: "Træner", text: "Styrketræning, sund mad og tracking af mine vaner." },
-      { label: "Nysgerrig på", text: "Teknologi og fremtiden." },
     ],
   },
   blog: {
@@ -351,27 +324,19 @@ const da: Dict = {
   },
   hero: {
     status: "Åben over for nyt",
-    title: { pre: "Liv, kode og", em: "alt derimellem." },
-    lead: "Jeg er Ivan Kohan — fra Ukraine, bosat i Danmark. Studerende, iværksætter og grundlægger af WebHjerte. Det her er mit hjørne af internettet: hvor jeg kommer fra, hvad jeg bygger, og hvad der driver mig.",
-    cta1: "Læs min historie",
-    cta2: "Sig hej",
+    title: { pre: "Hej, jeg er Ivan.", em: "Jeg bygger hjemmesider — og en virksomhed." },
+    lead: "Webudvikler og grundlægger af WebHjerte, fra Ukraine og bosat i Danmark. Jeg hjælper små virksomheder med en hurtig hjemmeside, der rent faktisk skaffer kunder.",
+    cta1: "Om mig",
+    cta2: "Kontakt mig",
     location: "Fra Ukraine · bosat i Danmark",
     scroll: "Scroll",
-    chips: ["Iværksætter", "Studerende", "Tech & AI", "Fitness", "Sprog"],
+    chips: ["Webudvikler", "WebHjerte", "Studerende", "SEO"],
     facts: [
-      { big: "3", small: "sprog" },
+      { big: "4", small: "sprog" },
       { big: "2", small: "lande" },
       { big: "1", small: "studie" },
     ],
   },
-  marquee: [
-    "Iværksætter",
-    "Studerende",
-    "Grundlægger af WebHjerte",
-    "Tech & AI",
-    "Sunde vaner",
-    "Altid i gang med at lære",
-  ],
   about: {
     label: "Om mig",
     title: "Født i Ukraine, i gang med at bygge et liv i Danmark.",
@@ -387,7 +352,7 @@ const da: Dict = {
       { k: "Oprindeligt fra", v: "Ukraine" },
       { k: "Uddannelse", v: "VIA University College" },
       { k: "Virksomhed", v: "WebHjerte (registreret i Danmark)" },
-      { k: "Sprog", v: "Ukrainsk · Engelsk · Dansk" },
+      { k: "Sprog", v: "Ukrainsk · Engelsk · Dansk · Bosnisk" },
     ],
     journeyTitle: "Rejsen",
     journey: [
@@ -434,6 +399,7 @@ const da: Dict = {
       { name: "Ukrainsk", level: "Modersmål", value: 100 },
       { name: "Engelsk", level: "Forbedrer", value: 74 },
       { name: "Dansk", level: "Forbedrer", value: 64 },
+      { name: "Bosnisk", level: "Begynder", value: 22 },
     ],
     interestsTitle: "Interesser",
     interests: [
@@ -441,18 +407,8 @@ const da: Dict = {
       "Sund mad",
       "Vanetracking",
       "Teknologi & fremtiden",
-      "Fotografi",
       "Musik",
       "Minimalistisk design",
-      "Produktivitet",
-    ],
-    valuesTitle: "Det, der driver mig",
-    values: [
-      "Åben over for nyt",
-      "Altid i gang med at lære",
-      "Sunde vaner",
-      "Nysgerrig på fremtiden",
-      "Iværksættertankegang",
     ],
   },
   webhjerte: {
@@ -516,7 +472,7 @@ const da: Dict = {
       },
       {
         q: "Hvilke sprog taler Ivan?",
-        a: "Ukrainsk (modersmål) samt engelsk og dansk, som han aktivt forbedrer.",
+        a: "Ukrainsk (modersmål), engelsk og dansk, som han aktivt forbedrer, samt lidt bosnisk.",
       },
       {
         q: "Hvad er Ivans mål?",
@@ -556,8 +512,6 @@ const da: Dict = {
     tagline: "Iværksætter, studerende og grundlægger af WebHjerte. Fra Ukraine, bosat i Danmark.",
     navTitle: "Navigation",
     socialTitle: "Sociale medier",
-    madeIn: "Lavet med",
-    madeInIn: "i Danmark",
     rights: "Alle rettigheder forbeholdes.",
   },
 };
@@ -599,9 +553,6 @@ const uk: Dict = {
   },
   home: {
     aboutMore: "Читати всю історію",
-    blogTitle: "Останні записи",
-    blogIntro: "Короткі практичні нотатки про SEO, здорові звички й створення речей.",
-    blogAll: "Усі записи",
     workMore: "Дивитися проєкти",
     band: { title: "Є що обговорити?", text: "Співпраця, питання або просто привіт — я читаю кожне повідомлення.", cta: "Зв'язатися" },
   },
@@ -620,7 +571,6 @@ const uk: Dict = {
       { label: "Вчу", text: "Данську й англійську, потроху щодня." },
       { label: "Експериментую з", text: "Raspberry Pi 5, Linux та AI-інструментами — автоматизації й дашборди з Claude Code." },
       { label: "Тренуюся", text: "Силові тренування, здорове харчування й трекінг звичок." },
-      { label: "Цікавлюся", text: "Технологіями та майбутнім." },
     ],
   },
   blog: {
@@ -631,27 +581,19 @@ const uk: Dict = {
   },
   hero: {
     status: "Відкритий до нового",
-    title: { pre: "Життя, код і", em: "все між ними." },
-    lead: "Я — Іван Кохан, родом з України, живу в Данії. Студент, підприємець і засновник WebHjerte. Це мій куточок інтернету: звідки я, що створюю і що мене рухає.",
-    cta1: "Читати мою історію",
-    cta2: "Привітатися",
+    title: { pre: "Привіт, я Іван.", em: "Створюю сайти — і власний бізнес." },
+    lead: "Веб-розробник і засновник WebHjerte, з України, живу в Данії. Допомагаю малому бізнесу отримати швидкий сайт, який справді приводить клієнтів.",
+    cta1: "Про мене",
+    cta2: "Зв'язатися",
     location: "З України · живу в Данії",
     scroll: "Гортай",
-    chips: ["Підприємець", "Студент", "Tech та AI", "Фітнес", "Мови"],
+    chips: ["Веб-розробник", "WebHjerte", "Студент", "SEO"],
     facts: [
-      { big: "3", small: "мови" },
+      { big: "4", small: "мови" },
       { big: "2", small: "країни" },
       { big: "1", small: "студія" },
     ],
   },
-  marquee: [
-    "Підприємець",
-    "Студент",
-    "Засновник WebHjerte",
-    "Tech та AI",
-    "Здорові звички",
-    "Завжди вчуся",
-  ],
   about: {
     label: "Про мене",
     title: "Народився в Україні, будую життя в Данії.",
@@ -667,7 +609,7 @@ const uk: Dict = {
       { k: "Родом з", v: "України" },
       { k: "Навчання", v: "VIA University College" },
       { k: "Бізнес", v: "WebHjerte (зареєстровано в Данії)" },
-      { k: "Мови", v: "Українська · English · Dansk" },
+      { k: "Мови", v: "Українська · English · Dansk · Bosanski" },
     ],
     journeyTitle: "Мій шлях",
     journey: [
@@ -714,6 +656,7 @@ const uk: Dict = {
       { name: "Українська", level: "Рідна", value: 100 },
       { name: "Англійська", level: "Покращую", value: 74 },
       { name: "Данська", level: "Покращую", value: 64 },
+      { name: "Боснійська", level: "Початковий", value: 22 },
     ],
     interestsTitle: "Інтереси",
     interests: [
@@ -721,18 +664,8 @@ const uk: Dict = {
       "Здорове харчування",
       "Трекінг звичок",
       "Технології та майбутнє",
-      "Фотографія",
       "Музика",
       "Мінімалістичний дизайн",
-      "Продуктивність",
-    ],
-    valuesTitle: "Що мене рухає",
-    values: [
-      "Відкритість до нового",
-      "Постійне навчання",
-      "Здорові звички",
-      "Цікавість до майбутнього",
-      "Підприємницьке мислення",
     ],
   },
   webhjerte: {
@@ -796,7 +729,7 @@ const uk: Dict = {
       },
       {
         q: "Якими мовами розмовляє Іван?",
-        a: "Українською (рідна), а також англійською та данською, які він активно покращує.",
+        a: "Українською (рідна), англійською та данською, які він активно покращує, а також трохи боснійською.",
       },
       {
         q: "Які цілі в Івана?",
@@ -836,8 +769,6 @@ const uk: Dict = {
     tagline: "Підприємець, студент і засновник WebHjerte. З України, живу в Данії.",
     navTitle: "Навігація",
     socialTitle: "Соцмережі",
-    madeIn: "Зроблено з",
-    madeInIn: "у Данії",
     rights: "Усі права захищено.",
   },
 };
@@ -872,9 +803,6 @@ const bs: Dict = {
   },
   home: {
     aboutMore: "Pročitaj cijelu priču",
-    blogTitle: "Najnoviji tekstovi",
-    blogIntro: "Kratke, praktične bilješke o SEO-u, zdravim navikama i građenju stvari.",
-    blogAll: "Svi tekstovi",
     workMore: "Pogledaj radove",
     band: { title: "Imate nešto na umu?", text: "Saradnja, pitanje ili samo pozdrav — čitam svaku poruku.", cta: "Javite se" },
   },
@@ -893,7 +821,6 @@ const bs: Dict = {
       { label: "Učim", text: "Danski i engleski, po malo svaki dan." },
       { label: "Eksperimentišem s", text: "Raspberry Pi 5, Linux i AI alatima — automatizacije i dashboardi uz Claude Code." },
       { label: "Treniram", text: "Trening snage, zdrava ishrana i praćenje navika." },
-      { label: "Zanima me", text: "Tehnologija i budućnost." },
     ],
   },
   blog: {
@@ -904,27 +831,19 @@ const bs: Dict = {
   },
   hero: {
     status: "Otvoren za novo",
-    title: { pre: "Život, kod i", em: "sve između." },
-    lead: "Ja sam Ivan Kohan — porijeklom iz Ukrajine, živim u Danskoj. Student, poduzetnik i osnivač WebHjerte. Ovo je moj kutak interneta: odakle sam, šta gradim i šta me pokreće.",
-    cta1: "Pročitaj moju priču",
-    cta2: "Pozdravi",
+    title: { pre: "Zdravo, ja sam Ivan.", em: "Pravim sajtove — i vlastiti biznis." },
+    lead: "Web developer i osnivač WebHjerte, iz Ukrajine, živim u Danskoj. Pomažem malim preduzećima da dobiju brz sajt koji zaista dovodi klijente.",
+    cta1: "O meni",
+    cta2: "Kontakt",
     location: "Iz Ukrajine · živim u Danskoj",
     scroll: "Skroluj",
-    chips: ["Poduzetnik", "Student", "Tech i AI", "Fitness", "Jezici"],
+    chips: ["Web developer", "WebHjerte", "Student", "SEO"],
     facts: [
-      { big: "3", small: "jezika" },
+      { big: "4", small: "jezika" },
       { big: "2", small: "zemlje" },
       { big: "1", small: "studio" },
     ],
   },
-  marquee: [
-    "Poduzetnik",
-    "Student",
-    "Osnivač WebHjerte",
-    "Tech i AI",
-    "Zdrave navike",
-    "Uvijek učim",
-  ],
   about: {
     label: "O meni",
     title: "Rođen u Ukrajini, gradim život u Danskoj.",
@@ -940,7 +859,7 @@ const bs: Dict = {
       { k: "Porijeklom iz", v: "Ukrajine" },
       { k: "Studiram", v: "VIA University College" },
       { k: "Biznis", v: "WebHjerte (registrovan u Danskoj)" },
-      { k: "Jezici", v: "Ukrajinski · Engleski · Danski" },
+      { k: "Jezici", v: "Ukrajinski · Engleski · Danski · Bosanski" },
     ],
     journeyTitle: "Moj put",
     journey: [
@@ -987,6 +906,7 @@ const bs: Dict = {
       { name: "Ukrajinski", level: "Maternji", value: 100 },
       { name: "Engleski", level: "Usavršavam", value: 74 },
       { name: "Danski", level: "Usavršavam", value: 64 },
+      { name: "Bosanski", level: "Početni nivo", value: 22 },
     ],
     interestsTitle: "Interesovanja",
     interests: [
@@ -994,18 +914,8 @@ const bs: Dict = {
       "Zdrava ishrana",
       "Praćenje navika",
       "Tehnologija i budućnost",
-      "Fotografija",
       "Muzika",
       "Minimalistički dizajn",
-      "Produktivnost",
-    ],
-    valuesTitle: "Šta me pokreće",
-    values: [
-      "Otvorenost za novo",
-      "Stalno učenje",
-      "Zdrave navike",
-      "Znatiželja za budućnost",
-      "Poduzetnički duh",
     ],
   },
   webhjerte: {
@@ -1069,7 +979,7 @@ const bs: Dict = {
       },
       {
         q: "Kojim jezicima govori Ivan?",
-        a: "Ukrajinski (maternji), te engleski i danski koje aktivno usavršava.",
+        a: "Ukrajinski (maternji), te engleski i danski koje aktivno usavršava, i bosanski.",
       },
       {
         q: "Koji su Ivanovi ciljevi?",
@@ -1109,8 +1019,6 @@ const bs: Dict = {
     tagline: "Poduzetnik, student i osnivač WebHjerte. Iz Ukrajine, živim u Danskoj.",
     navTitle: "Navigacija",
     socialTitle: "Društvene mreže",
-    madeIn: "Napravljeno sa",
-    madeInIn: "u Danskoj",
     rights: "Sva prava zadržana.",
   },
 };

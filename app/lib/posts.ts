@@ -13,7 +13,6 @@ export type PostText = {
 export type Post = {
   slug: string;
   date: string; // ISO
-  emoji: string;
   minutes: number;
   tags: string[];
   t: Record<BlogLocale, PostText>;
@@ -23,7 +22,6 @@ export const posts: Post[] = [
   {
     slug: "google-search-console-setup",
     date: "2026-11-17",
-    emoji: "🔎",
     minutes: 4,
     tags: ["SEO", "Google Search Console"],
     t: {
@@ -156,168 +154,178 @@ export const posts: Post[] = [
     },
   },
   {
-    slug: "nextjs-seo-checklist",
+    slug: "website-checklist-small-business",
     date: "2026-11-17",
-    emoji: "✅",
-    minutes: 5,
-    tags: ["SEO", "Next.js"],
+    minutes: 4,
+    tags: ["Website", "Small business"],
     t: {
       en: {
-        title: "Next.js SEO checklist for a small-business website",
+        title: "Is your website working for you? A simple checklist",
         description:
-          "Metadata, canonical URLs, sitemap, structured data, hreflang and speed — a practical checklist to make a Next.js website easy for Google to understand.",
+          "Seven quick questions to find out whether your website brings you customers — no technical knowledge needed.",
         intro:
-          "Next.js gives you a strong SEO foundation: server rendering, fast pages and a great metadata API. But you still need to use it well. Here is a checklist you can run through before you launch.",
+          "A website is not finished when it goes online. It is finished when it brings you customers. Here are seven questions you can answer in ten minutes, without any technical knowledge.",
         sections: [
           {
-            h: "Content and structure",
-            list: [
-              "One unique <title> and meta description per page, written for people, not just robots (generateMetadata makes this easy).",
-              "Exactly one <h1> per page and a logical order of <h2>/<h3> headings.",
-              "Descriptive alt text on every meaningful image.",
-              "Real text in the HTML — not only inside images or loaded after a click.",
-            ],
-          },
-          {
-            h: "Technical basics",
-            list: [
-              "Canonical URL on every page so duplicates don't compete.",
-              "app/sitemap.ts and app/robots.ts, and the sitemap submitted in Google Search Console.",
-              "Permanent (308/301) redirects for any old URLs you change.",
-              "Correct status codes: real 404 pages for missing content.",
-            ],
-          },
-          {
-            h: "Multilingual sites",
+            h: "1. Can people tell what you do in five seconds?",
             p: [
-              "If your site has several languages, give each one its own URL (for example /da and /uk), set <html lang>, and add hreflang alternates including x-default so Google serves the right version to the right person.",
+              "Open your homepage on your phone. Within a few seconds a stranger should understand what you offer, who it is for and where you work. If you need a paragraph to explain it, the page needs a clearer headline.",
             ],
           },
           {
-            h: "Structured data",
+            h: "2. Is it easy to contact you?",
             p: [
-              "Add JSON-LD that matches the page: Organization or LocalBusiness for a company, Person for a personal site, FAQPage for real questions, BlogPosting for articles. Only describe what is actually visible on the page, and test with Google's Rich Results Test.",
+              "Your phone number, email or a contact button should be visible without scrolling or searching. Every extra click costs you enquiries.",
             ],
           },
           {
-            h: "Speed and experience",
+            h: "3. Does it load fast on a phone?",
+            p: [
+              "Most visitors arrive on mobile. If a page takes more than a few seconds to appear, many people leave. Very large photos are the most common cause.",
+            ],
+          },
+          {
+            h: "4. Can people find you on Google?",
             list: [
-              "next/image for images and next/font for fonts to avoid layout shifts.",
-              "Keep client-side JavaScript small — render as much as possible on the server.",
-              "Make it work and look good on mobile first.",
-              "Add an Open Graph image so links look good when shared (opengraph-image.tsx).",
+              "Search your business name, and your service plus your town. Do you appear?",
+              "Each page should have its own clear title and a short description.",
+              "If you serve local customers, add your business to Google Business Profile.",
+            ],
+          },
+          {
+            h: "5. Does it build trust?",
+            p: [
+              "Real photos, clear prices or price ranges, customer reviews and your company details make people feel safe to get in touch.",
+            ],
+          },
+          {
+            h: "6. Is it up to date?",
+            p: [
+              "Old opening hours, outdated prices or a copyright year from five years ago make visitors doubt you. Review your content a few times a year.",
+            ],
+          },
+          {
+            h: "7. Do you know how many people visit?",
+            p: [
+              "Free tools such as Google Search Console show which searches bring visitors. Look at them once a month.",
             ],
           },
         ],
-        outro:
-          "After launch, measure with Search Console and PageSpeed Insights, and improve one thing at a time.",
+        outro: "You don't need to fix everything at once. Pick the two weakest points and improve them first.",
       },
       da: {
-        title: "Next.js SEO-tjekliste til en lille virksomheds hjemmeside",
+        title: "Arbejder din hjemmeside for dig? En enkel tjekliste",
         description:
-          "Metadata, canonical-URL'er, sitemap, struktureret data, hreflang og hastighed — en praktisk tjekliste, så Google nemt forstår din Next.js-hjemmeside.",
+          "Syv hurtige spørgsmål, der viser, om din hjemmeside skaffer dig kunder — uden teknisk viden.",
         intro:
-          "Next.js giver et stærkt SEO-fundament: servergengivelse, hurtige sider og et godt metadata-API. Men du skal stadig bruge det rigtigt. Her er en tjekliste, du kan gennemgå før lancering.",
+          "En hjemmeside er ikke færdig, når den går online. Den er færdig, når den skaffer dig kunder. Her er syv spørgsmål, du kan besvare på ti minutter uden teknisk viden.",
         sections: [
           {
-            h: "Indhold og struktur",
-            list: [
-              "Én unik <title> og meta description pr. side, skrevet til mennesker og ikke kun robotter (generateMetadata gør det nemt).",
-              "Præcis én <h1> pr. side og en logisk rækkefølge af <h2>/<h3>.",
-              "Beskrivende alt-tekst på alle meningsfulde billeder.",
-              "Rigtig tekst i HTML — ikke kun i billeder eller indlæst efter et klik.",
-            ],
-          },
-          {
-            h: "Tekniske grundting",
-            list: [
-              "Canonical-URL på hver side, så dubletter ikke konkurrerer.",
-              "app/sitemap.ts og app/robots.ts, og sitemap indsendt i Google Search Console.",
-              "Permanente (308/301) omdirigeringer for gamle URL'er, du ændrer.",
-              "Korrekte statuskoder: rigtige 404-sider til manglende indhold.",
-            ],
-          },
-          {
-            h: "Flersprogede sider",
+            h: "1. Kan folk se, hvad du laver, på fem sekunder?",
             p: [
-              "Har din side flere sprog, så giv hvert sprog sin egen URL (f.eks. /da og /uk), sæt <html lang>, og tilføj hreflang-alternativer inkl. x-default, så Google viser den rigtige version til den rigtige person.",
+              "Åbn din forside på mobilen. Inden for få sekunder skal en fremmed forstå, hvad du tilbyder, hvem det er til, og hvor du arbejder. Skal du bruge et helt afsnit til at forklare det, har siden brug for en tydeligere overskrift.",
             ],
           },
           {
-            h: "Struktureret data",
+            h: "2. Er det nemt at kontakte dig?",
             p: [
-              "Tilføj JSON-LD, der matcher siden: Organization eller LocalBusiness for en virksomhed, Person for en personlig side, FAQPage til rigtige spørgsmål, BlogPosting til artikler. Beskriv kun det, der faktisk kan ses på siden, og test med Googles Rich Results Test.",
+              "Dit telefonnummer, din e-mail eller en kontaktknap skal være synlig uden at scrolle eller lede. Hvert ekstra klik koster dig henvendelser.",
             ],
           },
           {
-            h: "Hastighed og oplevelse",
+            h: "3. Loader den hurtigt på mobilen?",
+            p: [
+              "De fleste besøgende kommer fra mobil. Tager en side mere end et par sekunder at vise, går mange igen. Meget store billeder er den almindeligste årsag.",
+            ],
+          },
+          {
+            h: "4. Kan folk finde dig på Google?",
             list: [
-              "next/image til billeder og next/font til skrifttyper for at undgå layoutspring.",
-              "Hold klient-JavaScript småt — gengiv så meget som muligt på serveren.",
-              "Gør det godt på mobil først.",
-              "Tilføj et Open Graph-billede, så links ser pæne ud, når de deles (opengraph-image.tsx).",
+              "Søg på dit firmanavn og på din ydelse plus din by. Dukker du op?",
+              "Hver side skal have sin egen tydelige titel og en kort beskrivelse.",
+              "Betjener du lokale kunder, så tilføj din virksomhed i Google Business Profile.",
+            ],
+          },
+          {
+            h: "5. Skaber den tillid?",
+            p: [
+              "Rigtige billeder, tydelige priser eller prisintervaller, kundeanmeldelser og dine virksomhedsoplysninger gør, at folk føler sig trygge ved at tage kontakt.",
+            ],
+          },
+          {
+            h: "6. Er den opdateret?",
+            p: [
+              "Gamle åbningstider, forældede priser eller et copyright-årstal fra for fem år siden får besøgende til at tvivle. Gennemgå dit indhold et par gange om året.",
+            ],
+          },
+          {
+            h: "7. Ved du, hvor mange der besøger den?",
+            p: [
+              "Gratis værktøjer som Google Search Console viser, hvilke søgninger der giver besøg. Kig på dem en gang om måneden.",
             ],
           },
         ],
-        outro:
-          "Efter lancering: mål med Search Console og PageSpeed Insights, og forbedr én ting ad gangen.",
+        outro: "Du behøver ikke rette alt på én gang. Vælg de to svageste punkter og forbedr dem først.",
       },
       uk: {
-        title: "SEO-чекліст Next.js для сайту малого бізнесу",
+        title: "Чи працює ваш сайт на вас? Простий чекліст",
         description:
-          "Метадані, canonical, sitemap, структуровані дані, hreflang і швидкість — практичний чекліст, щоб Google легко розумів ваш сайт на Next.js.",
+          "Сім швидких запитань, які покажуть, чи приводить сайт клієнтів, — без технічних знань.",
         intro:
-          "Next.js дає сильну SEO-основу: серверний рендеринг, швидкі сторінки й чудовий API метаданих. Але ним треба вміти користуватися. Ось чекліст, який варто пройти перед запуском.",
+          "Сайт не готовий, коли він з'явився в інтернеті. Він готовий, коли приводить клієнтів. Ось сім запитань, на які можна відповісти за десять хвилин без технічних знань.",
         sections: [
           {
-            h: "Контент і структура",
-            list: [
-              "Один унікальний <title> і meta description на сторінку, написані для людей, а не лише для роботів (generateMetadata це спрощує).",
-              "Рівно один <h1> на сторінку та логічний порядок заголовків <h2>/<h3>.",
-              "Змістовний alt-текст на всіх важливих зображеннях.",
-              "Справжній текст в HTML — а не лише в зображеннях чи після кліку.",
-            ],
-          },
-          {
-            h: "Технічна база",
-            list: [
-              "Canonical-URL на кожній сторінці, щоб дублікати не конкурували.",
-              "app/sitemap.ts і app/robots.ts, а sitemap додано в Google Search Console.",
-              "Постійні (308/301) редиректи для старих адрес, які ви змінюєте.",
-              "Правильні коди відповіді: справжні 404 для неіснуючих сторінок.",
-            ],
-          },
-          {
-            h: "Багатомовні сайти",
+            h: "1. Чи зрозуміло за п'ять секунд, чим ви займаєтесь?",
             p: [
-              "Якщо на сайті кілька мов, дайте кожній власну адресу (наприклад, /da та /uk), задайте <html lang> і додайте hreflang, включно з x-default, щоб Google показував правильну версію правильній людині.",
+              "Відкрийте головну сторінку на телефоні. За кілька секунд незнайомець має зрозуміти, що ви пропонуєте, для кого і де працюєте. Якщо для пояснення потрібен цілий абзац, заголовок треба зробити зрозумілішим.",
             ],
           },
           {
-            h: "Структуровані дані",
+            h: "2. Чи легко з вами зв'язатися?",
             p: [
-              "Додайте JSON-LD, що відповідає сторінці: Organization або LocalBusiness для компанії, Person для персонального сайту, FAQPage для реальних питань, BlogPosting для статей. Описуйте лише те, що справді видно на сторінці, і перевіряйте в Rich Results Test від Google.",
+              "Телефон, email або кнопка зв'язку мають бути видимі без прокручування й пошуків. Кожен зайвий клік коштує вам звернень.",
             ],
           },
           {
-            h: "Швидкість і досвід користувача",
+            h: "3. Чи швидко він вантажиться на телефоні?",
+            p: [
+              "Більшість відвідувачів приходять з мобільного. Якщо сторінка відкривається довше кількох секунд, багато людей йдуть. Найчастіша причина — надто великі фото.",
+            ],
+          },
+          {
+            h: "4. Чи знаходять вас у Google?",
             list: [
-              "next/image для зображень і next/font для шрифтів, щоб уникати стрибків макета.",
-              "Тримайте клієнтський JavaScript малим — рендерте якомога більше на сервері.",
-              "Спершу добре працюйте на мобільному.",
-              "Додайте Open Graph-зображення, щоб посилання гарно виглядали при поширенні (opengraph-image.tsx).",
+              "Введіть назву бізнесу, а також послугу й місто. Чи є ви в результатах?",
+              "Кожна сторінка має мати власний зрозумілий заголовок і короткий опис.",
+              "Якщо працюєте з місцевими клієнтами, додайте бізнес у Google Business Profile.",
+            ],
+          },
+          {
+            h: "5. Чи викликає він довіру?",
+            p: [
+              "Справжні фото, зрозумілі ціни або діапазони, відгуки клієнтів і дані про компанію допомагають людям звернутися без остраху.",
+            ],
+          },
+          {
+            h: "6. Чи він актуальний?",
+            p: [
+              "Старі години роботи, застарілі ціни чи рік копірайту п'ятирічної давності змушують сумніватися. Переглядайте вміст кілька разів на рік.",
+            ],
+          },
+          {
+            h: "7. Чи знаєте ви, скільки людей його відвідує?",
+            p: [
+              "Безкоштовні інструменти, як-от Google Search Console, показують, які запити приводять відвідувачів. Заглядайте туди раз на місяць.",
             ],
           },
         ],
-        outro:
-          "Після запуску вимірюйте через Search Console і PageSpeed Insights та покращуйте по одній речі за раз.",
+        outro: "Не потрібно виправляти все одразу. Оберіть два найслабші місця й покращіть їх першими.",
       },
     },
   },
   {
     slug: "healthy-habits-desk-work",
     date: "2026-11-17",
-    emoji: "💪",
     minutes: 3,
     tags: ["Habits", "Health"],
     t: {

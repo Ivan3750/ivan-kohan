@@ -1,121 +1,114 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { QRCodeCanvas } from "qrcode.react";
-import Image from "next/image";
-import avatar from "@/public/avatar.png";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { QRCodeSVG } from "qrcode.react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { links, SITE_URL } from "@/app/lib/site";
 
-export default function QRSliderPage() {
-  const [index, setIndex] = useState(0);
-const socials = [
-  {
-    name: "Telegram",
-    value: "https://t.me/ivan3750",
-    color: "#27A7E7",
-   },
-  {
-    name: "Instagram",
-    value: "https://instagram.com/ivan.kohan.ua",
-    color: "#E4405F",
-   },
-  {
-    name: "WebHjerte",
-    value: "https://webhjerte.dk",
-    color: "#ffd60a",
-   },
-  {
-    name: "GitHub",
-    value: "https://github.com/Ivan3750",
-    color: "#ffffff",
-   },
-  {
-    name: "LinkedIn",
-    value: "https://www.linkedin.com/in/ivan-kohan/",
-    color: "#0A66C2",
-   }
+const items = [
+  { name: "Website", handle: "ivankohan.com", value: SITE_URL },
+  { name: "WebHjerte", handle: "webhjerte.dk", value: links.webhjerte },
+  { name: "Instagram", handle: "@webhjerte", value: links.instagramBusiness },
+  { name: "LinkedIn", handle: "ivan-kohan", value: links.linkedin },
+  { name: "GitHub", handle: "Ivan3750", value: links.github },
+  { name: "Telegram", handle: "@ivan3750", value: links.telegram },
 ];
-  const social = socials[index];
 
-  const next = () => setIndex((i) => (i + 1) % socials.length);
-  const prev = () =>
-    setIndex((i) => (i - 1 + socials.length) % socials.length);
+export default function QrPage() {
+  const [index, setIndex] = useState(0);
+  const [dir, setDir] = useState(1);
+  const item = items[index];
+
+  const go = (d: number) => {
+    setDir(d);
+    setIndex((i) => (i + d + items.length) % items.length);
+  };
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "ArrowRight") go(1);
+      if (e.key === "ArrowLeft") go(-1);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
 
   return (
-    <main className="min-h-screen bg-ink flex items-center justify-center px-4">
-      <div className="
-        w-full max-w-sm rounded-[28px]
-        bg-white/[0.05] backdrop-blur-xl
-        border border-white/10 p-6 text-center
-      ">
-         <div className="flex justify-center">
-           <div className="w-15 h-15 rounded-full overflow-hidden border border-white/15 bg-ink z-10">
-                        <Image src={avatar} alt="Avatar" className="object-cover w-15 h-15" />
-                      </div>   
-        </div>
+    <main className="grain relative isolate flex min-h-screen items-center justify-center overflow-hidden bg-ink px-4 py-12 text-paper">
+      <div
+        aria-hidden
+        className="absolute left-1/2 top-[-20%] -z-10 h-[40rem] w-[40rem] -translate-x-1/2 rounded-full"
+        style={{ background: "radial-gradient(closest-side, rgba(255,214,10,0.2), transparent 70%)" }}
+      />
 
-        <h1 className="mt-3 text-white font-medium">
-          Ivan Kohan
-        </h1>
-        <p className="text-xs text-neutral-400">
-          Swipe to choose contact
-        </p>
+      <div className="w-full max-w-sm text-center">
+        <span className="font-display mx-auto grid h-14 w-14 place-items-center rounded-full bg-accent text-xl font-bold italic text-ink">
+          IK
+        </span>
+        <h1 className="font-display mt-4 text-3xl font-bold">Ivan Kohan</h1>
+        <p className="label mt-2 text-mist">Scan to connect</p>
 
-         <div className="mt-6 relative flex items-center justify-center">
+        <div className="relative mt-8 flex items-center justify-center">
           <button
-            onClick={prev}
-            className="absolute left-0 text-neutral-400 text-xl px-2"
+            type="button"
+            onClick={() => go(-1)}
+            aria-label="Previous"
+            className="absolute -left-2 z-10 grid h-11 w-11 place-items-center rounded-full border border-white/15 bg-ink/80 transition hover:border-accent hover:text-accent sm:-left-14"
           >
-            ←
+            <ChevronLeft size={20} />
           </button>
 
-          <AnimatePresence mode="wait">
+          <AnimatePresence mode="wait" custom={dir}>
             <motion.div
-              key={social.name}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.2 }}
-              className="flex flex-col items-center gap-3"
+              key={item.name}
+              custom={dir}
+              initial={{ opacity: 0, x: dir * 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: dir * -40 }}
+              transition={{ duration: 0.25 }}
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={0.4}
+              onDragEnd={(_, info) => {
+                if (info.offset.x < -60) go(1);
+                else if (info.offset.x > 60) go(-1);
+              }}
+              className="w-64 cursor-grab touch-pan-y rounded-3xl bg-paper p-6 text-ink active:cursor-grabbing"
             >
-              <div className="rounded-xl bg-black/40 p-4">
-                <QRCodeCanvas
-                  value={social.value}
-                  size={180}
-                  fgColor={social.color}
-                  bgColor="transparent"
-                  level="H"
-                />
-              </div>
-
-              <div className="text-white text-sm flex items-center gap-2">
-                 {social.name}
-              </div>
+              <QRCodeSVG value={item.value} size={208} bgColor="#f6f3ea" fgColor="#0f0f0e" level="M" className="h-auto w-full" />
+              <p className="font-display mt-5 text-xl font-bold">{item.name}</p>
+              <p className="text-sm text-graphite">{item.handle}</p>
             </motion.div>
           </AnimatePresence>
 
           <button
-            onClick={next}
-            className="absolute right-0 text-neutral-400 text-xl px-2"
+            type="button"
+            onClick={() => go(1)}
+            aria-label="Next"
+            className="absolute -right-2 z-10 grid h-11 w-11 place-items-center rounded-full border border-white/15 bg-ink/80 transition hover:border-accent hover:text-accent sm:-right-14"
           >
-            →
+            <ChevronRight size={20} />
           </button>
         </div>
 
-         <div className="mt-4 flex justify-center gap-2">
-          {socials.map((_, i) => (
-            <span
-              key={i}
-              className={`w-2 h-2 rounded-full ${
-                i === index ? "bg-accent" : "bg-white/20"
-              }`}
+        <div className="mt-6 flex justify-center gap-2" role="tablist" aria-label="QR codes">
+          {items.map((it, i) => (
+            <button
+              key={it.name}
+              type="button"
+              role="tab"
+              aria-selected={i === index}
+              aria-label={it.name}
+              onClick={() => {
+                setDir(i > index ? 1 : -1);
+                setIndex(i);
+              }}
+              className={`h-2.5 rounded-full transition-all ${i === index ? "w-6 bg-accent" : "w-2.5 bg-white/20 hover:bg-white/40"}`}
             />
           ))}
         </div>
-
-        <p className="mt-4 text-[11px] text-neutral-500">
-          Just swipe & scan  
-        </p>
+        <p className="mt-5 text-xs text-mist">Swipe or use arrow keys</p>
       </div>
     </main>
   );

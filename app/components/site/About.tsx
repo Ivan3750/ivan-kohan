@@ -5,7 +5,6 @@ import { motion, useScroll, useTransform, type MotionValue } from "framer-motion
 import type { Dict } from "@/app/lib/dictionary";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { factEmoji, journeyEmoji } from "@/app/lib/emoji";
 import { Reveal, SplitWords, Parallax } from "./motion";
 
 export default function About({
@@ -45,12 +44,9 @@ export default function About({
             <Reveal delay={0.1}>
               <h3 className="label relative text-accent-deep">{dict.factsTitle}</h3>
               <dl className="relative mt-4 divide-y divide-ink/15 border-y border-ink/15 bg-paper/80 backdrop-blur-sm">
-                {dict.facts.map((f, i) => (
+                {dict.facts.map((f) => (
                   <div key={f.k} className="grid grid-cols-[8rem_1fr] gap-4 py-5 sm:grid-cols-[10rem_1fr]">
-                    <dt className="label text-graphite">
-                      <span aria-hidden className="mr-2 text-base normal-case tracking-normal">{factEmoji[i]}</span>
-                      {f.k}
-                    </dt>
+                    <dt className="label text-graphite">{f.k}</dt>
                     <dd className="font-display text-lg font-medium">{f.v}</dd>
                   </div>
                 ))}
@@ -100,10 +96,7 @@ function Journey({ title, items }: { title: string; items: Dict["about"]["journe
               >
                 <span className={`h-2 w-2 rounded-full sm:h-3 sm:w-3 ${i === items.length - 1 ? "dot-live bg-accent" : "bg-ink"}`} />
               </span>
-              <p className="label text-accent-deep">
-                <span aria-hidden className="mr-2 text-base normal-case tracking-normal">{journeyEmoji[i]}</span>
-                {it.tag}
-              </p>
+              <p className="label text-accent-deep">{it.tag}</p>
               <h4 className="font-display mt-2 text-2xl font-bold sm:text-4xl">{it.title}</h4>
               <p className="mt-2 max-w-xl text-lg text-graphite">{it.text}</p>
             </Reveal>

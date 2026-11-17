@@ -23,7 +23,7 @@ export function siteGraph(lang: Locale, dict: Dict): object[] {
       jobTitle: "Entrepreneur and founder of WebHjerte",
       description: dict.meta.ogDescription,
       worksFor: { "@id": orgId },
-      knowsLanguage: ["uk", "en", "da"],
+      knowsLanguage: ["uk", "en", "da", "bs"],
       knowsAbout: [
         "Entrepreneurship",
         "Web development",
@@ -33,7 +33,7 @@ export function siteGraph(lang: Locale, dict: Dict): object[] {
         "Fitness and healthy habits",
         "Languages",
       ],
-      sameAs: [links.linkedin, links.instagram, links.instagramBusiness, links.github, links.webhjerte, links.telegram],
+      sameAs: [links.linkedin, links.instagram, links.instagramBusiness, links.github, links.webhjerte],
     },
     {
       "@type": "ProfessionalService",

@@ -2,7 +2,6 @@ import type { Post, BlogLocale } from "./posts";
 
 export type BlogCardItem = {
   slug: string;
-  emoji: string;
   date: string;
   dateLabel: string;
   minutes: number;
@@ -14,7 +13,6 @@ export type BlogCardItem = {
 export function toCardItems(posts: Post[], lang: BlogLocale, dateFmt: (iso: string) => string): BlogCardItem[] {
   return posts.map((p) => ({
     slug: p.slug,
-    emoji: p.emoji,
     date: p.date,
     dateLabel: dateFmt(p.date),
     minutes: p.minutes,

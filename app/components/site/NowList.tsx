@@ -1,7 +1,6 @@
 "use client";
 
 import { Reveal } from "./motion";
-import { nowEmoji } from "@/app/lib/emoji";
 
 export default function NowList({
   updated,
@@ -24,9 +23,7 @@ export default function NowList({
             <Reveal as="li" key={it.label} delay={i * 0.05}>
               <div className="group grid items-baseline gap-3 py-8 transition-all hover:bg-accent/30 hover:px-4 sm:grid-cols-[16rem_1fr] sm:gap-10">
                 <h2 className="font-display flex items-center gap-4 text-2xl font-bold sm:text-3xl">
-                  <span aria-hidden className="text-3xl transition-transform duration-500 group-hover:-rotate-12 group-hover:scale-125">
-                    {nowEmoji[i]}
-                  </span>
+                  <span className="label text-accent-deep">0{i + 1}</span>
                   {it.label}
                 </h2>
                 <p className="text-xl leading-relaxed text-graphite">{it.text}</p>

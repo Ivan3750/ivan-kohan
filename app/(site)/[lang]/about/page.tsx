@@ -36,7 +36,7 @@ export default async function AboutPage({ params }: Props) {
         ]}
       />
       <main id="main">
-        <PageHeader label={d.nav.about} title={d.pages.about.title} intro={d.pages.about.intro} emoji="🙋" watermark="About" />
+        <PageHeader label={d.nav.about} title={d.pages.about.title} intro={d.pages.about.intro} watermark="About" />
         <About dict={d.about} />
         <Skills dict={d.skills} />
         <Faq dict={d.faq} />

@@ -18,7 +18,7 @@ export default function ContactBand({
   return (
     <section className="grain relative isolate overflow-hidden bg-accent text-ink">
       <div className="mx-auto max-w-7xl px-5 py-24 sm:px-8 sm:py-32">
-        <p className="label">👋 {emailLabel}</p>
+        <p className="label">{emailLabel}</p>
         <h2 className="font-display mt-6 max-w-4xl text-[clamp(2.4rem,7vw,6.4rem)] font-bold leading-[1]">
           <SplitWords text={band.title} />
         </h2>

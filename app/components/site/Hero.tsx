@@ -6,7 +6,6 @@ import Link from "next/link";
 import { ArrowDown, ArrowUpRight, MapPin } from "lucide-react";
 import type { Dict } from "@/app/lib/dictionary";
 import { socialLinks } from "./Icons";
-import { heroChipEmoji } from "@/app/lib/emoji";
 import { Magnetic } from "./motion";
 
 const chipPos = [
@@ -121,7 +120,7 @@ export default function Hero({ dict, contactHref }: { dict: Dict; contactHref: s
                 href={contactHref}
                 className="inline-flex items-center gap-2 rounded-full border border-white/20 px-7 py-4 text-sm font-medium transition hover:border-accent hover:text-accent"
               >
-                {hero.cta2} <span aria-hidden>👋</span>
+                {hero.cta2}
               </Link>
             </Magnetic>
           </div>
@@ -131,7 +130,7 @@ export default function Hero({ dict, contactHref }: { dict: Dict; contactHref: s
             style={{ "--d": 950 } as React.CSSProperties}
           >
             <ul className="flex items-center gap-2">
-              {socialLinks.slice(0, 5).map(({ id, label, href, Icon }) => (
+              {socialLinks.slice(0, 4).map(({ id, label, href, Icon }) => (
                 <li key={id}>
                   <a
                     href={href}
@@ -180,7 +179,7 @@ export default function Hero({ dict, contactHref }: { dict: Dict; contactHref: s
                   style={{ fontFamily: "var(--font-mono)" }}
                 >
                   <textPath href="#badge-circle" textLength="486">
-                    IVAN KOHAN · FOUNDER · STUDENT · BUILDER ·
+                    IVAN KOHAN · WEB DEVELOPER · WEBHJERTE ·
                   </textPath>
                 </text>
               </svg>
@@ -191,7 +190,7 @@ export default function Hero({ dict, contactHref }: { dict: Dict; contactHref: s
           </motion.div>
 
           {hero.chips.map((t, i) => (
-            <ChipLayer key={t} text={t} emoji={heroChipEmoji[i]} pos={chipPos[i % chipPos.length]} progress={scrollYProgress} />
+            <ChipLayer key={t} text={t} pos={chipPos[i % chipPos.length]} progress={scrollYProgress} />
           ))}
         </motion.div>
       </div>
@@ -224,12 +223,10 @@ export default function Hero({ dict, contactHref }: { dict: Dict; contactHref: s
 
 function ChipLayer({
   text,
-  emoji,
   pos,
   progress,
 }: {
   text: string;
-  emoji: string;
   pos: (typeof chipPos)[number];
   progress: ReturnType<typeof useScroll>["scrollYProgress"];
 }) {
@@ -240,7 +237,7 @@ function ChipLayer({
         className="float label inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-white/15 bg-ink/70 px-4 py-2 text-paper backdrop-blur-md"
         style={{ "--d": pos.d } as React.CSSProperties}
       >
-        <span aria-hidden className="text-sm normal-case">{emoji}</span>
+        <span className="h-2 w-2 rounded-full bg-accent" />
         {text}
       </span>
     </motion.div>

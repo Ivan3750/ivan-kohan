@@ -32,7 +32,7 @@ export default async function NowPage({ params }: Props) {
         ]}
       />
       <main id="main">
-        <PageHeader label={d.nav.now} title={d.pages.now.title} intro={d.pages.now.intro} emoji="⏳" watermark="Now" />
+        <PageHeader label={d.nav.now} title={d.pages.now.title} intro={d.pages.now.intro} watermark="Now" />
         <NowList updated={d.now.updated} items={d.now.items} />
         <ContactBand lang={lang} band={d.home.band} emailLabel={d.contact.emailLabel} />
       </main>

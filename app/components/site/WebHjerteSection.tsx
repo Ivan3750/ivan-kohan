@@ -5,7 +5,6 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight, Instagram } from "lucide-react";
 import type { Dict } from "@/app/lib/dictionary";
 import { links } from "@/app/lib/site";
-import { pointEmoji } from "@/app/lib/emoji";
 import { Reveal, SplitWords, Magnetic } from "./motion";
 import { SectionLabel } from "./About";
 
@@ -70,7 +69,7 @@ export default function WebHjerteSection({ dict, external }: { dict: Dict["webhj
           {dict.points.map((p, i) => (
             <Reveal as="li" key={p.title} delay={i * 0.1} className="rounded-3xl bg-paper p-6 text-ink">
               <p className="font-display text-xl font-bold">
-                <span aria-hidden className="mr-3">{pointEmoji[i]}</span>
+                <span className="label mr-3 text-accent-deep">0{i + 1}</span>
                 {p.title}
               </p>
               <p className="mt-2 leading-relaxed text-graphite">{p.text}</p>

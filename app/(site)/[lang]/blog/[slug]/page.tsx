@@ -70,7 +70,7 @@ export default async function PostPage({ params }: Props) {
         ]}
       />
       <main id="main">
-        <PageHeader label={post.tags.join(" · ")} title={t.title} intro={t.description} emoji={post.emoji} />
+        <PageHeader label={post.tags.join(" · ")} title={t.title} intro={t.description} />
 
         <article className="relative bg-paper text-ink">
           <div className="mx-auto max-w-3xl px-5 py-20 sm:px-8 sm:py-28">
@@ -86,7 +86,7 @@ export default async function PostPage({ params }: Props) {
                 {d.blog.published} <time dateTime={post.date}>{formatDate(post.date, lang)}</time>
               </span>
               <span>
-                ⏱️ {post.minutes} {d.blog.readTime}
+                {post.minutes} {d.blog.readTime}
               </span>
             </p>
 
