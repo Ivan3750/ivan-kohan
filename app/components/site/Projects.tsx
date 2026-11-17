@@ -98,7 +98,7 @@ export default function Projects({ dict, external }: { dict: Dict["projects"]; e
 
           <div className="mx-auto mt-8 w-full max-w-7xl px-5 sm:px-8">
             <div className="h-px w-full bg-white/10">
-              <motion.div style={{ scaleX: bar }} className="h-[3px] origin-left -translate-y-px bg-heart" />
+              <motion.div style={{ scaleX: bar }} className="h-[3px] origin-left -translate-y-px bg-accent" />
             </div>
             <p className="label mt-3 text-mist">{dict.drag} →</p>
           </div>
@@ -113,7 +113,7 @@ export default function Projects({ dict, external }: { dict: Dict["projects"]; e
         <ul className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {more.map((m, i) => (
             <Reveal as="li" key={m.key} delay={(i % 3) * 0.1}>
-              <article className="group overflow-hidden rounded-3xl border border-white/10 bg-ink-2 transition hover:border-heart/60">
+              <article className="group overflow-hidden rounded-3xl border border-white/10 bg-ink-2 transition hover:border-accent/60">
                 <Parallax className="aspect-[16/10] overflow-hidden" speed={18}>
                   <div className="relative h-[120%] w-full -translate-y-[8%]">
                     <Image
@@ -162,7 +162,7 @@ function FlagshipCard({
       target="_blank"
       rel="noopener noreferrer"
       data-cursor={visit}
-      className="group relative flex w-[min(82vw,52rem)] shrink-0 flex-col overflow-hidden rounded-[2rem] border border-white/10 bg-ink-2 transition hover:border-heart/60 sm:flex-row"
+      className="group relative flex w-[min(82vw,52rem)] shrink-0 flex-col overflow-hidden rounded-[2rem] border border-white/10 bg-ink-2 transition hover:border-accent/60 sm:flex-row"
     >
       <div className="relative aspect-[16/11] w-full overflow-hidden bg-ink-3 sm:aspect-auto sm:w-[58%]">
         {f.image ? (
@@ -174,13 +174,13 @@ function FlagshipCard({
 
       <div className="flex flex-1 flex-col justify-between gap-6 p-6 sm:p-8">
         <div>
-          <p className="label text-heart">
+          <p className="label text-accent">
             0{i + 1} · {tag}
           </p>
           <h3 className="font-display mt-4 text-3xl font-bold leading-tight sm:text-4xl">{title}</h3>
           <p className="mt-4 text-sm leading-relaxed text-mist sm:text-base">{text}</p>
         </div>
-        <span className="inline-flex items-center gap-2 text-sm font-semibold text-paper transition group-hover:text-heart">
+        <span className="inline-flex items-center gap-2 text-sm font-semibold text-paper transition group-hover:text-accent">
           {f.display}
           <span className="sr-only">({external})</span>
           <ArrowUpRight size={16} className="transition group-hover:translate-x-1 group-hover:-translate-y-1" />
@@ -192,7 +192,7 @@ function FlagshipCard({
 
 /** Stylised browser mock-up used until a real screenshot is added. */
 function Wireframe({ variant, domain }: { variant: number; domain: string }) {
-  const accents = ["#00a8e8", "#7fd3f5", "#f7f6f6"];
+  const accents = ["#ffd60a", "#ffe97a", "#f6f3ea"];
   const a = accents[variant % 3];
   return (
     <div className="absolute inset-0 flex flex-col p-5 sm:p-6" aria-hidden>

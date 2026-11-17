@@ -64,7 +64,7 @@ export default function Cursor() {
     <>
       <motion.div
         aria-hidden
-        className="pointer-events-none fixed left-0 top-0 z-[100] h-1.5 w-1.5 rounded-full bg-heart"
+        className="pointer-events-none fixed left-0 top-0 z-[100] h-1.5 w-1.5 rounded-full bg-accent"
         style={{ x, y, translateX: "-50%", translateY: "-50%" }}
       />
       <motion.div
@@ -75,9 +75,9 @@ export default function Cursor() {
           width: size,
           height: size,
           backgroundColor:
-            mode === "label" ? "#00a8e8" : mode === "link" ? "rgba(0,168,232,0.18)" : "rgba(0,168,232,0)",
-          borderColor: mode === "label" ? "#00a8e8" : "rgba(0,168,232,0.7)",
-          color: "#1c1e1e",
+            mode === "label" ? "#ffd60a" : mode === "link" ? "rgba(255,214,10,0.18)" : "rgba(255,214,10,0)",
+          borderColor: mode === "label" ? "#ffd60a" : "rgba(255,214,10,0.7)",
+          color: "#0f0f0e",
         }}
         transition={{ type: "spring", stiffness: 300, damping: 26 }}
       >

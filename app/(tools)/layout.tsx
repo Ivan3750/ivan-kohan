@@ -3,7 +3,7 @@ import "../globals.css";
 import { display, body, mono } from "@/app/lib/fonts";
 import { SITE_URL } from "@/app/lib/site";
 
-export const viewport: Viewport = { themeColor: "#1c1e1e", colorScheme: "dark" };
+export const viewport: Viewport = { themeColor: "#0f0f0e", colorScheme: "dark" };
 
 // Utility pages (link-in-bio, QR) — useful for people, not for the search index.
 export const metadata: Metadata = {

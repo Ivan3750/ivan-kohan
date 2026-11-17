@@ -67,7 +67,7 @@ export default function Home() {
   return (
     <main className="relative min-h-screen flex items-center justify-center px-4 py-10 bg-ink overflow-hidden">
       <div className="absolute inset-0 bg-ink" />
-      <div className="absolute top-[-40%] left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-heart/20 blur-[140px]" />
+      <div className="absolute top-[-40%] left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-accent/20 blur-[140px]" />
 
       <div className="relative z-10 w-full max-w-sm rounded-[28px] bg-white/[0.05] backdrop-blur-xl border border-white/10">
 
@@ -106,7 +106,7 @@ export default function Home() {
             className="
               mt-6 flex items-center justify-center gap-2 w-full
               rounded-xl py-3 text-sm font-semibold text-ink
-              bg-heart
+              bg-accent
               hover:bg-paper hover:scale-[1.01]
               active:scale-[0.98]
             "
@@ -148,8 +148,8 @@ export default function Home() {
                   px-2 py-1 rounded-md border
                   ${
                     lang === l
-                      ? "bg-heart text-ink border-transparent"
-                      : "border-white/15 text-neutral-400 hover:border-heart/60"
+                      ? "bg-accent text-ink border-transparent"
+                      : "border-white/15 text-neutral-400 hover:border-accent/60"
                   }
                 `}
               >
@@ -190,7 +190,7 @@ function LinkCard({
           }
         `}
       >
-        <span className="text-heart transition">
+        <span className="text-accent transition">
           {icon}
         </span>
         {title}

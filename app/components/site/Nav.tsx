@@ -7,7 +7,6 @@ import { Menu, X, ArrowUpRight } from "lucide-react";
 import type { Dict } from "@/app/lib/dictionary";
 import { locales, localeMeta, localePath, type Locale } from "@/app/lib/site";
 import { lockScroll } from "@/app/lib/lenis-store";
-import { HeartMark } from "./Heart";
 import { socialLinks } from "./Icons";
 import { EASE } from "./motion";
 
@@ -80,8 +79,8 @@ export default function Nav({
             className="group flex items-center gap-2.5 rounded-full py-1 pl-1 pr-3"
             aria-label={a11y.home}
           >
-            <span className="grid h-9 w-9 place-items-center rounded-full bg-heart text-ink">
-              <HeartMark className="beat h-5 w-5" />
+            <span className="font-display grid h-9 w-9 place-items-center rounded-full bg-accent text-sm font-bold italic text-ink">
+              IK
             </span>
             <span className="font-display hidden whitespace-nowrap text-sm font-medium tracking-tight min-[440px]:inline">Ivan Kohan</span>
           </Link>
@@ -98,7 +97,7 @@ export default function Nav({
                 {active === it.id && (
                   <motion.span
                     layoutId="nav-pill"
-                    className="absolute inset-0 rounded-full bg-heart"
+                    className="absolute inset-0 rounded-full bg-accent"
                     transition={{ type: "spring", stiffness: 400, damping: 32 }}
                   />
                 )}
@@ -111,7 +110,7 @@ export default function Nav({
             <LangSwitch lang={lang} label={a11y.language} />
             <a
               href="#contact"
-              className="hidden items-center gap-1.5 rounded-full bg-paper px-4 py-2 text-sm font-semibold text-ink transition hover:bg-heart sm:inline-flex"
+              className="hidden items-center gap-1.5 rounded-full bg-paper px-4 py-2 text-sm font-semibold text-ink transition hover:bg-accent sm:inline-flex"
             >
               {nav.cta}
               <ArrowUpRight size={15} />
@@ -164,7 +163,7 @@ export default function Nav({
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.25 + i * 0.06, duration: 0.7, ease: EASE }}
                 >
-                  <span className="label text-heart">0{i + 1}</span>
+                  <span className="label text-accent">0{i + 1}</span>
                   {it.label}
                 </motion.a>
               ))}

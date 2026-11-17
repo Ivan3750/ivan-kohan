@@ -7,10 +7,10 @@ import { SplitWords, Reveal } from "./motion";
 import { SectionLabel } from "./About";
 
 const skins = [
-  "bg-heart text-ink",
+  "bg-accent text-ink",
   "bg-paper text-ink",
   "bg-ink-3 text-paper border border-white/10",
-  "bg-heart-soft text-ink",
+  "bg-accent-soft text-ink",
 ];
 
 export default function Services({ dict }: { dict: Dict["services"] }) {

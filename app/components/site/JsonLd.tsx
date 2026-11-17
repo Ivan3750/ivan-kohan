@@ -27,12 +27,6 @@ export default function JsonLd({ lang, dict }: { lang: Locale; dict: Dict }) {
       email: `mailto:${links.email}`,
       jobTitle: "Web Developer",
       description: dict.meta.ogDescription,
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "Horsens",
-        addressCountry: "DK",
-      },
-      nationality: { "@type": "Country", name: "Ukraine" },
       worksFor: { "@id": orgId },
       knowsLanguage: ["uk", "en", "da", "bs"],
       knowsAbout: [

@@ -22,7 +22,7 @@ const socials = [
   {
     name: "WebHjerte",
     value: "https://webhjerte.dk",
-    color: "#00a8e8",
+    color: "#ffd60a",
    },
   {
     name: "GitHub",
@@ -107,7 +107,7 @@ const socials = [
             <span
               key={i}
               className={`w-2 h-2 rounded-full ${
-                i === index ? "bg-heart" : "bg-white/20"
+                i === index ? "bg-accent" : "bg-white/20"
               }`}
             />
           ))}

@@ -18,7 +18,7 @@ export function generateStaticParams() {
 }
 
 export const viewport: Viewport = {
-  themeColor: "#1c1e1e",
+  themeColor: "#0f0f0e",
   colorScheme: "dark",
   width: "device-width",
   initialScale: 1,
@@ -66,7 +66,7 @@ export default async function RootLayout({
         <Providers>
           <a
             href="#main"
-            className="fixed left-4 top-4 z-[200] -translate-y-24 rounded-full bg-heart px-5 py-3 text-sm font-semibold text-ink transition focus:translate-y-0"
+            className="fixed left-4 top-4 z-[200] -translate-y-24 rounded-full bg-accent px-5 py-3 text-sm font-semibold text-ink transition focus:translate-y-0"
           >
             {dict.a11y.skip}
           </a>

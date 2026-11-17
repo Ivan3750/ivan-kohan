@@ -7,8 +7,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: "Web developer from Ukraine in Denmark. Founder of WebHjerte.",
     start_url: "/",
     display: "standalone",
-    background_color: "#1c1e1e",
-    theme_color: "#1c1e1e",
+    background_color: "#0f0f0e",
+    theme_color: "#0f0f0e",
     icons: [{ src: "/icon.svg", sizes: "any", type: "image/svg+xml" }],
   };
 }

@@ -4,7 +4,6 @@ import { useRef } from "react";
 import { motion, useMotionValue, useScroll, useSpring, useTransform } from "framer-motion";
 import { ArrowDown, ArrowUpRight, MapPin } from "lucide-react";
 import type { Dict } from "@/app/lib/dictionary";
-import { HeartMark, EcgLine } from "./Heart";
 import { socialLinks } from "./Icons";
 import { Magnetic } from "./motion";
 
@@ -25,12 +24,11 @@ export default function Hero({ dict }: { dict: Dict }) {
   const gridY = useTransform(scrollYProgress, [0, 1], [0, 160]);
   const wordX = useTransform(scrollYProgress, [0, 1], ["0%", "-22%"]);
   const wordY = useTransform(scrollYProgress, [0, 1], [0, 120]);
-  const heartY = useTransform(scrollYProgress, [0, 1], [0, -140]);
-  const heartRot = useTransform(scrollYProgress, [0, 1], [0, 14]);
-  const heartScale = useTransform(scrollYProgress, [0, 1], [1, 0.82]);
+  const discY = useTransform(scrollYProgress, [0, 1], [0, -140]);
+  const discRot = useTransform(scrollYProgress, [0, 1], [0, 14]);
+  const discScale = useTransform(scrollYProgress, [0, 1], [1, 0.82]);
   const copyY = useTransform(scrollYProgress, [0, 1], [0, 90]);
   const copyOpacity = useTransform(scrollYProgress, [0, 0.75], [1, 0]);
-  const ecgY = useTransform(scrollYProgress, [0, 1], [0, -60]);
 
   // pointer-follow glow + mouse parallax
   const mx = useMotionValue(0);
@@ -62,7 +60,7 @@ export default function Hero({ dict }: { dict: Dict }) {
           left: glowX,
           top: glowY,
           background:
-            "radial-gradient(closest-side, rgba(0,168,232,0.30), rgba(0,168,232,0.08) 55%, transparent 75%)",
+            "radial-gradient(closest-side, rgba(255,214,10,0.30), rgba(255,214,10,0.08) 55%, transparent 75%)",
         }}
       />
       <motion.div
@@ -73,13 +71,6 @@ export default function Hero({ dict }: { dict: Dict }) {
         KOHAN · KOHAN
       </motion.div>
 
-      <motion.div
-        aria-hidden
-        style={{ y: ecgY }}
-        className="pointer-events-none absolute inset-x-0 bottom-[5.5rem] -z-10 h-20 text-heart/70"
-      >
-        <EcgLine className="h-full w-full" />
-      </motion.div>
 
       <div className="mx-auto grid w-full max-w-7xl flex-1 items-center gap-10 px-5 pb-12 pt-28 sm:px-8 lg:grid-cols-[1.25fr_1fr]">
         {/* copy */}
@@ -88,18 +79,18 @@ export default function Hero({ dict }: { dict: Dict }) {
             className="rise label inline-flex items-center gap-2.5 rounded-full border border-white/12 bg-white/[0.04] px-4 py-2 text-mist"
             style={{ "--d": 100 } as React.CSSProperties}
           >
-            <span className="dot-live h-2 w-2 rounded-full bg-heart" />
+            <span className="dot-live h-2 w-2 rounded-full bg-accent" />
             {hero.status}
           </p>
 
           <h1
-            className="font-display mt-7 text-[clamp(2.5rem,6.6vw,6.6rem)] font-bold leading-[0.98]"
+            className="font-display mt-7 text-[clamp(2.8rem,7.6vw,7.4rem)] font-bold leading-[0.98]"
           >
             <span className="rise block" style={{ "--d": 250 } as React.CSSProperties}>
               {hero.title.pre}
             </span>
             <span className="rise block" style={{ "--d": 420 } as React.CSSProperties}>
-              <span className="text-heart-gradient">{hero.title.em}</span>
+              <span className="text-accent-em">{hero.title.em}</span>
             </span>
           </h1>
 
@@ -117,7 +108,7 @@ export default function Hero({ dict }: { dict: Dict }) {
             <Magnetic>
               <a
                 href="#contact"
-                className="group inline-flex items-center gap-2 rounded-full bg-heart px-7 py-4 text-sm font-semibold text-ink transition hover:bg-paper"
+                className="group inline-flex items-center gap-2 rounded-full bg-accent px-7 py-4 text-sm font-semibold text-ink transition hover:bg-paper"
               >
                 {hero.cta1}
                 <ArrowUpRight size={17} className="transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -126,7 +117,7 @@ export default function Hero({ dict }: { dict: Dict }) {
             <Magnetic>
               <a
                 href="#work"
-                className="inline-flex items-center gap-2 rounded-full border border-white/20 px-7 py-4 text-sm font-medium transition hover:border-heart hover:text-heart"
+                className="inline-flex items-center gap-2 rounded-full border border-white/20 px-7 py-4 text-sm font-medium transition hover:border-accent hover:text-accent"
               >
                 {hero.cta2}
               </a>
@@ -146,7 +137,7 @@ export default function Hero({ dict }: { dict: Dict }) {
                     rel="noopener noreferrer me"
                     aria-label={`${label} (${a11y.external})`}
                     title={label}
-                    className="grid h-11 w-11 place-items-center rounded-full border border-white/12 text-mist transition hover:-translate-y-1 hover:border-heart hover:text-heart"
+                    className="grid h-11 w-11 place-items-center rounded-full border border-white/12 text-mist transition hover:-translate-y-1 hover:border-accent hover:text-accent"
                   >
                     <Icon size={18} />
                   </a>
@@ -154,48 +145,46 @@ export default function Hero({ dict }: { dict: Dict }) {
               ))}
             </ul>
             <p className="inline-flex items-center gap-2 text-sm text-mist">
-              <MapPin size={15} className="text-heart" />
+              <MapPin size={15} className="text-accent" />
               {hero.location}
             </p>
           </div>
         </motion.div>
 
-        {/* heart orb */}
+        {/* disc visual */}
         <motion.div
           aria-hidden
-          style={{ y: heartY, rotate: heartRot, scale: heartScale }}
+          style={{ y: discY, rotate: discRot, scale: discScale }}
           className="relative mx-auto hidden aspect-square w-full max-w-[34rem] lg:block"
         >
           <motion.div style={{ x: tiltX, y: tiltY }} className="absolute inset-0">
             {[0, 800, 1600].map((d) => (
               <span
                 key={d}
-                className="ring-pulse absolute inset-[18%] rounded-full border border-heart/50"
+                className="ring-pulse absolute inset-[14%] rounded-full border border-accent/40"
                 style={{ "--d": d } as React.CSSProperties}
               />
             ))}
-            <div className="beat absolute inset-[16%] drop-shadow-[0_0_80px_rgba(0,168,232,0.55)]">
-              <svg viewBox="0 0 24 24" className="h-full w-full">
+            <div className="absolute inset-[14%] rounded-full bg-accent shadow-[0_0_120px_rgba(255,214,10,0.28)]">
+              <svg viewBox="0 0 200 200" className="spin-slow absolute inset-0 h-full w-full">
                 <defs>
-                  <linearGradient id="heart-g" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0" stopColor="#7fd3f5" />
-                    <stop offset="0.55" stopColor="#00a8e8" />
-                    <stop offset="1" stopColor="#006d9c" />
-                  </linearGradient>
+                  <path id="badge-circle" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0" />
                 </defs>
-                <path
-                  d="M12 21.2 10.6 20C5.4 15.4 2 12.4 2 8.7 2 5.7 4.3 3.5 7.2 3.5c1.7 0 3.3.8 4.8 2.3 1.5-1.5 3.1-2.3 4.8-2.3 2.9 0 5.2 2.2 5.2 5.2 0 3.7-3.4 6.7-8.6 11.3L12 21.2Z"
-                  fill="url(#heart-g)"
-                />
-                <path
-                  d="M6.2 6.3c-1.4.5-2.2 1.8-2.2 3.2"
-                  fill="none"
-                  stroke="#fff"
-                  strokeOpacity=".55"
-                  strokeWidth=".5"
-                  strokeLinecap="round"
-                />
+                <text
+                  fontSize="12.5"
+                  fontWeight="600"
+                  letterSpacing="3"
+                  fill="#0f0f0e"
+                  style={{ fontFamily: "var(--font-mono)" }}
+                >
+                  <textPath href="#badge-circle" textLength="486">
+                    WEB DEVELOPER · NEXT.JS · SEO · META ADS ·
+                  </textPath>
+                </text>
               </svg>
+              <span className="font-display absolute inset-0 grid place-items-center text-[clamp(5rem,11vw,9rem)] font-bold italic leading-none text-ink">
+                IK
+              </span>
             </div>
           </motion.div>
 
@@ -211,14 +200,14 @@ export default function Hero({ dict }: { dict: Dict }) {
           <ul className="flex gap-6 sm:gap-12">
             {hero.facts.map((f) => (
               <li key={f.small}>
-                <p className="font-display text-xl font-bold text-heart sm:text-3xl">{f.big}</p>
+                <p className="font-display text-xl font-bold text-accent sm:text-3xl">{f.big}</p>
                 <p className="label mt-1 text-[0.62rem] text-mist sm:text-[0.7rem]">{f.small}</p>
               </li>
             ))}
           </ul>
           <a
             href="#about"
-            className="label hidden items-center gap-3 text-mist transition hover:text-heart sm:inline-flex"
+            className="label hidden items-center gap-3 text-mist transition hover:text-accent sm:inline-flex"
           >
             {hero.scroll}
             <span className="grid h-10 w-10 place-items-center rounded-full border border-white/15">
@@ -245,7 +234,7 @@ function ChipLayer({
         className="float label inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-white/15 bg-ink/70 px-4 py-2 text-paper backdrop-blur-md"
         style={{ "--d": chip.d } as React.CSSProperties}
       >
-        <HeartMark className="h-3 w-3 text-heart" />
+        <span className="h-2 w-2 rounded-full bg-accent" />
         {chip.t}
       </span>
     </motion.div>

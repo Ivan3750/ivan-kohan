@@ -36,7 +36,7 @@ export default function Faq({ dict }: { dict: Dict["faq"] }) {
                     <span className="font-display text-lg font-medium sm:text-2xl">{it.q}</span>
                     <span
                       className={`grid h-10 w-10 shrink-0 place-items-center rounded-full border border-ink/20 transition duration-500 ${
-                        isOpen ? "rotate-45 bg-heart border-heart" : ""
+                        isOpen ? "rotate-45 bg-accent border-accent" : ""
                       }`}
                     >
                       <Plus size={18} />

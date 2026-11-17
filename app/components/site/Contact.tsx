@@ -50,7 +50,7 @@ export default function Contact({
   }
 
   const input =
-    "w-full rounded-2xl border border-white/12 bg-white/[0.04] px-5 py-4 text-base text-paper placeholder:text-graphite focus:border-heart focus:bg-white/[0.07] focus:outline-none transition";
+    "w-full rounded-2xl border border-white/12 bg-white/[0.04] px-5 py-4 text-base text-paper placeholder:text-graphite focus:border-accent focus:bg-white/[0.07] focus:outline-none transition";
 
   return (
     <section id="contact" ref={ref} className="grain relative isolate overflow-hidden bg-ink text-paper">
@@ -63,7 +63,7 @@ export default function Contact({
         aria-hidden
         style={{
           y: glowY,
-          background: "radial-gradient(closest-side, rgba(0,168,232,0.28), transparent 72%)",
+          background: "radial-gradient(closest-side, rgba(255,214,10,0.28), transparent 72%)",
         }}
         className="absolute left-1/2 top-0 -z-10 h-[70vmax] w-[70vmax] -translate-x-1/2 rounded-full"
       />
@@ -76,7 +76,7 @@ export default function Contact({
             <SplitWords text={dict.title.pre} />
           </span>
           <span className="block">
-            <SplitWords text={dict.title.em} className="text-heart-gradient" delay={0.2} />
+            <SplitWords text={dict.title.em} className="text-accent-em" delay={0.2} />
           </span>
         </h2>
 
@@ -90,7 +90,7 @@ export default function Contact({
             <a
               href={`mailto:${links.email}`}
               data-cursor="Email"
-              className="font-display group inline-flex max-w-full items-center gap-3 break-all text-[clamp(1.4rem,4.4vw,3.6rem)] font-bold underline decoration-heart decoration-2 underline-offset-[0.3em] transition hover:text-heart"
+              className="font-display group inline-flex max-w-full items-center gap-3 break-all text-[clamp(1.4rem,4.4vw,3.6rem)] font-bold underline decoration-accent decoration-2 underline-offset-[0.3em] transition hover:text-accent"
             >
               {links.email}
               <ArrowUpRight className="h-[0.8em] w-[0.8em] shrink-0 transition group-hover:translate-x-1 group-hover:-translate-y-1" />
@@ -103,13 +103,13 @@ export default function Contact({
             <div className="rounded-[2rem] border border-white/10 bg-white/[0.03] p-6 backdrop-blur sm:p-10">
               {status === "sent" ? (
                 <div className="grid place-items-center py-14 text-center" role="status">
-                  <CheckCircle2 size={52} className="text-heart" />
+                  <CheckCircle2 size={52} className="text-accent" />
                   <h3 className="font-display mt-6 text-3xl font-bold">{f.sentTitle}</h3>
                   <p className="mt-3 max-w-sm text-mist">{f.sentText}</p>
                   <button
                     type="button"
                     onClick={() => setStatus("idle")}
-                    className="mt-8 rounded-full border border-white/20 px-6 py-3 text-sm transition hover:border-heart hover:text-heart"
+                    className="mt-8 rounded-full border border-white/20 px-6 py-3 text-sm transition hover:border-accent hover:text-accent"
                   >
                     {f.again}
                   </button>
@@ -140,12 +140,12 @@ export default function Contact({
                   </div>
 
                   {status === "invalid" && (
-                    <p role="alert" className="text-sm text-heart-soft">
+                    <p role="alert" className="text-sm text-accent-soft">
                       {f.invalid}
                     </p>
                   )}
                   {status === "error" && (
-                    <p role="alert" className="text-sm text-heart-soft">
+                    <p role="alert" className="text-sm text-accent-soft">
                       {f.error}{" "}
                       <a className="underline" href={`mailto:${links.email}`}>
                         {links.email}
@@ -156,7 +156,7 @@ export default function Contact({
                   <button
                     type="submit"
                     disabled={status === "sending"}
-                    className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-heart px-8 py-4 text-sm font-semibold text-ink transition hover:bg-paper disabled:opacity-60 sm:w-auto"
+                    className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-accent px-8 py-4 text-sm font-semibold text-ink transition hover:bg-paper disabled:opacity-60 sm:w-auto"
                   >
                     <Send size={16} className="transition group-hover:translate-x-1" />
                     {status === "sending" ? f.sending : f.send}
@@ -180,7 +180,7 @@ export default function Contact({
                       className="group flex items-center justify-between gap-4 py-5 transition hover:pl-3"
                     >
                       <span className="flex items-center gap-4">
-                        <span className="grid h-11 w-11 place-items-center rounded-full border border-white/15 transition group-hover:border-heart group-hover:bg-heart group-hover:text-ink">
+                        <span className="grid h-11 w-11 place-items-center rounded-full border border-white/15 transition group-hover:border-accent group-hover:bg-accent group-hover:text-ink">
                           <Icon size={18} />
                         </span>
                         <span>
@@ -189,7 +189,7 @@ export default function Contact({
                         </span>
                       </span>
                       <span className="sr-only">({external})</span>
-                      <ArrowUpRight size={18} className="text-mist transition group-hover:text-heart" />
+                      <ArrowUpRight size={18} className="text-mist transition group-hover:text-accent" />
                     </a>
                   </li>
                 ))}
