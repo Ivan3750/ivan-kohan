@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { locales, localeMeta, localeUrl, SITE_URL } from "@/app/lib/site";
+import { publicLocales as locales, localeMeta, localeUrl, SITE_URL } from "@/app/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const languages: Record<string, string> = Object.fromEntries(

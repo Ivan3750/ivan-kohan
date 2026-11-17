@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowUp } from "lucide-react";
 import type { Dict } from "@/app/lib/dictionary";
-import { locales, localeMeta, localePath, type Locale } from "@/app/lib/site";
+import { publicLocales, localeMeta, localePath, type Locale } from "@/app/lib/site";
 import { socialLinks } from "./Icons";
 
 export default function Footer({ dict, lang }: { dict: Dict; lang: Locale }) {
@@ -18,9 +18,9 @@ export default function Footer({ dict, lang }: { dict: Dict; lang: Locale }) {
   const nav = [
     ["about", dict.nav.about],
     ["services", dict.nav.services],
+    ["skills", dict.nav.skills],
     ["webhjerte", dict.nav.webhjerte],
     ["work", dict.nav.work],
-    ["skills", dict.nav.skills],
     ["faq", "FAQ"],
     ["contact", dict.nav.contact],
   ] as const;
@@ -83,7 +83,7 @@ export default function Footer({ dict, lang }: { dict: Dict; lang: Locale }) {
           </p>
           <div className="flex items-center gap-4">
             <nav aria-label={dict.a11y.language} className="flex gap-3">
-              {locales.map((l) => (
+              {publicLocales.map((l) => (
                 <Link
                   key={l}
                   href={localePath(l)}
@@ -95,6 +95,16 @@ export default function Footer({ dict, lang }: { dict: Dict; lang: Locale }) {
                   {localeMeta[l].native}
                 </Link>
               ))}
+              <Link
+                href={localePath("bs")}
+                hrefLang="bs"
+                lang="bs"
+                aria-current={lang === "bs" ? "true" : undefined}
+                title="Bosanski"
+                className={`text-xs ${lang === "bs" ? "text-accent" : "text-mist/40 transition hover:text-mist"}`}
+              >
+                bs
+              </Link>
             </nav>
             <a
               href="#top"

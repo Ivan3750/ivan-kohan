@@ -44,8 +44,45 @@ export default function About({ dict }: { dict: Dict["about"] }) {
             </Reveal>
           </div>
         </div>
+
+        <Journey title={dict.journeyTitle} items={dict.journey} />
       </div>
     </section>
+  );
+}
+
+function Journey({ title, items }: { title: string; items: Dict["about"]["journey"] }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start 0.7", "end 0.6"] });
+  const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
+
+  return (
+    <div className="mt-32">
+      <h3 className="font-display text-3xl font-bold sm:text-5xl">{title}</h3>
+      <div ref={ref} className="relative mt-14 pl-10 sm:pl-16">
+        <span aria-hidden className="absolute bottom-2 left-[11px] top-2 w-px bg-ink/15 sm:left-[19px]" />
+        <motion.span
+          aria-hidden
+          style={{ scaleY }}
+          className="absolute bottom-2 left-[10px] top-2 w-[3px] origin-top rounded-full bg-accent sm:left-[18px]"
+        />
+        <ol className="space-y-12">
+          {items.map((it, i) => (
+            <Reveal as="li" key={it.title} delay={0.05} className="relative">
+              <span
+                aria-hidden
+                className="absolute -left-[38px] top-2 grid h-6 w-6 place-items-center rounded-full border-2 border-ink bg-paper sm:-left-[58px] sm:h-8 sm:w-8"
+              >
+                <span className={`h-2 w-2 rounded-full sm:h-3 sm:w-3 ${i === items.length - 1 ? "dot-live bg-accent" : "bg-ink"}`} />
+              </span>
+              <p className="label text-accent-deep">{it.tag}</p>
+              <h4 className="font-display mt-2 text-2xl font-bold sm:text-4xl">{it.title}</h4>
+              <p className="mt-2 max-w-xl text-lg text-graphite">{it.text}</p>
+            </Reveal>
+          ))}
+        </ol>
+      </div>
+    </div>
   );
 }
 

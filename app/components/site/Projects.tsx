@@ -5,13 +5,6 @@ import Image, { type StaticImageData } from "next/image";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import type { Dict } from "@/app/lib/dictionary";
-import pizzle from "@/app/assets/cases/PizzleM.png";
-import hireon from "@/app/assets/cases/HireonM.png";
-import workout from "@/app/assets/cases/WorkOutM.png";
-import vzlom from "@/app/assets/cases/Vzlom.png";
-import horse from "@/app/assets/cases/ClubHorseM.png";
-import ukraine from "@/app/assets/cases/UkraineW.png";
-import { Reveal, SplitWords, Parallax } from "./motion";
 import { SectionLabel } from "./About";
 
 type Flagship = {
@@ -26,15 +19,6 @@ const flagships: Flagship[] = [
   { key: "webhjerte", url: "https://webhjerte.dk", display: "webhjerte.dk" },
   { key: "lonbaeks", url: "https://xn--lnbks-ura7j.dk", display: "lønbæks.dk" },
   { key: "veka", url: "https://veka.center", display: "veka.center" },
-];
-
-const more: { key: keyof Dict["projects"]["more"]; title: string; image: StaticImageData }[] = [
-  { key: "pizzle", title: "Pizzle", image: pizzle },
-  { key: "hireon", title: "HireOn", image: hireon },
-  { key: "workout", title: "WorkOut", image: workout },
-  { key: "vzlom", title: "Vzlom", image: vzlom },
-  { key: "clubhorse", title: "Club Horse", image: horse },
-  { key: "ukraine", title: "Ukraine War", image: ukraine },
 ];
 
 export default function Projects({ dict, external }: { dict: Dict["projects"]; external: string }) {
@@ -91,9 +75,6 @@ export default function Projects({ dict, external }: { dict: Dict["projects"]; e
                 />
               );
             })}
-            <div className="grid w-[min(70vw,22rem)] shrink-0 place-items-center rounded-[2rem] border border-dashed border-white/20 p-8 text-center">
-              <p className="font-display text-xl font-medium text-mist">{dict.soon}</p>
-            </div>
           </motion.div>
 
           <div className="mx-auto mt-8 w-full max-w-7xl px-5 sm:px-8">
@@ -105,36 +86,6 @@ export default function Projects({ dict, external }: { dict: Dict["projects"]; e
         </div>
       </div>
 
-      {/* more builds */}
-      <div className="relative mx-auto max-w-7xl px-5 pb-28 pt-12 sm:px-8 sm:pb-40">
-        <h3 className="font-display text-3xl font-bold sm:text-5xl">
-          <SplitWords text={dict.moreTitle} />
-        </h3>
-        <ul className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {more.map((m, i) => (
-            <Reveal as="li" key={m.key} delay={(i % 3) * 0.1}>
-              <article className="group overflow-hidden rounded-3xl border border-white/10 bg-ink-2 transition hover:border-accent/60">
-                <Parallax className="aspect-[16/10] overflow-hidden" speed={18}>
-                  <div className="relative h-[120%] w-full -translate-y-[8%]">
-                    <Image
-                      src={m.image}
-                      alt={`${m.title} — ${dict.more[m.key]}`}
-                      fill
-                      sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw"
-                      className="object-cover transition duration-700 group-hover:scale-105"
-                      placeholder="blur"
-                    />
-                  </div>
-                </Parallax>
-                <div className="p-6">
-                  <h4 className="font-display text-xl font-bold">{m.title}</h4>
-                  <p className="mt-2 text-sm leading-relaxed text-mist">{dict.more[m.key]}</p>
-                </div>
-              </article>
-            </Reveal>
-          ))}
-        </ul>
-      </div>
     </section>
   );
 }

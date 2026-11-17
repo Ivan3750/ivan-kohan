@@ -5,12 +5,12 @@ import Link from "next/link";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import type { Dict } from "@/app/lib/dictionary";
-import { locales, localeMeta, localePath, type Locale } from "@/app/lib/site";
+import { publicLocales, localeMeta, localePath, type Locale } from "@/app/lib/site";
 import { lockScroll } from "@/app/lib/lenis-store";
 import { socialLinks } from "./Icons";
 import { EASE } from "./motion";
 
-const sections = ["about", "services", "work", "skills", "contact"] as const;
+const sections = ["about", "services", "skills", "work", "contact"] as const;
 
 export default function Nav({
   lang,
@@ -193,7 +193,7 @@ export default function Nav({
 function LangSwitch({ lang, label }: { lang: Locale; label: string }) {
   return (
     <nav aria-label={label} className="flex rounded-full border border-white/10 bg-white/[0.04] p-0.5">
-      {locales.map((l) => (
+      {publicLocales.map((l) => (
         <Link
           key={l}
           href={localePath(l)}

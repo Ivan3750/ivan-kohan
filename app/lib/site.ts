@@ -14,6 +14,10 @@ export const localeMeta: Record<
   bs: { label: "BS", native: "Bosanski", og: "bs_BA", hreflang: "bs-BA" },
 };
 
+/** Locales shown in the switcher, sitemap and hreflang. Bosnian stays reachable at /bs but is kept quiet. */
+export const publicLocales: readonly Locale[] = ["en", "da", "uk"];
+export const hiddenLocales: readonly Locale[] = ["bs"];
+
 export function isLocale(value: string): value is Locale {
   return (locales as readonly string[]).includes(value);
 }

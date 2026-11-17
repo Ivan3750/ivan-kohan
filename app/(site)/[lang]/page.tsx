@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getDictionary } from "@/app/lib/dictionary";
-import { isLocale, locales, localeMeta, localeUrl, SITE_URL } from "@/app/lib/site";
+import { isLocale, publicLocales, hiddenLocales, localeMeta, localeUrl, SITE_URL } from "@/app/lib/site";
 import Hero from "@/app/components/site/Hero";
 import Marquee from "@/app/components/site/Marquee";
 import About from "@/app/components/site/About";
@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const d = getDictionary(lang);
 
   const languages: Record<string, string> = Object.fromEntries(
-    locales.map((l) => [localeMeta[l].hreflang, localeUrl(l)]),
+    publicLocales.map((l) => [localeMeta[l].hreflang, localeUrl(l)]),
   );
   languages["x-default"] = SITE_URL;
 
@@ -30,7 +30,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: { absolute: d.meta.title },
     description: d.meta.description,
     keywords: d.meta.keywords,
-    alternates: { canonical: localeUrl(lang), languages },
+    alternates: { canonical: localeUrl(lang), languages: hiddenLocales.includes(lang) ? undefined : languages },
+    robots: hiddenLocales.includes(lang) ? { index: false, follow: true } : undefined,
     openGraph: {
       type: "website",
       siteName: "Ivan Kohan",
@@ -38,7 +39,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: d.meta.ogDescription,
       url: localeUrl(lang),
       locale: localeMeta[lang].og,
-      alternateLocale: locales.filter((l) => l !== lang).map((l) => localeMeta[l].og),
+      alternateLocale: publicLocales.filter((l) => l !== lang).map((l) => localeMeta[l].og),
     },
     twitter: {
       card: "summary_large_image",
@@ -61,8 +62,8 @@ export default async function Home({ params }: Props) {
         <Marquee items={dict.marquee} />
         <About dict={dict.about} />
         <Services dict={dict.services} />
-        <WebHjerteSection dict={dict.webhjerte} external={dict.a11y.external} />
         <Skills dict={dict.skills} />
+        <WebHjerteSection dict={dict.webhjerte} external={dict.a11y.external} />
         <Projects dict={dict.projects} external={dict.a11y.external} />
         <Faq dict={dict.faq} />
         <Contact dict={dict.contact} lang={lang} external={dict.a11y.external} />

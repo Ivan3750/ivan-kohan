@@ -7,12 +7,12 @@ import type { Dict } from "@/app/lib/dictionary";
 import { socialLinks } from "./Icons";
 import { Magnetic } from "./motion";
 
-const chips = [
-  { t: "Next.js", x: "4%", y: "10%", d: 0, depth: -120 },
-  { t: "SEO", x: "78%", y: "2%", d: 600, depth: -200 },
-  { t: "Meta Ads", x: "88%", y: "46%", d: 1200, depth: -90 },
-  { t: "Claude Code", x: "-2%", y: "62%", d: 300, depth: -160 },
-  { t: "Raspberry Pi 5", x: "62%", y: "88%", d: 900, depth: -60 },
+const chipPos = [
+  { x: "4%", y: "10%", d: 0, depth: -120 },
+  { x: "78%", y: "2%", d: 600, depth: -200 },
+  { x: "88%", y: "46%", d: 1200, depth: -90 },
+  { x: "-2%", y: "62%", d: 300, depth: -160 },
+  { x: "62%", y: "88%", d: 900, depth: -60 },
 ];
 
 export default function Hero({ dict }: { dict: Dict }) {
@@ -84,7 +84,7 @@ export default function Hero({ dict }: { dict: Dict }) {
           </p>
 
           <h1
-            className="font-display mt-7 text-[clamp(2.8rem,7.6vw,7.4rem)] font-bold leading-[0.98]"
+            className="font-display mt-7 text-[clamp(2.6rem,5.8vw,6rem)] font-bold leading-[1.02]"
           >
             <span className="rise block" style={{ "--d": 250 } as React.CSSProperties}>
               {hero.title.pre}
@@ -107,7 +107,7 @@ export default function Hero({ dict }: { dict: Dict }) {
           >
             <Magnetic>
               <a
-                href="#contact"
+                href="#about"
                 className="group inline-flex items-center gap-2 rounded-full bg-accent px-7 py-4 text-sm font-semibold text-ink transition hover:bg-paper"
               >
                 {hero.cta1}
@@ -116,7 +116,7 @@ export default function Hero({ dict }: { dict: Dict }) {
             </Magnetic>
             <Magnetic>
               <a
-                href="#work"
+                href="#contact"
                 className="inline-flex items-center gap-2 rounded-full border border-white/20 px-7 py-4 text-sm font-medium transition hover:border-accent hover:text-accent"
               >
                 {hero.cta2}
@@ -178,7 +178,7 @@ export default function Hero({ dict }: { dict: Dict }) {
                   style={{ fontFamily: "var(--font-mono)" }}
                 >
                   <textPath href="#badge-circle" textLength="486">
-                    WEB DEVELOPER · NEXT.JS · SEO · META ADS ·
+                    IVAN KOHAN · FOUNDER · STUDENT · BUILDER ·
                   </textPath>
                 </text>
               </svg>
@@ -188,8 +188,8 @@ export default function Hero({ dict }: { dict: Dict }) {
             </div>
           </motion.div>
 
-          {chips.map((c) => (
-            <ChipLayer key={c.t} chip={c} progress={scrollYProgress} />
+          {hero.chips.map((t, i) => (
+            <ChipLayer key={t} text={t} pos={chipPos[i % chipPos.length]} progress={scrollYProgress} />
           ))}
         </motion.div>
       </div>
@@ -221,21 +221,23 @@ export default function Hero({ dict }: { dict: Dict }) {
 }
 
 function ChipLayer({
-  chip,
+  text,
+  pos,
   progress,
 }: {
-  chip: (typeof chips)[number];
+  text: string;
+  pos: (typeof chipPos)[number];
   progress: ReturnType<typeof useScroll>["scrollYProgress"];
 }) {
-  const y = useTransform(progress, [0, 1], [0, chip.depth]);
+  const y = useTransform(progress, [0, 1], [0, pos.depth]);
   return (
-    <motion.div style={{ y, left: chip.x, top: chip.y }} className="absolute">
+    <motion.div style={{ y, left: pos.x, top: pos.y }} className="absolute">
       <span
         className="float label inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-white/15 bg-ink/70 px-4 py-2 text-paper backdrop-blur-md"
-        style={{ "--d": chip.d } as React.CSSProperties}
+        style={{ "--d": pos.d } as React.CSSProperties}
       >
         <span className="h-2 w-2 rounded-full bg-accent" />
-        {chip.t}
+        {text}
       </span>
     </motion.div>
   );

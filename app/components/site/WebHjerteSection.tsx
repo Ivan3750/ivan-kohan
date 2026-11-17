@@ -31,7 +31,7 @@ export default function WebHjerteSection({ dict, external }: { dict: Dict["webhj
 
       <div className="mx-auto grid max-w-7xl gap-14 px-5 py-28 sm:px-8 sm:py-40 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
         <div>
-          <SectionLabel n="03" text={dict.label} onBlue />
+          <SectionLabel n="04" text={dict.label} onBlue />
           <h2 className="font-display mt-8 text-[clamp(2.2rem,5.4vw,4.8rem)] font-bold leading-[1.04]">
             <SplitWords text={dict.title} />
           </h2>
