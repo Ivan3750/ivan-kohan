@@ -41,7 +41,7 @@ export const links = {
   webhjerte: "https://webhjerte.dk",
 } as const;
 
-export const pageSlugs = ["about", "now", "projects", "contact", "blog"] as const;
+export const pageSlugs = ["contact"] as const;
 export type PageSlug = (typeof pageSlugs)[number];
 
 /** "" = home. Default locale has no prefix: /about, /da/about … */
@@ -56,15 +56,13 @@ export function pageUrl(locale: Locale, slug: string = "") {
   return path === "/" ? SITE_URL : `${SITE_URL}${path}`;
 }
 
-/** Blog exists in public locales only; hidden locales link to the default-language blog. */
-export function navHref(locale: Locale, slug: string) {
-  if (slug === "blog" && hiddenLocales.includes(locale)) return pagePath(defaultLocale, "blog");
-  return pagePath(locale, slug);
+
+/** Language-switch target: same page in the other language. */
+export function switchPath(target: Locale, rest: string) {
+  return pagePath(target, rest);
 }
 
-/** Language-switch target: blog articles only exist in public locales, so fall back to that locale's home. */
-export function switchPath(target: Locale, rest: string) {
-  const hasBlogPost = rest.startsWith("blog/");
-  const blogMissing = (rest === "blog" || hasBlogPost) && hiddenLocales.includes(target);
-  return pagePath(target, blogMissing ? "" : rest);
+/** Link to a page (or home) in a locale. */
+export function navHref(locale: Locale, slug: string) {
+  return pagePath(locale, slug);
 }

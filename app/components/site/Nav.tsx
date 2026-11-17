@@ -12,11 +12,9 @@ import { socialLinks } from "./Icons";
 import { EASE } from "./motion";
 
 const items = [
-  { key: "about", slug: "about" },
-  { key: "now", slug: "now" },
-  { key: "work", slug: "projects" },
-  { key: "blog", slug: "blog" },
-  { key: "contact", slug: "contact" },
+  { key: "story", slug: "", hash: "#story" },
+  { key: "studio", slug: "", hash: "#studio" },
+  { key: "contact", slug: "contact", hash: "" },
 ] as const;
 
 /** "/da/blog/x" -> "blog/x", "/about" -> "about", "/" -> "" */
@@ -89,13 +87,13 @@ export default function Nav({
             {items.map((it) => (
               <Link
                 key={it.key}
-                href={navHref(lang, it.slug)}
-                aria-current={active === it.slug ? "page" : undefined}
+                href={`${navHref(lang, it.slug)}${it.hash}`}
+                aria-current={active === "contact" && it.key === "contact" ? "page" : undefined}
                 className={`relative rounded-full px-4 py-2 text-sm transition-colors ${
-                  active === it.slug ? "text-ink" : "text-mist hover:text-paper"
+                  active === "contact" && it.key === "contact" ? "text-ink" : "text-mist hover:text-paper"
                 }`}
               >
-                {active === it.slug && (
+                {active === "contact" && it.key === "contact" && (
                   <motion.span
                     layoutId="nav-pill"
                     className="absolute inset-0 rounded-full bg-accent"
@@ -161,7 +159,7 @@ export default function Nav({
                   transition={{ delay: 0.25 + i * 0.06, duration: 0.7, ease: EASE }}
                 >
                 <Link
-                  href={navHref(lang, it.slug)}
+                  href={`${navHref(lang, it.slug)}${it.hash}`}
                   onClick={() => setOpen(false)}
                   className="font-display flex items-baseline gap-4 py-2 text-[clamp(2rem,9vw,3.4rem)] font-medium leading-tight"
                 >

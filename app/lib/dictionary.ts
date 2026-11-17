@@ -2,18 +2,16 @@ import type { Locale } from "./site";
 
 const en = {
   meta: {
-    title: "Ivan Kohan — Entrepreneur, Student & Founder of WebHjerte",
+    title: "Ivan Kohan — From Ukraine to Denmark, founder of WebHjerte",
     description:
-      "Ivan Kohan — entrepreneur and student from Ukraine, living in Denmark. Founder of WebHjerte. My story, goals, languages, habits and what I'm building.",
+      "Ivan Kohan's personal site: a short story from Ukraine to Denmark, languages, studies and WebHjerte, a small web studio.",
     ogDescription:
-      "Entrepreneur and student from Ukraine, living in Denmark. Founder of WebHjerte. Story, goals, habits and projects.",
+      "From Ukraine to Denmark — a short life story, and WebHjerte, a small web studio.",
     keywords: [
       "Ivan Kohan",
-      "entrepreneur Denmark",
-      "WebHjerte founder",
       "Ukrainian in Denmark",
-      "student VIA University College",
-      "personal brand",
+      "WebHjerte founder",
+      "personal website",
     ],
   },
   a11y: {
@@ -27,203 +25,44 @@ const en = {
     external: "opens in a new tab",
   },
   nav: {
-    home: "Home",
-    about: "About",
-    now: "Now",
-    work: "Work",
-    blog: "Blog",
+    story: "Story",
+    studio: "Studio",
     contact: "Contact",
     cta: "Say hi",
   },
-  home: {
-    aboutMore: "Read my full story",
-    workMore: "See my work",
-    band: { title: "Got something in mind?", text: "A collaboration, a question or just a hello — I read every message.", cta: "Get in touch" },
-  },
-  pages: {
-    about: { title: "About me", intro: "My story: born in Ukraine, living in Denmark, studying, building WebHjerte and working on myself." },
-    now: { title: "What I'm doing now", intro: "A snapshot of what fills my days right now — studies, business, languages, tech and training." },
-    projects: { title: "Work", intro: "Websites I've built for real businesses, plus my own studio WebHjerte." },
-    contact: { title: "Contact", intro: "Write to me about a collaboration, a question or just to say hi. I reply personally." },
-    blog: { title: "Blog", intro: "Short, practical notes on SEO, healthy habits and building things." },
-  },
-  now: {
-    updated: "Updated November 2026",
-    items: [
-      { label: "Studying", text: "Preparatory course at VIA University College, on the way to Software Engineering." },
-      { label: "Building", text: "WebHjerte: fixed-price websites, SEO and social media for small businesses." },
-      { label: "Learning", text: "Danish and English, a little every day." },
-      { label: "Tinkering with", text: "Raspberry Pi 5, Linux and AI tools — automations and dashboards with Claude Code." },
-      { label: "Training", text: "Strength training, healthy eating and tracking my habits." },
-    ],
-  },
-  blog: {
-    readTime: "min read",
-    back: "All posts",
-    published: "Published",
-    more: "Keep reading",
-  },
   hero: {
-    status: "Open to new things",
-    title: { pre: "Hi, I'm Ivan.", em: "I build websites — and a business." },
-    lead: "Web developer and founder of WebHjerte, from Ukraine and based in Denmark. I help small businesses get a fast website that actually brings customers.",
-    cta1: "About me",
-    cta2: "Get in touch",
-    location: "From Ukraine · living in Denmark",
-    scroll: "Scroll",
-    chips: ["Web developer", "WebHjerte", "Student", "SEO"],
-    facts: [
-      { big: "4", small: "languages" },
-      { big: "2", small: "countries" },
-      { big: "1", small: "studio" },
+    name: "I'm Ivan Kohan.",
+    line: "From Ukraine. Living in Denmark. Still learning, still building.",
+    scroll: "Start the story",
+  },
+  story: {
+    label: "My story",
+    title: "A life in six chapters.",
+    intro: "Not a CV — just the short version of where I come from and where I'm heading.",
+    from: "Ukraine",
+    to: "Denmark",
+    chapters: [
+      { name: "Roots", head: "Born in Ukraine.", text: "Where my language and my culture come from — and where a part of me always stays." },
+      { name: "Crossing", head: "A new home in Denmark.", text: "A new country, a new language, a new way of living. Every day teaches me something." },
+      { name: "Voices", head: "Four languages, one me.", text: "Ukrainian at the core, English and Danish growing every day — and a little Bosnian on the side." },
+      { name: "Books", head: "Back to studying.", text: "An engineering preparatory course: the first step towards Software Engineering." },
+      { name: "Side quest", head: "A small studio.", text: "Along the way I started WebHjerte — a one-person web studio that builds websites for small businesses." },
+      { name: "Next", head: "To be continued.", text: "Software Engineering is next. I'm open to new things — there will be more chapters." },
     ],
   },
-  about: {
-    label: "About",
-    title: "Born in Ukraine, building a life in Denmark.",
-    manifesto:
-      "I'm open to new things, motivated to learn and curious about the future. I want to become an entrepreneur, grow my business and keep getting better — at work, in my health and in the languages I speak.",
-    paragraphs: [
-      "I was born in Ukraine and now live in Horsens, Denmark. I study at VIA University College, where I'm taking a preparatory course for engineering programmes, and I run WebHjerte — my own one-person web studio registered in Denmark.",
-      "My plan: Software Engineering next, entrepreneurship along the way. I care about healthy habits, technology and what comes next — and I try to learn a little every single day.",
-    ],
-    factsTitle: "At a glance",
-    facts: [
-      { k: "Based in", v: "Horsens, Denmark" },
-      { k: "Originally from", v: "Ukraine" },
-      { k: "Studying", v: "VIA University College" },
-      { k: "Business", v: "WebHjerte (registered in Denmark)" },
-      { k: "Languages", v: "Ukrainian · English · Danish · Bosnian" },
-    ],
-    journeyTitle: "The journey",
-    journey: [
-      { tag: "Roots", title: "Ukraine", text: "Where it all started — my language, my culture and a drive to build things." },
-      { tag: "Home now", title: "Denmark", text: "A new life in Horsens, learning Danish and English every single day." },
-      { tag: "Business", title: "WebHjerte", text: "My own web studio: solo, fixed packages, fast delivery." },
-      { tag: "Studies", title: "VIA University College", text: "Preparatory course for engineering programmes." },
-      { tag: "Next", title: "Software Engineering", text: "Going deeper into engineering and business to scale what I'm building." },
-    ],
-  },
-  services: {
-    label: "Focus",
-    title: "What I'm focused on right now.",
-    intro: "Four things that fill my days.",
-    items: [
-      {
-        title: "Entrepreneur",
-        text: "Building WebHjerte — my own studio — and learning what it takes to run a business: clients, marketing, SEO, social media and money.",
-        tags: ["WebHjerte", "Marketing", "SEO", "Business"],
-      },
-      {
-        title: "Student",
-        text: "Taking a preparatory course at VIA University College on the way to Software Engineering.",
-        tags: ["VIA University College", "Engineering", "Software Engineering"],
-      },
-      {
-        title: "Tech & AI",
-        text: "Tinkering with Raspberry Pi 5, Linux and AI tools — building automations, dashboards and workflows with Claude Code.",
-        tags: ["Raspberry Pi 5", "Claude Code", "Linux", "Next.js"],
-      },
-      {
-        title: "Healthy habits",
-        text: "Training, eating well and tracking habits — because energy and discipline carry everything else.",
-        tags: ["Fitness", "Healthy eating", "Habit tracking", "Work–life balance"],
-      },
-    ],
-  },
-  skills: {
-    label: "Life",
-    title: "Beyond the screen.",
-    intro: "The things that shape how I think, work and live.",
-    languagesTitle: "Languages",
-    languages: [
-      { name: "Ukrainian", level: "Native", value: 100 },
-      { name: "English", level: "Improving", value: 74 },
-      { name: "Danish", level: "Improving", value: 64 },
-      { name: "Bosnian", level: "Beginner", value: 22 },
-    ],
-    interestsTitle: "Interests",
-    interests: [
-      "Fitness & strength training",
-      "Healthy eating",
-      "Habit tracking",
-      "Technology & the future",
-      "Music",
-      "Minimal design",
-    ],
-  },
-  webhjerte: {
-    label: "My business",
-    title: "WebHjerte — my studio, my heart.",
-    text: "WebHjerte (Danish for “web heart”) is my own web studio, registered in Denmark. The idea is simple: websites built with care, for people who care about their business.",
-    points: [
-      { title: "Fixed packages", text: "You know the scope and the price before we start." },
-      { title: "Fast delivery", text: "Small, focused projects shipped quickly — not months of meetings." },
-      { title: "One person", text: "You talk to the person who builds your site. Always." },
-    ],
+  studio: {
+    label: "Side quest",
+    title: "WebHjerte — a small web studio.",
+    text: "Along the way I started my own web studio, registered in Denmark. It builds simple, fast websites for small businesses — one project at a time.",
     visit: "Visit webhjerte.dk",
     follow: "@WebHjerte on Instagram",
+    madeTitle: "Made so far",
   },
-  projects: {
-    label: "Work",
-    title: "Things I've built.",
-    intro: "A few websites made for real businesses — fast, clear and easy to find.",
-    visit: "Visit site",
-    drag: "Scroll",
-    flagship: [
-      {
-        key: "webhjerte",
-        tag: "Studio",
-        title: "WebHjerte",
-        text: "My own studio website — minimal, positive and built to earn trust and rank in Danish search.",
-      },
-      {
-        key: "lonbaeks",
-        tag: "Driving school",
-        title: "Lønbæks",
-        text: "Website for a Danish driving school — clear, fast and easy to use on mobile.",
-      },
-      {
-        key: "veka",
-        tag: "Windows",
-        title: "Veka Center",
-        text: "Website for a Ukrainian windows business — product-focused, fast and straightforward.",
-      },
-    ],
+  pages: {
+    contact: { title: "Contact", intro: "Say hi, ask a question or talk about a project. I reply personally." },
   },
-  faq: {
-    label: "FAQ",
-    title: "Good questions.",
-    items: [
-      {
-        q: "Who is Ivan Kohan?",
-        a: "Ivan Kohan is an entrepreneur and student from Ukraine who lives in Horsens, Denmark. He is the founder of WebHjerte (webhjerte.dk), a Danish-registered one-person web studio.",
-      },
-      {
-        q: "Where is Ivan from and where does he live?",
-        a: "Ivan was born in Ukraine and now lives in Horsens, Denmark.",
-      },
-      {
-        q: "What does Ivan study?",
-        a: "Ivan is taking a preparatory course for engineering programmes at VIA University College and plans to continue with Software Engineering.",
-      },
-      {
-        q: "What is WebHjerte?",
-        a: "WebHjerte is Ivan's own web studio, registered in Denmark. It builds Next.js websites for small businesses with fixed-price packages and helps with SEO, Google Search Console, Meta ads and social media content.",
-      },
-      {
-        q: "Which languages does Ivan speak?",
-        a: "Ukrainian (native), English and Danish, which he is actively improving, and some basic Bosnian.",
-      },
-      {
-        q: "What are Ivan's goals?",
-        a: "To become an entrepreneur, grow WebHjerte and move towards software engineering and business — while keeping healthy habits and learning something new every day.",
-      },
-      {
-        q: "How can I contact Ivan?",
-        a: "Use the contact form on this page or write by email. Ivan replies personally in English, Danish or Ukrainian.",
-      },
-    ],
+  home: {
+    band: { title: "Say hi.", text: "A question, a project or just a hello — I read every message.", cta: "Write to me" },
   },
   contact: {
     label: "Contact",
@@ -250,7 +89,7 @@ const en = {
     },
   },
   footer: {
-    tagline: "Entrepreneur, student and founder of WebHjerte. From Ukraine, living in Denmark.",
+    tagline: "From Ukraine, living in Denmark. Founder of WebHjerte.",
     navTitle: "Navigate",
     socialTitle: "Social",
     rights: "All rights reserved.",
@@ -262,18 +101,16 @@ export type Dict = typeof en;
 
 const da: Dict = {
   meta: {
-    title: "Ivan Kohan — Iværksætter, studerende & grundlægger af WebHjerte",
+    title: "Ivan Kohan — fra Ukraine til Danmark, grundlægger af WebHjerte",
     description:
-      "Ivan Kohan — iværksætter og studerende fra Ukraine, bosat i Danmark. Grundlægger af WebHjerte. Min historie, mål, sprog, vaner og det, jeg bygger.",
+      "Ivan Kohans personlige side: en kort historie fra Ukraine til Danmark, sprog, studier og WebHjerte, et lille webstudie.",
     ogDescription:
-      "Iværksætter og studerende fra Ukraine, bosat i Danmark. Grundlægger af WebHjerte. Historie, mål, vaner og projekter.",
+      "Fra Ukraine til Danmark — en kort livshistorie og WebHjerte, et lille webstudie.",
     keywords: [
       "Ivan Kohan",
-      "iværksætter Danmark",
-      "WebHjerte grundlægger",
       "ukrainer i Danmark",
-      "studerende VIA University College",
-      "personligt brand",
+      "WebHjerte grundlægger",
+      "personlig hjemmeside",
     ],
   },
   a11y: {
@@ -287,203 +124,44 @@ const da: Dict = {
     external: "åbner i et nyt faneblad",
   },
   nav: {
-    home: "Forside",
-    about: "Om mig",
-    now: "Nu",
-    work: "Projekter",
-    blog: "Blog",
+    story: "Historie",
+    studio: "Studie",
     contact: "Kontakt",
     cta: "Sig hej",
   },
-  home: {
-    aboutMore: "Læs hele min historie",
-    workMore: "Se mine projekter",
-    band: { title: "Har du noget på hjerte?", text: "Et samarbejde, et spørgsmål eller bare et hej — jeg læser alle beskeder.", cta: "Kom i kontakt" },
-  },
-  pages: {
-    about: { title: "Om mig", intro: "Min historie: født i Ukraine, bosat i Danmark, studerende, bygger WebHjerte og arbejder på mig selv." },
-    now: { title: "Hvad jeg laver nu", intro: "Et øjebliksbillede af, hvad der fylder mine dage lige nu — studie, virksomhed, sprog, tech og træning." },
-    projects: { title: "Projekter", intro: "Hjemmesider jeg har bygget til rigtige virksomheder, samt mit eget studie WebHjerte." },
-    contact: { title: "Kontakt", intro: "Skriv til mig om et samarbejde, et spørgsmål eller bare for at sige hej. Jeg svarer personligt." },
-    blog: { title: "Blog", intro: "Korte, praktiske noter om SEO, sunde vaner og at bygge ting." },
-  },
-  now: {
-    updated: "Opdateret november 2026",
-    items: [
-      { label: "Studerer", text: "Forberedende kursus på VIA University College på vej mod Software Engineering." },
-      { label: "Bygger", text: "WebHjerte: hjemmesider til faste priser, SEO og sociale medier til små virksomheder." },
-      { label: "Lærer", text: "Dansk og engelsk, lidt hver dag." },
-      { label: "Pusler med", text: "Raspberry Pi 5, Linux og AI-værktøjer — automatiseringer og dashboards med Claude Code." },
-      { label: "Træner", text: "Styrketræning, sund mad og tracking af mine vaner." },
-    ],
-  },
-  blog: {
-    readTime: "min. læsning",
-    back: "Alle indlæg",
-    published: "Udgivet",
-    more: "Læs videre",
-  },
   hero: {
-    status: "Åben over for nyt",
-    title: { pre: "Hej, jeg er Ivan.", em: "Jeg bygger hjemmesider — og en virksomhed." },
-    lead: "Webudvikler og grundlægger af WebHjerte, fra Ukraine og bosat i Danmark. Jeg hjælper små virksomheder med en hurtig hjemmeside, der rent faktisk skaffer kunder.",
-    cta1: "Om mig",
-    cta2: "Kontakt mig",
-    location: "Fra Ukraine · bosat i Danmark",
-    scroll: "Scroll",
-    chips: ["Webudvikler", "WebHjerte", "Studerende", "SEO"],
-    facts: [
-      { big: "4", small: "sprog" },
-      { big: "2", small: "lande" },
-      { big: "1", small: "studie" },
+    name: "Jeg er Ivan Kohan.",
+    line: "Fra Ukraine. Bosat i Danmark. Stadig i gang med at lære og bygge.",
+    scroll: "Start historien",
+  },
+  story: {
+    label: "Min historie",
+    title: "Et liv i seks kapitler.",
+    intro: "Ikke et CV — bare kortversionen af, hvor jeg kommer fra, og hvor jeg er på vej hen.",
+    from: "Ukraine",
+    to: "Danmark",
+    chapters: [
+      { name: "Rødder", head: "Født i Ukraine.", text: "Her kommer mit sprog og min kultur fra — og her bliver en del af mig altid." },
+      { name: "Overgang", head: "Et nyt hjem i Danmark.", text: "Et nyt land, et nyt sprog, en ny hverdag. Hver dag lærer jeg noget nyt." },
+      { name: "Stemmer", head: "Fire sprog, ét jeg.", text: "Ukrainsk i kernen, engelsk og dansk der vokser hver dag — og lidt bosnisk ved siden af." },
+      { name: "Bøger", head: "Tilbage til studierne.", text: "Et forberedende ingeniørkursus: det første skridt mod Software Engineering." },
+      { name: "Sidemission", head: "Et lille studie.", text: "Undervejs startede jeg WebHjerte — et webstudie med én mand, der bygger hjemmesider til små virksomheder." },
+      { name: "Næste", head: "Fortsættelse følger.", text: "Software Engineering er næste skridt. Jeg er åben over for nyt — der kommer flere kapitler." },
     ],
   },
-  about: {
-    label: "Om mig",
-    title: "Født i Ukraine, i gang med at bygge et liv i Danmark.",
-    manifesto:
-      "Jeg er åben over for nyt, motiveret for at lære og nysgerrig på fremtiden. Jeg vil være iværksætter, udvikle min virksomhed og blive bedre hele tiden — i arbejdet, i min sundhed og i de sprog, jeg taler.",
-    paragraphs: [
-      "Jeg er født i Ukraine og bor nu i Horsens. Jeg læser på VIA University College, hvor jeg tager et forberedende kursus til ingeniøruddannelser, og jeg driver WebHjerte — mit eget webstudie med én mand, registreret i Danmark.",
-      "Min plan: Software Engineering som det næste, iværksætteri undervejs. Jeg går op i sunde vaner, teknologi og det, der kommer næste gang — og jeg prøver at lære lidt hver eneste dag.",
-    ],
-    factsTitle: "Kort fortalt",
-    facts: [
-      { k: "Bosat i", v: "Horsens, Danmark" },
-      { k: "Oprindeligt fra", v: "Ukraine" },
-      { k: "Uddannelse", v: "VIA University College" },
-      { k: "Virksomhed", v: "WebHjerte (registreret i Danmark)" },
-      { k: "Sprog", v: "Ukrainsk · Engelsk · Dansk · Bosnisk" },
-    ],
-    journeyTitle: "Rejsen",
-    journey: [
-      { tag: "Rødder", title: "Ukraine", text: "Hvor det hele startede — mit sprog, min kultur og lysten til at bygge." },
-      { tag: "Hjem nu", title: "Danmark", text: "Et nyt liv i Horsens, hvor jeg lærer dansk og engelsk hver eneste dag." },
-      { tag: "Virksomhed", title: "WebHjerte", text: "Mit eget webstudie: solo, faste pakker, hurtig levering." },
-      { tag: "Studie", title: "VIA University College", text: "Forberedende kursus til ingeniøruddannelser." },
-      { tag: "Næste", title: "Software Engineering", text: "Dybere ind i softwareudvikling og forretning for at skalere det, jeg bygger." },
-    ],
-  },
-  services: {
-    label: "Fokus",
-    title: "Det, jeg fokuserer på lige nu.",
-    intro: "Fire ting, der fylder mine dage.",
-    items: [
-      {
-        title: "Iværksætter",
-        text: "Jeg bygger WebHjerte — mit eget studie — og lærer, hvad der skal til for at drive en virksomhed: kunder, marketing, SEO, sociale medier og økonomi.",
-        tags: ["WebHjerte", "Marketing", "SEO", "Forretning"],
-      },
-      {
-        title: "Studerende",
-        text: "Jeg tager et forberedende kursus på VIA University College på vej mod Software Engineering.",
-        tags: ["VIA University College", "Ingeniør", "Software Engineering"],
-      },
-      {
-        title: "Tech & AI",
-        text: "Jeg pusler med Raspberry Pi 5, Linux og AI-værktøjer — og bygger automatiseringer, dashboards og workflows med Claude Code.",
-        tags: ["Raspberry Pi 5", "Claude Code", "Linux", "Next.js"],
-      },
-      {
-        title: "Sunde vaner",
-        text: "Træning, sund mad og vanetracking — fordi energi og disciplin bærer alt det andet.",
-        tags: ["Fitness", "Sund mad", "Vanetracking", "Balance i hverdagen"],
-      },
-    ],
-  },
-  skills: {
-    label: "Liv",
-    title: "Ud over skærmen.",
-    intro: "Det, der former, hvordan jeg tænker, arbejder og lever.",
-    languagesTitle: "Sprog",
-    languages: [
-      { name: "Ukrainsk", level: "Modersmål", value: 100 },
-      { name: "Engelsk", level: "Forbedrer", value: 74 },
-      { name: "Dansk", level: "Forbedrer", value: 64 },
-      { name: "Bosnisk", level: "Begynder", value: 22 },
-    ],
-    interestsTitle: "Interesser",
-    interests: [
-      "Fitness & styrketræning",
-      "Sund mad",
-      "Vanetracking",
-      "Teknologi & fremtiden",
-      "Musik",
-      "Minimalistisk design",
-    ],
-  },
-  webhjerte: {
-    label: "Min virksomhed",
-    title: "WebHjerte — mit studie, mit hjerte.",
-    text: "WebHjerte er mit eget webstudie, registreret i Danmark. Idéen er enkel: hjemmesider bygget med omtanke til folk, der brænder for deres forretning.",
-    points: [
-      { title: "Faste pakker", text: "Du kender omfang og pris, før vi starter." },
-      { title: "Hurtig levering", text: "Små, fokuserede projekter leveret hurtigt — ikke måneder med møder." },
-      { title: "Én person", text: "Du taler med den, der bygger din side. Altid." },
-    ],
+  studio: {
+    label: "Sidemission",
+    title: "WebHjerte — et lille webstudie.",
+    text: "Undervejs startede jeg mit eget webstudie, registreret i Danmark. Det bygger enkle, hurtige hjemmesider til små virksomheder — ét projekt ad gangen.",
     visit: "Besøg webhjerte.dk",
     follow: "@WebHjerte på Instagram",
+    madeTitle: "Lavet indtil nu",
   },
-  projects: {
-    label: "Projekter",
-    title: "Ting, jeg har bygget.",
-    intro: "Et par hjemmesider lavet til rigtige virksomheder — hurtige, tydelige og nemme at finde.",
-    visit: "Besøg siden",
-    drag: "Scroll",
-    flagship: [
-      {
-        key: "webhjerte",
-        tag: "Studie",
-        title: "WebHjerte",
-        text: "Mit eget studies hjemmeside — minimalistisk, positiv og bygget til at skabe tillid og ranke i danske søgninger.",
-      },
-      {
-        key: "lonbaeks",
-        tag: "Køreskole",
-        title: "Lønbæks",
-        text: "Hjemmeside til en dansk køreskole — tydelig, hurtig og nem at bruge på mobilen.",
-      },
-      {
-        key: "veka",
-        tag: "Vinduer",
-        title: "Veka Center",
-        text: "Hjemmeside til en ukrainsk vinduesvirksomhed — produktfokuseret, hurtig og ligetil.",
-      },
-    ],
+  pages: {
+    contact: { title: "Kontakt", intro: "Sig hej, stil et spørgsmål eller snak om et projekt. Jeg svarer personligt." },
   },
-  faq: {
-    label: "FAQ",
-    title: "Gode spørgsmål.",
-    items: [
-      {
-        q: "Hvem er Ivan Kohan?",
-        a: "Ivan Kohan er iværksætter og studerende fra Ukraine og bor i Horsens. Han er grundlægger af WebHjerte (webhjerte.dk), et danskregistreret webstudie med én mand.",
-      },
-      {
-        q: "Hvor kommer Ivan fra, og hvor bor han?",
-        a: "Ivan er født i Ukraine og bor nu i Horsens, Danmark.",
-      },
-      {
-        q: "Hvad læser Ivan?",
-        a: "Ivan tager et forberedende kursus til ingeniøruddannelser på VIA University College og planlægger at fortsætte med Software Engineering.",
-      },
-      {
-        q: "Hvad er WebHjerte?",
-        a: "WebHjerte er Ivans eget webstudie, registreret i Danmark. Det bygger Next.js-hjemmesider til små virksomheder med faste priser og hjælper med SEO, Google Search Console, Meta-annoncer og indhold til sociale medier.",
-      },
-      {
-        q: "Hvilke sprog taler Ivan?",
-        a: "Ukrainsk (modersmål), engelsk og dansk, som han aktivt forbedrer, samt lidt bosnisk.",
-      },
-      {
-        q: "Hvad er Ivans mål?",
-        a: "At blive iværksætter, udvikle WebHjerte og bevæge sig mod softwareudvikling og forretning — med sunde vaner og lidt ny læring hver dag.",
-      },
-      {
-        q: "Hvordan kontakter jeg Ivan?",
-        a: "Brug kontaktformularen på siden eller skriv en e-mail. Ivan svarer personligt på engelsk, dansk eller ukrainsk.",
-      },
-    ],
+  home: {
+    band: { title: "Sig hej.", text: "Et spørgsmål, et projekt eller bare et hej — jeg læser alle beskeder.", cta: "Skriv til mig" },
   },
   contact: {
     label: "Kontakt",
@@ -510,7 +188,7 @@ const da: Dict = {
     },
   },
   footer: {
-    tagline: "Iværksætter, studerende og grundlægger af WebHjerte. Fra Ukraine, bosat i Danmark.",
+    tagline: "Fra Ukraine, bosat i Danmark. Grundlægger af WebHjerte.",
     navTitle: "Navigation",
     socialTitle: "Sociale medier",
     rights: "Alle rettigheder forbeholdes.",
@@ -520,18 +198,16 @@ const da: Dict = {
 
 const uk: Dict = {
   meta: {
-    title: "Іван Кохан — підприємець, студент і засновник WebHjerte",
+    title: "Іван Кохан — з України до Данії, засновник WebHjerte",
     description:
-      "Іван Кохан — підприємець і студент з України, який живе в Данії. Засновник WebHjerte. Моя історія, цілі, мови, звички та те, що я створюю.",
+      "Особистий сайт Івана Кохана: коротка історія з України до Данії, мови, навчання та WebHjerte — маленька веб-студія.",
     ogDescription:
-      "Підприємець і студент з України, який живе в Данії. Засновник WebHjerte. Історія, цілі, звички та проєкти.",
+      "З України до Данії — коротка історія життя та WebHjerte, маленька веб-студія.",
     keywords: [
       "Іван Кохан",
-      "підприємець Данія",
-      "засновник WebHjerte",
       "українець у Данії",
-      "студент VIA University College",
-      "особистий бренд",
+      "засновник WebHjerte",
+      "особистий сайт",
     ],
   },
   a11y: {
@@ -545,203 +221,44 @@ const uk: Dict = {
     external: "відкривається в новій вкладці",
   },
   nav: {
-    home: "Головна",
-    about: "Про мене",
-    now: "Зараз",
-    work: "Проєкти",
-    blog: "Блог",
+    story: "Історія",
+    studio: "Студія",
     contact: "Контакти",
     cta: "Привітатися",
   },
-  home: {
-    aboutMore: "Читати всю історію",
-    workMore: "Дивитися проєкти",
-    band: { title: "Є що обговорити?", text: "Співпраця, питання або просто привіт — я читаю кожне повідомлення.", cta: "Зв'язатися" },
-  },
-  pages: {
-    about: { title: "Про мене", intro: "Моя історія: народився в Україні, живу в Данії, навчаюся, розвиваю WebHjerte й працюю над собою." },
-    now: { title: "Що я роблю зараз", intro: "Знімок того, що наповнює мої дні зараз — навчання, бізнес, мови, технології й тренування." },
-    projects: { title: "Проєкти", intro: "Сайти, які я створив для справжнього бізнесу, та моя власна студія WebHjerte." },
-    contact: { title: "Контакти", intro: "Напишіть мені про співпрацю, питання або просто привітайтеся. Відповідаю особисто." },
-    blog: { title: "Блог", intro: "Короткі практичні нотатки про SEO, здорові звички й створення речей." },
-  },
-  now: {
-    updated: "Оновлено в листопаді 2026",
-    items: [
-      { label: "Навчаюся", text: "Підготовчий курс у VIA University College на шляху до Software Engineering." },
-      { label: "Створюю", text: "WebHjerte: сайти за фіксованою ціною, SEO та соцмережі для малого бізнесу." },
-      { label: "Вчу", text: "Данську й англійську, потроху щодня." },
-      { label: "Експериментую з", text: "Raspberry Pi 5, Linux та AI-інструментами — автоматизації й дашборди з Claude Code." },
-      { label: "Тренуюся", text: "Силові тренування, здорове харчування й трекінг звичок." },
-    ],
-  },
-  blog: {
-    readTime: "хв читання",
-    back: "Усі записи",
-    published: "Опубліковано",
-    more: "Читати далі",
-  },
   hero: {
-    status: "Відкритий до нового",
-    title: { pre: "Привіт, я Іван.", em: "Створюю сайти — і власний бізнес." },
-    lead: "Веб-розробник і засновник WebHjerte, з України, живу в Данії. Допомагаю малому бізнесу отримати швидкий сайт, який справді приводить клієнтів.",
-    cta1: "Про мене",
-    cta2: "Зв'язатися",
-    location: "З України · живу в Данії",
-    scroll: "Гортай",
-    chips: ["Веб-розробник", "WebHjerte", "Студент", "SEO"],
-    facts: [
-      { big: "4", small: "мови" },
-      { big: "2", small: "країни" },
-      { big: "1", small: "студія" },
+    name: "Я — Іван Кохан.",
+    line: "З України. Живу в Данії. Досі вчуся й створюю.",
+    scroll: "Почати історію",
+  },
+  story: {
+    label: "Моя історія",
+    title: "Життя в шести розділах.",
+    intro: "Не резюме — лише коротка версія того, звідки я і куди рухаюся.",
+    from: "Україна",
+    to: "Данія",
+    chapters: [
+      { name: "Коріння", head: "Народився в Україні.", text: "Звідси моя мова й культура — і тут частина мене залишається назавжди." },
+      { name: "Перехід", head: "Новий дім у Данії.", text: "Нова країна, нова мова, новий ритм життя. Щодня я вчуся чогось нового." },
+      { name: "Голоси", head: "Чотири мови, одне я.", text: "Українська в основі, англійська та данська ростуть щодня — і трохи боснійської." },
+      { name: "Книжки", head: "Знову навчання.", text: "Підготовчий курс до інженерних програм: перший крок до Software Engineering." },
+      { name: "Побічний квест", head: "Маленька студія.", text: "Дорогою я створив WebHjerte — веб-студію з однієї людини, яка робить сайти для малого бізнесу." },
+      { name: "Далі", head: "Далі буде.", text: "Наступний крок — Software Engineering. Я відкритий до нового — розділів буде більше." },
     ],
   },
-  about: {
-    label: "Про мене",
-    title: "Народився в Україні, будую життя в Данії.",
-    manifesto:
-      "Я відкритий до нового, мотивований вчитися й цікавлюся майбутнім. Хочу стати підприємцем, розвивати свій бізнес і ставати кращим — у роботі, здоров'ї та в мовах, якими розмовляю.",
-    paragraphs: [
-      "Я народився в Україні, а зараз живу в Горсенсі (Данія). Навчаюся у VIA University College на підготовчому курсі до інженерних програм і веду WebHjerte — власну веб-студію з однієї людини, зареєстровану в Данії.",
-      "Мій план: далі Software Engineering, а по дорозі — підприємництво. Мені важливі здорові звички, технології та те, що буде далі — і я намагаюся трохи вчитися щодня.",
-    ],
-    factsTitle: "Коротко",
-    facts: [
-      { k: "Живу", v: "Горсенс, Данія" },
-      { k: "Родом з", v: "України" },
-      { k: "Навчання", v: "VIA University College" },
-      { k: "Бізнес", v: "WebHjerte (зареєстровано в Данії)" },
-      { k: "Мови", v: "Українська · English · Dansk · Bosanski" },
-    ],
-    journeyTitle: "Мій шлях",
-    journey: [
-      { tag: "Коріння", title: "Україна", text: "Звідки все почалося — моя мова, культура і бажання створювати." },
-      { tag: "Дім зараз", title: "Данія", text: "Нове життя в Горсенсі, де щодня вчу данську й англійську." },
-      { tag: "Бізнес", title: "WebHjerte", text: "Моя власна веб-студія: сам, фіксовані пакети, швидка реалізація." },
-      { tag: "Навчання", title: "VIA University College", text: "Підготовчий курс до інженерних програм." },
-      { tag: "Далі", title: "Software Engineering", text: "Глибше в інженерію та бізнес, щоб масштабувати те, що я створюю." },
-    ],
-  },
-  services: {
-    label: "Фокус",
-    title: "На чому я зараз зосереджений.",
-    intro: "Чотири речі, які наповнюють мої дні.",
-    items: [
-      {
-        title: "Підприємець",
-        text: "Розвиваю WebHjerte — власну студію — і вчуся керувати бізнесом: клієнти, маркетинг, SEO, соцмережі та фінанси.",
-        tags: ["WebHjerte", "Маркетинг", "SEO", "Бізнес"],
-      },
-      {
-        title: "Студент",
-        text: "Проходжу підготовчий курс у VIA University College на шляху до Software Engineering.",
-        tags: ["VIA University College", "Інженерія", "Software Engineering"],
-      },
-      {
-        title: "Tech та AI",
-        text: "Експериментую з Raspberry Pi 5, Linux та AI-інструментами — створюю автоматизації, дашборди й робочі процеси з Claude Code.",
-        tags: ["Raspberry Pi 5", "Claude Code", "Linux", "Next.js"],
-      },
-      {
-        title: "Здорові звички",
-        text: "Тренування, здорове харчування й трекінг звичок — бо енергія та дисципліна тримають усе інше.",
-        tags: ["Фітнес", "Здорове харчування", "Трекінг звичок", "Баланс"],
-      },
-    ],
-  },
-  skills: {
-    label: "Життя",
-    title: "За межами екрана.",
-    intro: "Те, що формує, як я думаю, працюю й живу.",
-    languagesTitle: "Мови",
-    languages: [
-      { name: "Українська", level: "Рідна", value: 100 },
-      { name: "Англійська", level: "Покращую", value: 74 },
-      { name: "Данська", level: "Покращую", value: 64 },
-      { name: "Боснійська", level: "Початковий", value: 22 },
-    ],
-    interestsTitle: "Інтереси",
-    interests: [
-      "Фітнес і силові тренування",
-      "Здорове харчування",
-      "Трекінг звичок",
-      "Технології та майбутнє",
-      "Музика",
-      "Мінімалістичний дизайн",
-    ],
-  },
-  webhjerte: {
-    label: "Мій бізнес",
-    title: "WebHjerte — моя студія, моє серце.",
-    text: "WebHjerte (данською «веб-серце») — моя власна веб-студія, зареєстрована в Данії. Ідея проста: сайти, зроблені з турботою, для людей, яким небайдужий їхній бізнес.",
-    points: [
-      { title: "Фіксовані пакети", text: "Ви знаєте обсяг і ціну ще до старту." },
-      { title: "Швидка реалізація", text: "Невеликі сфокусовані проєкти — без місяців зустрічей." },
-      { title: "Одна людина", text: "Ви спілкуєтеся з тим, хто створює ваш сайт. Завжди." },
-    ],
+  studio: {
+    label: "Побічний квест",
+    title: "WebHjerte — маленька веб-студія.",
+    text: "Дорогою я створив власну веб-студію, зареєстровану в Данії. Вона робить прості, швидкі сайти для малого бізнесу — проєкт за проєктом.",
     visit: "Відкрити webhjerte.dk",
     follow: "@WebHjerte в Instagram",
+    madeTitle: "Зроблено досі",
   },
-  projects: {
-    label: "Проєкти",
-    title: "Те, що я створив.",
-    intro: "Кілька сайтів для справжнього бізнесу — швидких, зрозумілих і видимих у пошуку.",
-    visit: "Відкрити сайт",
-    drag: "Гортай",
-    flagship: [
-      {
-        key: "webhjerte",
-        tag: "Студія",
-        title: "WebHjerte",
-        text: "Сайт моєї студії — мінімалістичний, позитивний і створений викликати довіру та ранжуватися в данському пошуку.",
-      },
-      {
-        key: "lonbaeks",
-        tag: "Автошкола",
-        title: "Lønbæks",
-        text: "Сайт данської автошколи — зрозумілий, швидкий і зручний на телефоні.",
-      },
-      {
-        key: "veka",
-        tag: "Вікна",
-        title: "Veka Center",
-        text: "Сайт українського бізнесу з продажу вікон — орієнтований на продукт, швидкий і простий.",
-      },
-    ],
+  pages: {
+    contact: { title: "Контакти", intro: "Привітайтеся, поставте питання або обговоріть проєкт. Відповідаю особисто." },
   },
-  faq: {
-    label: "FAQ",
-    title: "Часті питання.",
-    items: [
-      {
-        q: "Хто такий Іван Кохан?",
-        a: "Іван Кохан — підприємець і студент з України, який живе в Горсенсі (Данія). Він засновник WebHjerte (webhjerte.dk) — веб-студії з однієї людини, зареєстрованої в Данії.",
-      },
-      {
-        q: "Звідки Іван і де він живе?",
-        a: "Іван народився в Україні, а зараз живе в Горсенсі, Данія.",
-      },
-      {
-        q: "Чим займається Іван у навчанні?",
-        a: "Іван проходить підготовчий курс до інженерних програм у VIA University College і планує продовжити навчання за напрямом Software Engineering.",
-      },
-      {
-        q: "Що таке WebHjerte?",
-        a: "WebHjerte — власна веб-студія Івана, зареєстрована в Данії. Вона створює сайти на Next.js для малого бізнесу за фіксованими пакетами та допомагає з SEO, Google Search Console, рекламою Meta і контентом для соцмереж.",
-      },
-      {
-        q: "Якими мовами розмовляє Іван?",
-        a: "Українською (рідна), англійською та данською, які він активно покращує, а також трохи боснійською.",
-      },
-      {
-        q: "Які цілі в Івана?",
-        a: "Стати підприємцем, розвивати WebHjerte і рухатися в бік софтверної інженерії та бізнесу — зберігаючи здорові звички й навчаючись новому щодня.",
-      },
-      {
-        q: "Як зв'язатися з Іваном?",
-        a: "Скористайтеся формою на сторінці або напишіть на email. Іван відповідає особисто англійською, данською чи українською.",
-      },
-    ],
+  home: {
+    band: { title: "Привіт.", text: "Питання, проєкт чи просто привіт — я читаю кожне повідомлення.", cta: "Написати мені" },
   },
   contact: {
     label: "Контакти",
@@ -768,7 +285,7 @@ const uk: Dict = {
     },
   },
   footer: {
-    tagline: "Підприємець, студент і засновник WebHjerte. З України, живу в Данії.",
+    tagline: "З України, живу в Данії. Засновник WebHjerte.",
     navTitle: "Навігація",
     socialTitle: "Соцмережі",
     rights: "Усі права захищено.",
@@ -778,12 +295,17 @@ const uk: Dict = {
 
 const bs: Dict = {
   meta: {
-    title: "Ivan Kohan — poduzetnik, student i osnivač WebHjerte",
+    title: "Ivan Kohan — iz Ukrajine u Dansku, osnivač WebHjerte",
     description:
-      "Ivan Kohan — poduzetnik i student iz Ukrajine koji živi u Danskoj. Osnivač WebHjerte. Moja priča, ciljevi, jezici, navike i ono što gradim.",
+      "Lični sajt Ivana Kohana: kratka priča iz Ukrajine u Dansku, jezici, studij i WebHjerte, mali web studio.",
     ogDescription:
-      "Poduzetnik i student iz Ukrajine koji živi u Danskoj. Osnivač WebHjerte. Priča, ciljevi, navike i projekti.",
-    keywords: ["Ivan Kohan", "poduzetnik Danska", "osnivač WebHjerte", "student VIA University College"],
+      "Iz Ukrajine u Dansku — kratka životna priča i WebHjerte, mali web studio.",
+    keywords: [
+      "Ivan Kohan",
+      "Ukrajinac u Danskoj",
+      "osnivač WebHjerte",
+      "lični sajt",
+    ],
   },
   a11y: {
     skip: "Idi na sadržaj",
@@ -796,203 +318,44 @@ const bs: Dict = {
     external: "otvara se u novom tabu",
   },
   nav: {
-    home: "Početna",
-    about: "O meni",
-    now: "Sada",
-    work: "Projekti",
-    blog: "Blog",
+    story: "Priča",
+    studio: "Studio",
     contact: "Kontakt",
     cta: "Pozdravi",
   },
-  home: {
-    aboutMore: "Pročitaj cijelu priču",
-    workMore: "Pogledaj radove",
-    band: { title: "Imate nešto na umu?", text: "Saradnja, pitanje ili samo pozdrav — čitam svaku poruku.", cta: "Javite se" },
-  },
-  pages: {
-    about: { title: "O meni", intro: "Moja priča: rođen u Ukrajini, živim u Danskoj, studiram, gradim WebHjerte i radim na sebi." },
-    now: { title: "Šta radim sada", intro: "Snimak onoga što mi trenutno ispunjava dane — studij, biznis, jezici, tehnologija i trening." },
-    projects: { title: "Projekti", intro: "Sajtovi koje sam napravio za prava preduzeća, te moj vlastiti studio WebHjerte." },
-    contact: { title: "Kontakt", intro: "Pišite mi o saradnji, pitanju ili samo da pozdravite. Odgovaram lično." },
-    blog: { title: "Blog", intro: "Kratke, praktične bilješke o SEO-u, zdravim navikama i građenju stvari." },
-  },
-  now: {
-    updated: "Ažurirano u novembru 2026",
-    items: [
-      { label: "Studiram", text: "Pripremni kurs na VIA University College na putu prema Software Engineeringu." },
-      { label: "Gradim", text: "WebHjerte: sajtovi po fiksnoj cijeni, SEO i društvene mreže za mala preduzeća." },
-      { label: "Učim", text: "Danski i engleski, po malo svaki dan." },
-      { label: "Eksperimentišem s", text: "Raspberry Pi 5, Linux i AI alatima — automatizacije i dashboardi uz Claude Code." },
-      { label: "Treniram", text: "Trening snage, zdrava ishrana i praćenje navika." },
-    ],
-  },
-  blog: {
-    readTime: "min čitanja",
-    back: "Svi tekstovi",
-    published: "Objavljeno",
-    more: "Čitaj dalje",
-  },
   hero: {
-    status: "Otvoren za novo",
-    title: { pre: "Zdravo, ja sam Ivan.", em: "Pravim sajtove — i vlastiti biznis." },
-    lead: "Web developer i osnivač WebHjerte, iz Ukrajine, živim u Danskoj. Pomažem malim preduzećima da dobiju brz sajt koji zaista dovodi klijente.",
-    cta1: "O meni",
-    cta2: "Kontakt",
-    location: "Iz Ukrajine · živim u Danskoj",
-    scroll: "Skroluj",
-    chips: ["Web developer", "WebHjerte", "Student", "SEO"],
-    facts: [
-      { big: "4", small: "jezika" },
-      { big: "2", small: "zemlje" },
-      { big: "1", small: "studio" },
+    name: "Ja sam Ivan Kohan.",
+    line: "Iz Ukrajine. Živim u Danskoj. Još uvijek učim i gradim.",
+    scroll: "Započni priču",
+  },
+  story: {
+    label: "Moja priča",
+    title: "Život u šest poglavlja.",
+    intro: "Nije CV — samo kratka verzija odakle dolazim i kuda idem.",
+    from: "Ukrajina",
+    to: "Danska",
+    chapters: [
+      { name: "Korijeni", head: "Rođen u Ukrajini.", text: "Odavde su moj jezik i kultura — i ovdje će dio mene uvijek ostati." },
+      { name: "Prelazak", head: "Novi dom u Danskoj.", text: "Nova zemlja, novi jezik, novi način života. Svakog dana naučim nešto novo." },
+      { name: "Glasovi", head: "Četiri jezika, jedan ja.", text: "Ukrajinski u temelju, engleski i danski rastu svakog dana — i malo bosanskog." },
+      { name: "Knjige", head: "Opet učim.", text: "Pripremni kurs za inženjerske programe: prvi korak prema Software Engineeringu." },
+      { name: "Sporedna misija", head: "Mali studio.", text: "Usput sam pokrenuo WebHjerte — web-studio s jednom osobom koji pravi sajtove za mala preduzeća." },
+      { name: "Dalje", head: "Nastavlja se.", text: "Software Engineering je sljedeći korak. Otvoren sam za novo — bit će još poglavlja." },
     ],
   },
-  about: {
-    label: "O meni",
-    title: "Rođen u Ukrajini, gradim život u Danskoj.",
-    manifesto:
-      "Otvoren sam za novo, motivisan za učenje i znatiželjan prema budućnosti. Želim postati poduzetnik, razvijati svoj biznis i stalno biti bolji — na poslu, u zdravlju i u jezicima kojima govorim.",
-    paragraphs: [
-      "Rođen sam u Ukrajini, a sada živim u Horsensu u Danskoj. Studiram na VIA University College, gdje pohađam pripremni kurs za inženjerske programe, i vodim WebHjerte — vlastiti web-studio s jednom osobom registrovan u Danskoj.",
-      "Moj plan: dalje Software Engineering, a usput poduzetništvo. Stalo mi je do zdravih navika, tehnologije i onoga što dolazi — i trudim se naučiti nešto novo svakog dana.",
-    ],
-    factsTitle: "Ukratko",
-    facts: [
-      { k: "Živim u", v: "Horsens, Danska" },
-      { k: "Porijeklom iz", v: "Ukrajine" },
-      { k: "Studiram", v: "VIA University College" },
-      { k: "Biznis", v: "WebHjerte (registrovan u Danskoj)" },
-      { k: "Jezici", v: "Ukrajinski · Engleski · Danski · Bosanski" },
-    ],
-    journeyTitle: "Moj put",
-    journey: [
-      { tag: "Korijeni", title: "Ukrajina", text: "Odakle je sve počelo — moj jezik, kultura i želja da gradim." },
-      { tag: "Dom sada", title: "Danska", text: "Novi život u Horsensu, gdje svakog dana učim danski i engleski." },
-      { tag: "Biznis", title: "WebHjerte", text: "Moj vlastiti web-studio: solo, fiksni paketi, brza isporuka." },
-      { tag: "Studij", title: "VIA University College", text: "Pripremni kurs za inženjerske programe." },
-      { tag: "Dalje", title: "Software Engineering", text: "Dublje u inženjerstvo i biznis kako bih razvio ono što gradim." },
-    ],
-  },
-  services: {
-    label: "Fokus",
-    title: "Na čemu sam trenutno fokusiran.",
-    intro: "Četiri stvari koje ispunjavaju moje dane.",
-    items: [
-      {
-        title: "Poduzetnik",
-        text: "Gradim WebHjerte — vlastiti studio — i učim šta je potrebno za vođenje biznisa: klijenti, marketing, SEO, društvene mreže i novac.",
-        tags: ["WebHjerte", "Marketing", "SEO", "Biznis"],
-      },
-      {
-        title: "Student",
-        text: "Pohađam pripremni kurs na VIA University College na putu prema Software Engineeringu.",
-        tags: ["VIA University College", "Inženjerstvo", "Software Engineering"],
-      },
-      {
-        title: "Tech i AI",
-        text: "Eksperimentišem s Raspberry Pi 5, Linuxom i AI alatima — pravim automatizacije, dashboarde i tokove rada uz Claude Code.",
-        tags: ["Raspberry Pi 5", "Claude Code", "Linux", "Next.js"],
-      },
-      {
-        title: "Zdrave navike",
-        text: "Trening, zdrava ishrana i praćenje navika — jer energija i disciplina nose sve ostalo.",
-        tags: ["Fitness", "Zdrava ishrana", "Praćenje navika", "Balans"],
-      },
-    ],
-  },
-  skills: {
-    label: "Život",
-    title: "Izvan ekrana.",
-    intro: "Ono što oblikuje kako mislim, radim i živim.",
-    languagesTitle: "Jezici",
-    languages: [
-      { name: "Ukrajinski", level: "Maternji", value: 100 },
-      { name: "Engleski", level: "Usavršavam", value: 74 },
-      { name: "Danski", level: "Usavršavam", value: 64 },
-      { name: "Bosanski", level: "Početni nivo", value: 22 },
-    ],
-    interestsTitle: "Interesovanja",
-    interests: [
-      "Fitness i trening snage",
-      "Zdrava ishrana",
-      "Praćenje navika",
-      "Tehnologija i budućnost",
-      "Muzika",
-      "Minimalistički dizajn",
-    ],
-  },
-  webhjerte: {
-    label: "Moj biznis",
-    title: "WebHjerte — moj studio, moje srce.",
-    text: "WebHjerte (na danskom „web srce“) je moj vlastiti web-studio registrovan u Danskoj. Ideja je jednostavna: sajtovi napravljeni s pažnjom, za ljude kojima je stalo do njihovog biznisa.",
-    points: [
-      { title: "Fiksni paketi", text: "Obim i cijenu znate prije početka." },
-      { title: "Brza isporuka", text: "Mali, fokusirani projekti isporučeni brzo — bez mjeseci sastanaka." },
-      { title: "Jedna osoba", text: "Razgovarate s onim ko pravi vaš sajt. Uvijek." },
-    ],
+  studio: {
+    label: "Sporedna misija",
+    title: "WebHjerte — mali web studio.",
+    text: "Usput sam pokrenuo vlastiti web-studio registrovan u Danskoj. Pravi jednostavne, brze sajtove za mala preduzeća — projekat po projekat.",
     visit: "Posjeti webhjerte.dk",
     follow: "@WebHjerte na Instagramu",
+    madeTitle: "Napravljeno do sada",
   },
-  projects: {
-    label: "Projekti",
-    title: "Ono što sam napravio.",
-    intro: "Nekoliko sajtova za prava preduzeća — brzi, jasni i lako pronađeni.",
-    visit: "Posjeti sajt",
-    drag: "Skroluj",
-    flagship: [
-      {
-        key: "webhjerte",
-        tag: "Studio",
-        title: "WebHjerte",
-        text: "Sajt mog studija — minimalistički, pozitivan i napravljen da izazove povjerenje i rangira se u danskoj pretrazi.",
-      },
-      {
-        key: "lonbaeks",
-        tag: "Autoškola",
-        title: "Lønbæks",
-        text: "Sajt za dansku autoškolu — jasan, brz i jednostavan za korištenje na mobitelu.",
-      },
-      {
-        key: "veka",
-        tag: "Prozori",
-        title: "Veka Center",
-        text: "Sajt za ukrajinsku firmu koja prodaje prozore — fokusiran na proizvod, brz i jednostavan.",
-      },
-    ],
+  pages: {
+    contact: { title: "Kontakt", intro: "Pozdravite, postavite pitanje ili razgovarajmo o projektu. Odgovaram lično." },
   },
-  faq: {
-    label: "FAQ",
-    title: "Dobra pitanja.",
-    items: [
-      {
-        q: "Ko je Ivan Kohan?",
-        a: "Ivan Kohan je poduzetnik i student iz Ukrajine koji živi u Horsensu u Danskoj. Osnivač je WebHjerte (webhjerte.dk), web-studija s jednom osobom registrovanog u Danskoj.",
-      },
-      {
-        q: "Odakle je Ivan i gdje živi?",
-        a: "Ivan je rođen u Ukrajini, a sada živi u Horsensu u Danskoj.",
-      },
-      {
-        q: "Šta Ivan studira?",
-        a: "Ivan pohađa pripremni kurs za inženjerske programe na VIA University College i planira nastaviti sa Software Engineeringom.",
-      },
-      {
-        q: "Šta je WebHjerte?",
-        a: "WebHjerte je Ivanov vlastiti web-studio registrovan u Danskoj. Pravi Next.js sajtove za mala preduzeća po fiksnim paketima i pomaže oko SEO-a, Google Search Console, Meta oglasa i sadržaja za društvene mreže.",
-      },
-      {
-        q: "Kojim jezicima govori Ivan?",
-        a: "Ukrajinski (maternji), te engleski i danski koje aktivno usavršava, i bosanski.",
-      },
-      {
-        q: "Koji su Ivanovi ciljevi?",
-        a: "Postati poduzetnik, razvijati WebHjerte i kretati se prema softverskom inženjerstvu i biznisu — uz zdrave navike i učenje nečeg novog svakog dana.",
-      },
-      {
-        q: "Kako kontaktirati Ivana?",
-        a: "Koristite kontakt formu na stranici ili pošaljite email. Ivan odgovara lično na ukrajinskom, engleskom ili danskom.",
-      },
-    ],
+  home: {
+    band: { title: "Pozdravi.", text: "Pitanje, projekat ili samo pozdrav — čitam svaku poruku.", cta: "Piši mi" },
   },
   contact: {
     label: "Kontakt",
@@ -1019,7 +382,7 @@ const bs: Dict = {
     },
   },
   footer: {
-    tagline: "Poduzetnik, student i osnivač WebHjerte. Iz Ukrajine, živim u Danskoj.",
+    tagline: "Iz Ukrajine, živim u Danskoj. Osnivač WebHjerte.",
     navTitle: "Navigacija",
     socialTitle: "Društvene mreže",
     rights: "Sva prava zadržana.",

@@ -20,19 +20,11 @@ export function siteGraph(lang: Locale, dict: Dict): object[] {
       url: SITE_URL,
       image: `${SITE_URL}/avatar.png`,
       email: `mailto:${links.email}`,
-      jobTitle: "Entrepreneur and founder of WebHjerte",
+      jobTitle: "Founder of WebHjerte",
       description: dict.meta.ogDescription,
       worksFor: { "@id": orgId },
       knowsLanguage: ["uk", "en", "da", "bs"],
-      knowsAbout: [
-        "Entrepreneurship",
-        "Web development",
-        "Next.js",
-        "Search engine optimization",
-        "Automation and AI tools",
-        "Fitness and healthy habits",
-        "Languages",
-      ],
+      knowsAbout: ["Web development", "Entrepreneurship", "Languages"],
       sameAs: [links.linkedin, links.instagram, links.instagramBusiness, links.github, links.webhjerte],
     },
     {
@@ -82,34 +74,6 @@ export function breadcrumbLd(items: { name: string; url: string }[]): object {
   };
 }
 
-export function faqLd(lang: Locale, dict: Dict, slug: string): object {
-  return {
-    "@type": "FAQPage",
-    "@id": `${pageUrl(lang, slug)}#faq`,
-    inLanguage: localeMeta[lang].hreflang,
-    mainEntity: dict.faq.items.map((f) => ({
-      "@type": "Question",
-      name: f.q,
-      acceptedAnswer: { "@type": "Answer", text: f.a },
-    })),
-  };
-}
 
-export function workListLd(lang: Locale, dict: Dict, slug: string): object {
-  return {
-    "@type": "ItemList",
-    "@id": `${pageUrl(lang, slug)}#work`,
-    name: dict.projects.title,
-    itemListElement: [
-      { name: "WebHjerte", url: links.webhjerte },
-      { name: "Lønbæks", url: "https://xn--lnbks-ura7j.dk" },
-      { name: "Veka Center", url: "https://veka.center" },
-    ].map((p, i) => ({
-      "@type": "ListItem",
-      position: i + 1,
-      item: { "@type": "WebSite", name: p.name, url: p.url, author: { "@id": personId } },
-    })),
-  };
-}
 
 export { personId };

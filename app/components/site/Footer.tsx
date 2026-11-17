@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowUp } from "lucide-react";
 import type { Dict } from "@/app/lib/dictionary";
-import { locales, localeMeta, pagePath, navHref, switchPath, isLocale, type Locale } from "@/app/lib/site";
+import { locales, localeMeta, navHref, switchPath, isLocale, type Locale } from "@/app/lib/site";
 import { socialLinks } from "./Icons";
 
 function restPath(pathname: string) {
@@ -25,12 +25,9 @@ export default function Footer({ dict, lang }: { dict: Dict; lang: Locale }) {
   const year = new Date().getFullYear();
 
   const nav = [
-    ["", dict.nav.home],
-    ["about", dict.nav.about],
-    ["now", dict.nav.now],
-    ["projects", dict.nav.work],
-    ["blog", dict.nav.blog],
-    ["contact", dict.nav.contact],
+    ["", "#story", dict.nav.story],
+    ["", "#studio", dict.nav.studio],
+    ["contact", "", dict.nav.contact],
   ] as const;
 
   return (
@@ -58,9 +55,9 @@ export default function Footer({ dict, lang }: { dict: Dict; lang: Locale }) {
         <nav aria-label={f.navTitle}>
           <h2 className="label text-mist">{f.navTitle}</h2>
           <ul className="mt-5 space-y-3">
-            {nav.map(([slug, label]) => (
-              <li key={slug || "home"}>
-                <Link href={slug ? navHref(lang, slug) : pagePath(lang)} className="transition hover:text-accent">
+            {nav.map(([slug, hash, label]) => (
+              <li key={label}>
+                <Link href={`${navHref(lang, slug)}${hash}`} className="transition hover:text-accent">
                   {label}
                 </Link>
               </li>

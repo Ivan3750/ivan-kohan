@@ -1,37 +1,56 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useMotionValue, useScroll, useSpring, useTransform } from "framer-motion";
-import Link from "next/link";
-import { ArrowDown, ArrowUpRight, MapPin } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion, useMotionValue, useScroll, useSpring, useTransform } from "framer-motion";
+import { ArrowDown } from "lucide-react";
 import type { Dict } from "@/app/lib/dictionary";
-import { socialLinks } from "./Icons";
-import { Magnetic } from "./motion";
 
-const chipPos = [
-  { x: "4%", y: "10%", d: 0, depth: -120 },
-  { x: "78%", y: "2%", d: 600, depth: -200 },
-  { x: "88%", y: "46%", d: 1200, depth: -90 },
-  { x: "-2%", y: "62%", d: 300, depth: -160 },
-  { x: "62%", y: "88%", d: 900, depth: -60 },
-];
+// "Hello" in the languages of the story: English, Danish, Ukrainian, Bosnian.
+const greetings = ["Hello", "Hej", "Привіт", "Zdravo"];
 
-export default function Hero({ dict, contactHref }: { dict: Dict; contactHref: string }) {
-  const { hero, a11y } = { hero: dict.hero, a11y: dict.a11y };
+function Greeting() {
+  const [i, setI] = useState(0);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const id = setInterval(() => setI((x) => (x + 1) % greetings.length), 2300);
+    return () => clearInterval(id);
+  }, []);
+
+  return (
+    <p aria-hidden className="font-display relative h-[1.15em] overflow-hidden text-[clamp(4.2rem,14vw,11.5rem)] font-bold italic leading-[1.1] text-accent">
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.span
+          key={greetings[i]}
+          className="absolute left-0 top-0 block whitespace-nowrap"
+          initial={{ y: "105%" }}
+          animate={{ y: 0 }}
+          exit={{ y: "-105%" }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        >
+          {greetings[i]}
+        </motion.span>
+      </AnimatePresence>
+      {/* reserves the width of the longest word so layout doesn't jump */}
+      <span className="invisible block whitespace-nowrap">Привіт</span>
+    </p>
+  );
+}
+
+export default function Hero({ dict }: { dict: Dict }) {
+  const { hero } = dict;
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
 
-  // parallax layers
   const gridY = useTransform(scrollYProgress, [0, 1], [0, 160]);
   const wordX = useTransform(scrollYProgress, [0, 1], ["0%", "-22%"]);
   const wordY = useTransform(scrollYProgress, [0, 1], [0, 120]);
   const discY = useTransform(scrollYProgress, [0, 1], [0, -140]);
-  const discRot = useTransform(scrollYProgress, [0, 1], [0, 14]);
+  const discRot = useTransform(scrollYProgress, [0, 1], [0, 18]);
   const discScale = useTransform(scrollYProgress, [0, 1], [1, 0.82]);
   const copyY = useTransform(scrollYProgress, [0, 1], [0, 90]);
   const copyOpacity = useTransform(scrollYProgress, [0, 0.75], [1, 0]);
 
-  // pointer-follow glow + mouse parallax
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
   const sx = useSpring(mx, { stiffness: 60, damping: 18 });
@@ -52,7 +71,6 @@ export default function Hero({ dict, contactHref }: { dict: Dict; contactHref: s
         my.set(((e.clientY - r.top) / r.height) * 2 - 1);
       }}
     >
-      {/* layers */}
       <motion.div aria-hidden style={{ y: gridY }} className="grid-lines absolute inset-0 -z-10" />
       <motion.div
         aria-hidden
@@ -60,186 +78,79 @@ export default function Hero({ dict, contactHref }: { dict: Dict; contactHref: s
         style={{
           left: glowX,
           top: glowY,
-          background:
-            "radial-gradient(closest-side, rgba(255,214,10,0.30), rgba(255,214,10,0.08) 55%, transparent 75%)",
+          background: "radial-gradient(closest-side, rgba(255,214,10,0.26), rgba(255,214,10,0.07) 55%, transparent 75%)",
         }}
       />
       <motion.div
         aria-hidden
         style={{ x: wordX, y: wordY }}
-        className="font-display text-outline pointer-events-none absolute bottom-[4%] left-0 -z-10 select-none whitespace-nowrap text-[clamp(8rem,32vw,34rem)] font-bold leading-none text-white/[0.09]"
+        className="font-display text-outline pointer-events-none absolute bottom-[6%] left-0 -z-10 select-none whitespace-nowrap text-[clamp(8rem,32vw,34rem)] font-bold italic leading-none text-white/[0.08]"
       >
         KOHAN · KOHAN
       </motion.div>
 
-
-      <div className="mx-auto grid w-full max-w-7xl flex-1 items-center gap-10 px-5 pb-12 pt-28 sm:px-8 lg:grid-cols-[1.25fr_1fr]">
-        {/* copy */}
+      <div className="mx-auto grid w-full max-w-7xl flex-1 items-center gap-10 px-5 pb-24 pt-28 sm:px-8 lg:grid-cols-[1.2fr_0.8fr]">
         <motion.div style={{ y: copyY, opacity: copyOpacity }}>
-          <p
-            className="rise label inline-flex items-center gap-2.5 rounded-full border border-white/12 bg-white/[0.04] px-4 py-2 text-mist"
-            style={{ "--d": 100 } as React.CSSProperties}
-          >
-            <span className="dot-live h-2 w-2 rounded-full bg-accent" />
-            {hero.status}
-          </p>
+          <div className="rise" style={{ "--d": 150 } as React.CSSProperties}>
+            <Greeting />
+          </div>
 
           <h1
-            className="font-display mt-7 text-[clamp(2.6rem,5.8vw,6rem)] font-bold leading-[1.02]"
+            className="font-display rise mt-2 text-[clamp(1.9rem,4.4vw,3.8rem)] font-bold leading-[1.05]"
+            style={{ "--d": 350 } as React.CSSProperties}
           >
-            <span className="rise block" style={{ "--d": 250 } as React.CSSProperties}>
-              {hero.title.pre}
-            </span>
-            <span className="rise block" style={{ "--d": 420 } as React.CSSProperties}>
-              <span className="text-accent-em">{hero.title.em}</span>
-            </span>
+            {hero.name}
           </h1>
 
           <p
-            className="rise mt-8 max-w-xl text-lg leading-relaxed text-mist sm:text-xl"
-            style={{ "--d": 650 } as React.CSSProperties}
+            className="rise mt-6 max-w-xl text-lg leading-relaxed text-mist sm:text-xl"
+            style={{ "--d": 550 } as React.CSSProperties}
           >
-            {hero.lead}
+            {hero.line}
           </p>
-
-          <div
-            className="rise mt-8 flex flex-wrap items-center gap-4"
-            style={{ "--d": 800 } as React.CSSProperties}
-          >
-            <Magnetic>
-              <a
-                href="#about"
-                className="group inline-flex items-center gap-2 rounded-full bg-accent px-7 py-4 text-sm font-semibold text-ink transition hover:bg-paper"
-              >
-                {hero.cta1}
-                <ArrowUpRight size={17} className="transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </a>
-            </Magnetic>
-            <Magnetic>
-              <Link
-                href={contactHref}
-                className="inline-flex items-center gap-2 rounded-full border border-white/20 px-7 py-4 text-sm font-medium transition hover:border-accent hover:text-accent"
-              >
-                {hero.cta2}
-              </Link>
-            </Magnetic>
-          </div>
-
-          <div
-            className="rise mt-10 flex flex-wrap items-center gap-x-6 gap-y-4"
-            style={{ "--d": 950 } as React.CSSProperties}
-          >
-            <ul className="flex items-center gap-2">
-              {socialLinks.slice(0, 4).map(({ id, label, href, Icon }) => (
-                <li key={id}>
-                  <a
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer me"
-                    aria-label={`${label} (${a11y.external})`}
-                    title={label}
-                    className="grid h-11 w-11 place-items-center rounded-full border border-white/12 text-mist transition hover:-translate-y-1 hover:border-accent hover:text-accent"
-                  >
-                    <Icon size={18} />
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <p className="inline-flex items-center gap-2 text-sm text-mist">
-              <MapPin size={15} className="text-accent" />
-              {hero.location}
-            </p>
-          </div>
         </motion.div>
 
-        {/* disc visual */}
         <motion.div
           aria-hidden
           style={{ y: discY, rotate: discRot, scale: discScale }}
-          className="relative mx-auto hidden aspect-square w-full max-w-[34rem] lg:block"
+          className="relative mx-auto hidden aspect-square w-full max-w-[28rem] lg:block"
         >
           <motion.div style={{ x: tiltX, y: tiltY }} className="absolute inset-0">
             {[0, 800, 1600].map((d) => (
               <span
                 key={d}
-                className="ring-pulse absolute inset-[14%] rounded-full border border-accent/40"
+                className="ring-pulse absolute inset-[12%] rounded-full border border-accent/40"
                 style={{ "--d": d } as React.CSSProperties}
               />
             ))}
-            <div className="absolute inset-[14%] rounded-full bg-accent shadow-[0_0_120px_rgba(255,214,10,0.28)]">
+            <div className="absolute inset-[12%] rounded-full bg-accent shadow-[0_0_120px_rgba(255,214,10,0.28)]">
               <svg viewBox="0 0 200 200" className="spin-slow absolute inset-0 h-full w-full">
                 <defs>
                   <path id="badge-circle" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0" />
                 </defs>
-                <text
-                  fontSize="12.5"
-                  fontWeight="600"
-                  letterSpacing="3"
-                  fill="#0f0f0e"
-                  style={{ fontFamily: "var(--font-mono)" }}
-                >
+                <text fontSize="12.5" fontWeight="600" letterSpacing="3" fill="#0f0f0e" style={{ fontFamily: "var(--font-mono)" }}>
                   <textPath href="#badge-circle" textLength="486">
-                    IVAN KOHAN · WEB DEVELOPER · WEBHJERTE ·
+                    UKRAINE · DENMARK · IVAN KOHAN · WEBHJERTE ·
                   </textPath>
                 </text>
               </svg>
-              <span className="font-display absolute inset-0 grid place-items-center text-[clamp(5rem,11vw,9rem)] font-bold italic leading-none text-ink">
+              <span className="font-display absolute inset-0 grid place-items-center text-[clamp(5rem,10vw,8.5rem)] font-bold italic leading-none text-ink">
                 IK
               </span>
             </div>
           </motion.div>
-
-          {hero.chips.map((t, i) => (
-            <ChipLayer key={t} text={t} pos={chipPos[i % chipPos.length]} progress={scrollYProgress} />
-          ))}
         </motion.div>
       </div>
 
-      {/* bottom bar */}
-      <div className="relative border-t border-white/10 bg-ink/50 backdrop-blur-sm">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-5 py-5 sm:px-8">
-          <ul className="flex gap-6 sm:gap-12">
-            {hero.facts.map((f) => (
-              <li key={f.small}>
-                <p className="font-display text-xl font-bold text-accent sm:text-3xl">{f.big}</p>
-                <p className="label mt-1 text-[0.62rem] text-mist sm:text-[0.7rem]">{f.small}</p>
-              </li>
-            ))}
-          </ul>
-          <a
-            href="#about"
-            className="label hidden items-center gap-3 text-mist transition hover:text-accent sm:inline-flex"
-          >
-            {hero.scroll}
-            <span className="grid h-10 w-10 place-items-center rounded-full border border-white/15">
-              <ArrowDown size={16} className="animate-bounce" />
-            </span>
-          </a>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function ChipLayer({
-  text,
-  pos,
-  progress,
-}: {
-  text: string;
-  pos: (typeof chipPos)[number];
-  progress: ReturnType<typeof useScroll>["scrollYProgress"];
-}) {
-  const y = useTransform(progress, [0, 1], [0, pos.depth]);
-  return (
-    <motion.div style={{ y, left: pos.x, top: pos.y }} className="absolute">
-      <span
-        className="float label inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-white/15 bg-ink/70 px-4 py-2 text-paper backdrop-blur-md"
-        style={{ "--d": pos.d } as React.CSSProperties}
+      <a
+        href="#story"
+        className="label absolute inset-x-0 bottom-8 mx-auto inline-flex w-fit items-center gap-3 text-mist transition hover:text-accent"
       >
-        <span className="h-2 w-2 rounded-full bg-accent" />
-        {text}
-      </span>
-    </motion.div>
+        {hero.scroll}
+        <span className="grid h-10 w-10 place-items-center rounded-full border border-white/15">
+          <ArrowDown size={16} className="animate-bounce" />
+        </span>
+      </a>
+    </section>
   );
 }

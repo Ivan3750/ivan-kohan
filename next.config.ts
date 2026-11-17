@@ -4,11 +4,12 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   images: { formats: ["image/avif", "image/webp"] },
   async redirects() {
-    // old indexed URL that no longer exists → closest new page
     return [
-      { source: "/skills", destination: "/about", permanent: true },
-      { source: "/blog/nextjs-seo-checklist", destination: "/blog/website-checklist-small-business", permanent: true },
-      { source: "/:lang(da|uk)/blog/nextjs-seo-checklist", destination: "/:lang/blog/website-checklist-small-business", permanent: true },
+      // pages that no longer exist → home (permanent)
+      { source: "/:page(about|now|projects|skills)", destination: "/", permanent: true },
+      { source: "/blog/:slug*", destination: "/", permanent: true },
+      { source: "/:lang(da|uk|bs)/:page(about|now|projects|skills)", destination: "/:lang", permanent: true },
+      { source: "/:lang(da|uk|bs)/blog/:slug*", destination: "/:lang", permanent: true },
     ];
   },
   async headers() {

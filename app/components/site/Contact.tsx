@@ -7,7 +7,7 @@ import type { Dict } from "@/app/lib/dictionary";
 import { links } from "@/app/lib/site";
 import { socialLinks } from "./Icons";
 import { Magnetic, Reveal, SplitWords } from "./motion";
-import { SectionLabel } from "./About";
+import { SectionLabel } from "./SectionLabel";
 
 type Status = "idle" | "sending" | "sent" | "error" | "invalid";
 
