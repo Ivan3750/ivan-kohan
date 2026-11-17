@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: d.meta.description,
     keywords: d.meta.keywords,
     alternates: { canonical: localeUrl(lang), languages: hiddenLocales.includes(lang) ? undefined : languages },
-    robots: hiddenLocales.includes(lang) ? { index: false, follow: true } : undefined,
+    ...(hiddenLocales.includes(lang) ? { robots: { index: false, follow: true } } : {}),
     openGraph: {
       type: "website",
       siteName: "Ivan Kohan",
